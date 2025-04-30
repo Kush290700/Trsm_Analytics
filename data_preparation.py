@@ -33,15 +33,16 @@ def prepare_full_data(raw: dict) -> pd.DataFrame:
 
     def cast(df, col):
         if col not in df.columns:
-            raise RuntimeError(f"Expected '{col}' in DataFrame but got {df.columns.tolist()}")
+            logger.warning(f"Column '{col}' not found in DataFrame. Available: {df.columns.tolist()}")
+            df[col] = ""
         df[col] = df[col].astype(str)
 
-    for df, cols in [
+    for df_, cols in [
         (orders_df, ["OrderId", "CustomerId", "SalesRepId", "ShippingMethodRequested"]),
         (lines_df,  ["OrderLineId", "OrderId", "ProductId", "ShipperId"])
     ]:
         for c in cols:
-            cast(df, c)
+            cast(df_, c)
 
     df = lines_df.merge(orders_df, on="OrderId", how="inner", suffixes=("", "_ord"))
     logger.info(f"After joining orders+lines: {len(df):,} rows")
@@ -66,12 +67,8 @@ def prepare_full_data(raw: dict) -> pd.DataFrame:
         df = df.merge(lookup_df, on=keycol, how="left")
         logger.info(f"After merging '{name}': {len(df):,} rows")
 
-    if "UnitOfBillingId" in df.columns:
-        df["UnitOfBillingId"] = df["UnitOfBillingId"].astype(str)
-    if "IsProduction" in df.columns:
-        df["IsProduction"] = df["IsProduction"].astype(str)
-    else:
-        df["IsProduction"] = "0"
+    df["UnitOfBillingId"] = df.get("UnitOfBillingId", "").astype(str)
+    df["IsProduction"] = df.get("IsProduction", "0").astype(str)
 
     packs = raw.get("packs")
     if packs is not None and not packs.empty:
@@ -99,22 +96,15 @@ def prepare_full_data(raw: dict) -> pd.DataFrame:
     is_wt = (df["UnitOfBillingId"] == "3") & (df["WeightLb"] > 0)
     df["ShippedWeightLb"] = np.where(is_wt, df["WeightLb"], df["ItemCount"] * per_item.fillna(0))
 
-    df["Revenue"] = np.where(
-        df["IsProduction"] != "1",
-        df["ShippedWeightLb"] * df["SalePrice"],
-        0.0
-    )
-    df["Cost"] = np.where(
-        df["IsProduction"] != "1",
-        df["ShippedWeightLb"] * df["UnitCost"],
-        0.0
-    )
+    df["Revenue"] = np.where(df["IsProduction"] != "1", df["ShippedWeightLb"] * df["SalePrice"], 0.0)
+    df["Cost"] = np.where(df["IsProduction"] != "1", df["ShippedWeightLb"] * df["UnitCost"], 0.0)
     df["Profit"] = df["Revenue"] - df["Cost"]
 
-    df["Date"] = pd.to_datetime(df["CreatedAt_order"], errors="coerce").dt.normalize()
-    df["ShipDate"] = pd.to_datetime(df["ShipDate"], errors="coerce")
-    df["DeliveryDate"] = pd.to_datetime(df["DeliveryDate"], errors="coerce")
+    df["Date"] = pd.to_datetime(df.get("CreatedAt_order"), errors="coerce").dt.normalize()
+    df["ShipDate"] = pd.to_datetime(df.get("ShipDate"), errors="coerce")
+    df["DeliveryDate"] = pd.to_datetime(df.get("DeliveryDate"), errors="coerce")
     df["DateExpected"] = pd.to_datetime(df.get("DateExpected"), errors="coerce")
+
     df["TransitDays"] = (df["DeliveryDate"] - df["ShipDate"]).dt.days.clip(lower=0)
     df["DeliveryStatus"] = np.where(df["DeliveryDate"] <= df["DateExpected"], "On Time", "Late")
 
