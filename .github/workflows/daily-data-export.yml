@@ -2,8 +2,8 @@ name: ⏰ Daily CSV Export
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Every day at 6:00 AM UTC (11:30 AM IST, 11 PM PST)
-  workflow_dispatch:     # 👈 allows manual run from GitHub UI
+    - cron: '0 6 * * *'  # Every day at 6 AM UTC
+  workflow_dispatch:     # Allow manual trigger
 
 jobs:
   export-data:
@@ -28,9 +28,11 @@ jobs:
         python daily_csv_export.py
 
     - name: 💾 Commit and Push Updated CSVs
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
       run: |
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
         git add data/*.csv
         git commit -m "🔁 Auto-update CSVs on $(date '+%Y-%m-%d')" || echo "No changes to commit"
-        git push origin main
+        git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git HEAD:main
