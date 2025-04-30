@@ -35,4 +35,4 @@ jobs:
         git config user.email "github-actions@github.com"
         git add data/*.csv
         git commit -m "🔁 Auto-update CSVs on $(date '+%Y-%m-%d')" || echo "No changes to commit"
-        git push https://x-access-token:${GH_PAT1}@github.com/${{ github.repository }}.git HEAD:main
+        git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git HEAD:main
