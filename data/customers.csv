@@ -1,0 +1,4267 @@
+CustomerId,CustomerName,RegionId,IsRetail
+0,SYSTEM-OVERRIDE,6,False
+9,12B Restaurant,29,False
+10,A Moveable Feast Catering,27,False
+11,Abigails Party,28,False
+12,Adesso Bistro,28,False
+13,Alibi Room,29,False
+14,Aphrodite's Cafe,28,False
+15,Au Petite Chavignol,6,False
+16,Benton's Cheese Kerrisdale,28,False
+17,Biercraft Cambie,28,False
+18,Big Lou's Butcher,6,False
+19,Boneta,6,False
+20,Brown Dog Cafe,6,False
+21,C Restaurant,6,False
+22,Cartel,6,False
+23,Central Bistro,6,False
+24,Chill Winston,29,False
+25,Cobre,6,False
+26,Divino,6,False
+27,Dunn's Famous,28,False
+28,Elle Batsukh,6,False
+29,Flying Tiger,6,False
+30,Four Willows,6,False
+31,Fraser - Misc,6,False
+32,Greens Market,28,True
+33,Guilt & Co,29,False
+34,Escobar,29,False
+35,Hapa-Kits,28,False
+36,Hapa-Robson,28,False
+37,Hapa-Yaletown,28,False
+38,Hapa Coal Hbr,28,False
+39,Hart House,33,False
+40,Hell's Kitchen,6,False
+41,Hog Shack,31,False
+42,Home Grow-In,6,False
+43,Indishpensable,6,False
+44,Irish Heather,6,False
+45,Jackson's Meats,28,False
+46,Jambo Grill,6,False
+47,Jericho Foods-Galley,6,False
+48,Jericho Tennis Club,28,False
+49,JJ Bean - Staff,29,False
+50,JJ Bean Inc.,33,False
+51,Jules Bistro,6,False
+52,Juno Bistro,28,False
+53,Kin Resto,6,False
+54,La Brasserie,28,False
+55,La Buca,28,False
+56,La Quercia,28,False
+57,El Camino's,29,False
+58,Les Amis du From,29,False
+59,Les Faux,29,False
+60,Lolita's,28,False
+61,Lunch Box Foods,6,False
+62,Maenam,28,False
+63,Mangal Kiss,28,False
+64,Meat & Bread Cambie,29,False
+65,Mis Trucos,6,False
+66,Mo Meats,6,False
+67,NFA,29,False
+68,Nu,6,False
+69,Nuba Natural Foods,29,False
+70,Nuba on 3rd,29,False
+71,Nuba Hastings,29,False
+72,One Planet Catering,6,False
+73,Oyster Raw Bar,6,False
+74,Pair Bistro,6,False
+75,Pastry Training Ctr Van,29,False
+76,Peckinpah,6,False
+77,Point Grill (UBC),28,False
+78,Pourhouse,29,False
+79,Pronto,6,False
+80,Raincity Grill,6,False
+81,Red Wagon Cafe,29,False
+82,Re-Up,30,False
+83,Roaming Dragon,29,False
+84,Sage Bistro,6,False
+85,Save on Meats,29,False
+86,Savoury Chef,29,False
+87,Sea Monstr Sushi,6,False
+88,Slickity Jim's,29,False
+89,Spirit of 2010,6,False
+90,Strange Love,6,False
+91,Swallow Tail Catering,29,False
+92,Tapenade,6,False
+93,Terra Breads,29,False
+94,Terra Breads-Kits,28,False
+95,Terra Breads-Village,29,False
+96,Butcher on 10th,28,False
+97,The Cascade Rm,29,False
+98,The Cove Pub,28,False
+99,The Daily,6,False
+100,The Diamond,29,False
+101,The Narrow,6,False
+102,The Rumpus Rm,6,False
+103,The Whip,6,False
+104,Trafalgars Bistro,28,False
+105,Two Chefs & Table,6,False
+106,UBC Food Services,28,False
+107,Waazubee Cafe,6,False
+108,Waldorf Hotel,6,False
+109,Wheelhouse,29,False
+110,Wild Rice Gastown,6,False
+111,Yagger's-Downtown,28,False
+112,Yagger's-Kits,28,False
+113,Zest Restaurant,28,False
+114,Test Customer - NonRetail,8,False
+115,AdminTestCustomer,8,False
+116,Albion Fish,8,False
+117,Big Wheel Burgers,8,False
+118,Bin 4 Burger - Downtown,8,False
+119,Bistro 28,8,False
+120,Black Creek Diner,10,False
+121,Black Creek Store,10,False
+122,Blackrock Resort,11,False
+123,Brasserie L' École,8,False
+124,Brentwood Bay Lodge,8,False
+125,Bubby's Kitchen,8,False
+126,Cafe Brio,8,False
+127,Caffe Tre Fantastico,8,False
+128,Camille's Restaurant,8,False
+129,Canoe Brewpub,8,False
+130,Chateau Victoria,8,False
+131,Choux Choux,8,False
+132,Clark Deutscher,8,False
+133,Clayoquot Wilderness,11,False
+134,Coast Vic Harbourside,8,False
+135,Crown Isle Resort,10,False
+136,Far West Dist.,11,False
+137,Ferris' Oyster Bar,8,False
+138,Feys & Hobbs,8,False
+139,Fol Epi,8,False
+140,Gian - Misc,8,False
+141,Heron Rock Bistro,8,False
+142,Hotel Grand Pacific,8,False
+143,Inn at Laurel Point,8,False
+144,KingFisher,39,False
+145,Kitchens of Distinction,8,False
+146,La Taquisa - Wilson St,8,False
+147,Little Piggy Catering,8,False
+148,Long Beach Lodge,11,False
+149,Mahle House,10,False
+150,Market on Yates,8,False
+151,Hilltop Bistro,40,False
+152,Moose Man,10,False
+153,Nimmo Bay Resort,10,False
+154,Norwoods,11,False
+155,Oak Bay Marina Rest,8,False
+156,Page Point Bistro,10,False
+157,Painter's Lodge,39,False
+158,Paprika Bistro,8,False
+159,Passioneat Foods,8,False
+160,Peppers Food Store,8,False
+161,Pink Bicycle,8,False
+162,Prima Strada Pizzeria,8,False
+163,Royal Colwood,8,False
+164,Share Organics,8,False
+165,Shelter,40,False
+166,Simpleng Pinoy,8,False
+167,Sips Artisan Bistro,8,False
+168,Slater's Meats,8,False
+169,Sloping Hill Farm,10,False
+170,Smith's Pub,8,False
+171,Sobo,40,False
+172,Sooke Harbour House,8,False
+173,Southridge Farms,8,True
+174,Spinnakers Gastro Brewpub,8,False
+175,SPUD Victoria,8,False
+176,Stage Wine Bar,8,False
+177,Stone Soup Inn,8,False
+178,Strathcona Lodge,10,False
+179,Swan's Brewpub,8,False
+180,The Rootcellar - McKenzie Corner,8,False
+181,Tigh-Na-mara,10,False
+182,Truffles Catering,8,False
+183,OLO,8,False
+184,VIU Culinary,10,False
+185,Vis a Vis,8,False
+186,Marina West,8,False
+187,Westwind Pub,11,False
+188,Wick Inn,11,False
+189,Wild Saffron,8,False
+190,Wildside Grill,11,False
+191,Zambri's,8,False
+192,Bao Bei,29,False
+193,BellaCoola Heli,38,False
+194,Bishop's,28,False
+195,Butter on the Endive,6,False
+196,Cedar Grove Rest,27,False
+197,Century House,6,False
+198,Cibo,28,False
+199,Cioppino's,28,False
+200,Earls Test Kitchen,28,False
+201,Glacier Valley Farm,23,False
+202,Nu,6,False
+203,One Planet Catering,6,False
+204,Outlaw Meats,3,False
+205,Pacific Yellowfin,31,False
+206,Passatempo,6,False
+207,Queen Charlotte Lodge,31,False
+208,Red Square Tapas,6,False
+209,Revel Room,28,False
+210,Rocky Mtn Game Meats,3,False
+211,Snowwater Heliskiing,19,False
+212,Sonora Resort,39,False
+213,The Corner Suite Bistro,6,False
+214,The Old Bauernhaus,3,False
+215,The Rotten Grape,15,False
+216,West,28,False
+217,West Coast Fish-Outpost,31,False
+218,Armando's Meats,28,False
+219,Blue Water Cafe,6,False
+220,Brix,28,False
+221,Cafe Bica,6,False
+222,Cafe D'Azur,6,False
+223,Calhouns Bakery,6,False
+224,Campagnolo,29,False
+225,Campagnolo Roma,29,False
+226,Century Plaza Hotel,28,False
+227,Chambar,29,False
+228,Chateau Granville,28,False
+229,Cin Cin,28,False
+230,Commune,28,False
+231,Cottage Bistro,6,False
+232,Darby's Pub,28,False
+233,David Gale - Misc,6,False
+234,David Hawksworth,28,False
+235,Dirty Apron,29,False
+236,Edible BC,28,False
+237,Elysian Coffee #2 Broadway,28,False
+238,Ensemble Restaurant,6,False
+239,Fairmont Pacific Rim,28,False
+240,Fairmont Van Airport,31,False
+241,Fairmont Waterfront,28,False
+242,Five Point Pub,29,False
+243,Four Seasons Van,28,False
+244,Hamilton Street Grill,28,False
+245,Hawksworth,28,False
+246,Holiday Inn Broadway,28,False
+247,IGA #18 - Port Moody,6,False
+248,Joe Fortes,28,False
+249,La Buca,6,False
+250,La Terrazza,28,False
+251,L'Abattoir,29,False
+252,Lift Bar & Grill,28,False
+253,Market by Jean Georges,28,False
+254,Market Meats,28,False
+255,Marriot Pinnacle,28,False
+256,Metropolitan Hotel,28,False
+257,Nicli Antica Pizzeria,29,False
+258,Forage,28,False
+259,Off The Wagon,6,False
+260,One More Sushi,28,False
+261,Opus Hotel,28,False
+262,Provence Marinaside,28,False
+263,R.TL,6,False
+264,Red Card,28,False
+265,Relish,28,False
+266,Rosewood Hotel Georgia,28,False
+267,Savoury City,29,False
+268,Stong's Market,6,False
+269,Sugar Catering,6,False
+270,Tap/Ensemble Restaurant,6,False
+271,Tapestry Westbrook,28,False
+272,Tavola,28,False
+273,Terminal City Club,28,False
+274,The Commodore,28,False
+275,The Fray,6,False
+276,The French Table Bistro,6,False
+277,The Hot Spot,6,False
+278,The Shark Club,6,False
+279,Three Lions Cafe,6,False
+280,Top of Vancouver,28,False
+281,Vancouver Club,28,False
+282,Van Ren,28,False
+283,Wedgewood,28,False
+284,Uptown Chefs,17,False
+285,Baldface Lodge,19,False
+286,Bonfire Restaurant & Bar,15,False
+287,Brownstone Restaurant,17,False
+288,Cabana Bar & Grille,15,False
+289,Cedar Creek Winery,15,False
+290,Colombo Lodge,17,False
+291,Delta Grand Okan,15,False
+292,Delta Sun Peaks,17,False
+293,Everything But The Tail,3,False
+294,Grapevine@Gray Monk Wine,15,False
+295,Hillside Estate Winery,18,False
+296,Joy Road Catering,18,False
+297,Lake Breeze Winery,18,False
+298,Le Plateau Bistro,15,False
+299,Local Lounge,18,False
+300,Manteo Resort,15,False
+301,Mica Heli Guides,16,False
+302,Miradoro at Tinhorn Creek,18,False
+303,Mission Hill-Main Kitchen,15,False
+304,Naramata Heritage Inn,18,False
+305,Old Train Station Pub,15,False
+306,Penticton Lakeside Resort,18,False
+307,Poppadoms,15,False
+308,Predator Ridge,16,False
+309,Quails' Gate Winery,15,False
+310,RauDZ,15,False
+311,Smokewood BBQ,3,False
+312,Sonora Rm@Burrowing Owl,18,False
+313,Sparkling Hill Resort,16,False
+314,Sumac Ridge,18,False
+315,Summerhill Winery,15,False
+316,Terra Restaurant,17,False
+317,The Bench,18,False
+318,The Harvest Golf Club,15,False
+319,The Okanagan Herb Co,18,False
+320,The Tempest Rm@Apex Inn,18,False
+321,TRU,17,False
+322,Walnut Beach Resort,18,False
+323,Waterfront Restaurant,15,False
+324,Watermark Resort,18,False
+325,Mike Wiegele Heli,17,False
+326,AA Test Customer,6,False
+327,Retail,6,False
+328,21 Steps,22,False
+329,3P Natural & Exotic Meats,6,False
+330,3P Raw Pet Food,27,False
+331,Alta Bistro,22,False
+332,Aqua Riva,6,False
+333,Araxi,22,False
+334,Arms Reach Bistro,27,False
+335,Astrid's Fine Foods,22,False
+336,Bavaria Restaurant,22,False
+337,Beach Side Forno,6,False
+338,Bearfoot Bistro,22,False
+339,Big Sky Golf,23,False
+340,Blackbird Bakery,23,False
+341,Blacks Pub,22,False
+342,Blue Smoke BBQ,6,False
+343,Brew Creek Centre,22,False
+344,British Butcher,27,False
+345,Bulkley River Lodge,6,False
+346,Cafe Regalade,27,False
+347,Capilano Suspension Bridge House,27,False
+348,Caramba,6,False
+349,Casual Gourmet,6,False
+350,Celadon Restaurant,6,False
+351,Central City Brewing,37,False
+352,Chateau Whistler,22,False
+353,Ciao-Thyme Bistro,22,False
+354,Citta Bistro,22,False
+355,Copper Cup,6,False
+356,Copper House,6,False
+357,Cove Fine Foods,27,False
+358,Creekbread,6,False
+359,Creekside Market,22,False
+360,Dave Wright - Misc,6,False
+361,Elements,22,False
+362,Food Lovers Cooking Co,6,False
+363,Four Seasons Whistler,22,False
+364,Fraiche,6,False
+365,Furry Creek Golf,21,False
+366,Giraffe Restaurant,35,False
+367,Grammas Marine Inn,20,False
+368,Grouse Mountain Resorts,27,False
+369,G-Van Catering,6,False
+370,Hilton Whistler,22,False
+371,Hollyburn Country Club,27,False
+372,Hop Sing Enterprises,6,False
+373,Howe Sound Brewing,21,False
+374,IGA #56 - Gibsons,20,False
+375,IGA #75 Whist Meat Dept,22,False
+376,King Pacific Lodge,6,False
+377,King Solomon,22,False
+378,La Bocca,22,False
+379,La Regalade,27,False
+380,La Rua,22,False
+381,Le Bistro Chez Michel,6,False
+382,Le Gros,22,False
+383,Leo's Tapas,6,False
+384,Lift Restaurant,6,False
+385,Louis Gervais Fine Foods,27,False
+386,Maverick's Taphouse,6,False
+387,Memphis Blues - Lonsdale,27,False
+388,Mile One Eating House,23,False
+389,Morgan Creek Golf Course,37,False
+390,Mount Currie Coffee Pemb,23,False
+391,Mountain Man Mushing,6,False
+392,Mountain Vacation Planners,6,False
+393,Moustache Cafe,6,False
+394,Naked Lunch,21,False
+395,Nesters Market Squamish,21,False
+396,Nesters Whist Meat Dept,22,False
+397,Nesters Rebate,6,False
+398,Nicklaus North Golf,22,False
+399,Nita Lake Lodge (NLL),22,False
+400,North Arm Farm,23,False
+401,North Van Outdoor School,21,False
+402,Nourish Market,27,True
+403,Pearl Restaurant,35,False
+404,Players Chop House,6,False
+405,Quattro Whistler,22,False
+406,Queensdale Market,27,False
+407,Raw Dog,6,False
+408,Red Lion Bar & Grill,27,False
+409,Rimrock Cafe,22,False
+410,Rockwater Secret Cove,20,False
+411,Roland's Creekside Pub,22,False
+412,Rudy's Beef Hut,6,False
+413,Salmon House on Hill,27,False
+414,Sebastian & Co.,27,False
+415,Shady Tree Pub,21,False
+416,Sheila's Deli and Catering,6,False
+417,Slainte By The Pier,6,False
+418,Smitty's Oyster House,20,False
+419,Soup Meister,27,False
+420,Super Value #10 Deep Cove,27,False
+421,Super Value #11 Edgemont,27,False
+422,Tap Restaurant,37,False
+423,The Campfire Grill,6,False
+424,The District,27,False
+425,The Grocery Store,22,False
+426,The Gumboot Restaurant,20,False
+427,The Meadows at Pemb,23,False
+428,The Pony,23,False
+429,Tommy's Catering,27,False
+430,Trattoria Di Umberto,22,False
+431,Truffles Fine Foods,29,False
+432,Uli's Flipside,6,False
+433,Uli's Restaurant,35,False
+434,Watershed Grill,21,False
+435,Western Promises Food,6,False
+436,Westin Resort & Spa,22,False
+437,Westlynn Meats,27,False
+438,Whistler Blackcomb Christine's,22,False
+439,Whistler Brewhouse,22,False
+440,Whistler Cooks Catering,22,False
+441,Whistler Glass,22,False
+442,Whistler Golf Course,22,False
+443,Wigan Pier,21,False
+444,Wildwood Group,22,False
+445,Windsor Meats,29,False
+446,Ya Ya's Oyster Bar,6,False
+447,Test Customer - Retail1,8,False
+448,Craig Harris,6,False
+449,Meagan Mcallister,6,False
+450,Test Customer - Retail2,6,False
+451,Test Customer - Retail3,6,False
+452,Kale And Nori,6,False
+453,Feastro Foods,29,False
+454,West Broadway Meat Co.,28,False
+455,Joey Bentall,28,False
+456,East End Co-Op,29,True
+457,Whistler Blackcomb Steeps,22,False
+458,Whist/Blackcomb-Catering,22,False
+459,Nesters Whistler Deli Dept,22,False
+460,IGA #75 Whist Deli Dept,22,False
+461,Oswego Hotel ,8,False
+462,Establishment,28,False
+463,Market on Millstream,8,False
+464,Il Terrazzo,8,False
+465,Woodland Smokehouse,6,False
+466,The Beach House,27,False
+467,Penny Farthing,8,False
+468,Smuggler's Cove Pub,8,False
+469,Test Customer - Retail4,8,False
+470,Local Public Eatery,28,False
+471,Cafe Bica,6,False
+472,Union St. Bar,29,False
+473,Subeez,6,False
+474,Tartine Tarts,6,False
+475,Oswego Hotel,8,False
+476,Home on the Range,29,False
+477,Locus Lounge,29,False
+478,Hungry Rooster,8,False
+479,Shady Rest,40,False
+480,Clay Pigeon,8,False
+481,Catch 122,27,False
+482,IGA #18 - Port Moody,6,False
+483,Pierre Jean-Martin,15,False
+484,Wild Rice New West,30,False
+485,Bella Coola Heli Sports,38,False
+486,Dave Holden,6,False
+487,Cyn at Night,11,False
+488,Campagnolo,29,False
+489,Jason Pender,6,False
+490,AJ's Organic Cafe,8,False
+491,Shawna Gardham,6,False
+492,Tim Muldoon,6,False
+493,Luke Coyle,6,False
+494,Laura Robinson,6,False
+495,Michelle Vodnak,6,False
+496,Mark Winkler,6,False
+497,Marty Browne,6,False
+498,Kyle Malcolm,6,False
+499,Mark Conn,6,False
+500,Ben Mak,6,False
+501,James Kershaw,6,False
+502,Ray Bucknell,6,False
+503,Kelly Boulding,6,False
+504,Danny Hawes,6,False
+505,Ali Bakhtiar,6,False
+506,Luke Wright,6,False
+507,Sam Harris,6,False
+508,Kyle McClaws,6,False
+509,Erich Kovacs,6,False
+510,Vadym Korsinov,6,False
+511,Fraser Mittlestead,6,False
+512,Dave Wright,6,False
+513,Jason Plyem,6,False
+514,Don Millerd,6,False
+515,Dave Stover,6,False
+516,Tracy Johnson,6,False
+517,Peter Kruze,6,False
+518,Shawna Gardham,6,False
+519,Danielle Smitas,6,False
+520,Nuba Seymour,6,False
+521,Nuba Broadway,28,False
+522,Cafe D'Azur,6,False
+523,Harvest Community Foods,29,False
+524,Sandrine Pastry,15,False
+525,Fat Dragon,6,False
+526,Daniel's Kitchen,6,False
+527,IGA #75 Whistler Deli,22,False
+528,Patisserie Daniel,8,False
+529,Farmstead Wines,6,False
+530,The Bimini,28,False
+531,TUCG-Nicolas,11,False
+532,TUCG-Nicolas,40,False
+533,TUCG,40,False
+534,Kathryn Lester,6,False
+538,Kathryn Lester,6,False
+539,Street Meet,6,False
+540,Heather Mayhew,10,False
+541,Left Bank,20,False
+542,Blue Smoke BBQ,6,False
+543,FreshLocalWild,6,False
+544,Chez Michel,6,False
+545,The New Oxford,28,False
+546,The Lamplighter,29,False
+547,Ric's Grill Whistler,22,False
+548,SPUD TRAPP,33,False
+549,Natures Fare Commissary,16,False
+550,Nesters Whistler Dairy,22,False
+551,BiBO Nelson,19,False
+552,Slingers,6,False
+553,Che Baba,6,False
+554,Mission Hill-Terrace,15,False
+555,Mission Hill-Terrace,15,False
+556,Mission Hill - Terrace,15,False
+557,Matchstick,46,False
+558,Fable Kitchen,28,False
+559,Mica @ Spirit Ridge,18,False
+560,Cibo,28,False
+561,Butcher and Bullock,28,False
+562,Smileys Pub,6,False
+563,Academic,28,False
+564,Cinema,28,False
+565,Library Square,28,False
+566,The Three Brits,28,False
+567,Gatsby Mansion ,8,False
+568,Natures Fare Langley,38,False
+569,Natures Fare Kamloops,17,False
+570,Natures Fare Kelowna,15,False
+571,Natures Fare Vernon,16,False
+572,Natures Fare Penticton,18,False
+573,*Team Ali-Ride,6,False
+574,*Team Ali-Ride,6,False
+575,*Team Ali-Ride,6,False
+576,*Team Ali-Ride,8,False
+577,*Team Ali-Ride,6,False
+578,*Team Ali-Ride,6,False
+579,Meat & Bread Pender,28,False
+580,Bear Mountain Resort,8,False
+581,Kyle Mclaws Misc.,6,False
+582,West Coast Fish-Clubhouse,31,False
+583,Vij's Railway,29,False
+584,Wildside Bar & Grill Golf,11,False
+585,Natures Fare Westbank,15,False
+586,Natures Fare Westbank,15,False
+587,Owen Foster,6,False
+588,Vic Native Friendship Ctr,8,False
+589,Terrafina,18,False
+590,*Team Ali-Ride,6,False
+591,The Whip,29,False
+592,Fraser River Lodge,6,False
+593,Solidarity Snacks,40,False
+594,East End Food Co-op,29,False
+595,Robert Buckley,6,False
+596,Vicino,6,False
+597,Niagara Grocery,8,False
+598,The Mill,28,False
+599,L'Epicerie,28,False
+600,Don & Mary Millerd,6,False
+601,Lifestyle Market,8,False
+602,Victoria Jealouse,23,False
+603,Blue Marble,6,False
+604,Blue Marble,6,False
+605,Cactus Cafe- Ash,28,False
+606,Kelly Stiles,6,False
+607,Culinary Adventures,18,False
+608,Whistler Blackcomb Dustys,22,False
+609,Satori Factory,6,False
+610,Don Millerd,6,False
+611,Dan Fraser,6,False
+612,IGA #75 Dairy,22,False
+613,Covert Family Estate,18,False
+614,Fat Cow & Oyster Bar,38,False
+615,Dave Bell,6,False
+616,Dave Bell,6,False
+617,The Nest Rest,21,False
+618,Marc & Chantal Branson,6,False
+619,Rocky's Lookout Cafe,6,False
+620,Jason Pleym,6,False
+621,Cotto Enoteca,33,False
+622,Well Fed,6,False
+623,Wild Mountain Foods,8,False
+624,Entree Personal Chef,8,False
+625,Tap & Barrel OV,29,False
+626,Vanilla Pod,18,False
+627,Vanilla Pod,18,False
+628,Sundeck Centre,10,False
+629,One 20 Pub and Grill,6,False
+630,Mother Nature's Market & Deli,8,False
+631,Flambe Catering,18,False
+632,Fraser Personal,6,False
+633,Gian Linuzzi,8,False
+634,Scott Black,6,False
+635,Hotel Eldorado,15,False
+636,New Market Foods,19,False
+637,Chris Tutton,6,False
+638,Ben Mittlestead,6,False
+639,The Kitchen,18,False
+640,Irish Times Pub,8,False
+641,Wildebeest,29,False
+642,Kootenay Co-op Deli,19,False
+643,Kootenay Co-op - Kitchen,19,False
+644,Merridale Ciderworks,47,False
+645,Fireside Grill,8,False
+646,Routes Grill,15,False
+647,Tacofino Hastings,29,False
+648,Dusty's Bar & BBQ,22,False
+649,John Bradshaw,6,False
+650,Smoken Bones Cookshack,8,False
+651,Amuse Bistro,8,False
+652,Food Warehouse,27,False
+653,Jordan Crockett,6,False
+654,Espana,28,False
+655,Owen ,6,False
+656,Jar Restaurant,10,False
+657,Vancouver Aquarium,6,False
+658,Tortilleria Monterrey,8,False
+659,Steve Marchetto,6,False
+660,Drew Cooks,28,False
+661,Adam Nothstein,6,False
+662,Jason - Misc,6,False
+663,Bard and Banker,8,False
+664,Served Catering,6,False
+665,Belgard Kitchen,29,False
+666,Browns Bay Packing,10,False
+667,Robert O'Sullivan,6,False
+668,Robert Lumb,6,False
+669,Greens Market- Deli,28,False
+670,Helene Hancheruk,6,False
+671,Petes Meats,28,False
+672,Island Meat & Butcher,8,False
+673,Mike Reed,6,False
+674,Urban Digs,6,False
+675,Cory Ripley,6,False
+676,Zac ,3,False
+677,*NSGSC Fundraiser,6,False
+678,*NSGSC Fundraiser,6,False
+679,W2 Media Cafe,6,False
+680,Capilano Rugby Club,6,False
+681,Hennessy Kitchen,6,False
+682,Hennessy Kitchen,6,False
+683,Oak Bay Beach Hotel,8,False
+684,Crumsby's Cafe,8,False
+685,La Pentola,28,False
+686,Iris Smarden,6,False
+687,Heather Mayhew,6,False
+688,Anne Unsworth,6,False
+689,Le Gavroche,6,False
+690,Damso,28,False
+691,Hattie's Farm to Table,47,False
+692,Mark Perrier,6,False
+693,Halcyon Hot Springs,3,False
+694,Todd Humphries,6,False
+695,Brian Faulkner,6,False
+696,Steve Kozevnikov,6,False
+697,Mustang Powder,17,False
+698,Baguette and Co.,6,False
+699,Petar Fantov,6,False
+700,Kevin Mcleod,6,False
+701,Bull Chop House,20,False
+702,Saba Ershad,6,False
+703,The Oakwood,28,False
+704,Taste Lounge,6,False
+705,Mount Currie Coffee Whist,23,False
+706,Keith Nicoll,6,False
+707,owen foster,6,False
+708,owen foster,6,False
+709,Brock Thompson,6,False
+710,Matina Busch,6,False
+711,Iriss Gibbons,6,False
+712,Brock Thomson,6,False
+713,Angela Simpson,6,False
+714,Georgia,6,False
+715,Mary Nuytten,6,False
+716,Barbra Hunter,6,False
+717,Paul Timperley,6,False
+718,Chris Obst,6,False
+719,Gwen Lowney,6,False
+720,Despina Hill,6,False
+721,Crooked Goose Bistro,8,False
+722,Jordan Copeland,6,False
+723,Larry Johnson,6,False
+724,Jennifer Howarth,6,False
+725,Joan & Sid Cross,14,False
+726,Connie Willoner,6,False
+727,John North,6,False
+728,House Promotions,6,False
+729,Kitchen Quickies,21,False
+730,Ming Chang,6,False
+731,Sloping Hill Farms,10,False
+732,Megan Hannah ,6,False
+733,Don & Mary Millerd,6,False
+734,Denise,6,False
+735,Monica VanRenesse,6,False
+736,Prima Strada-Bridge St,8,False
+737,Stephan Till,6,False
+738,Barbara Ferreira,6,False
+739,Chatter Creek,3,False
+740,Blacktail,29,False
+741,Malek Lahcene,6,False
+742,Rob Stewart,8,False
+743,Dan Fraser,6,False
+744,Dan Fraser,6,False
+745,Charelli's,8,False
+746,Queens Republic,6,False
+747,Nari Rampersad,6,False
+748,Harkness Butcher,29,False
+749,Organic Acres Market,29,True
+750,The Parlour,28,False
+751,Noble Pig,17,False
+752,Pidgin,29,False
+753,Courtney Pope,6,False
+754,Hotel Rialto,8,False
+755,Bin 4 Burger - Westshore,8,False
+756,Steve - Staff,6,False
+757,Hank's - Ucluelet,40,False
+758,Mike Klajnert,6,False
+759,Value Added,6,False
+760,Intercity Packers,6,False
+761,Kate McNair,6,False
+762,DTC Test Customer,6,False
+763,East Of Main Cafe,29,False
+764,Dave Stover,39,False
+765,Andrea Joseph,6,False
+766,Gudrun,31,False
+767,Richard Johns,6,False
+768,Seasonal Experience,38,False
+769,Thomas Berger,6,False
+770,Lesley Heieis,6,False
+771,Danielle Moore,6,False
+772,Margaret Pearce,6,False
+773,Vern Beckie,6,False
+774,Barb Woznow,6,False
+775,David W Bell,6,False
+776,Number E Foods,28,False
+777,ray bucknell,6,False
+778,ray bucknell,6,False
+779,Linda Gour,6,False
+780,Linda Gour,6,False
+781,Orla Belserene,6,False
+782,Christy Gold Lutz,6,False
+783,Emily Woeste,6,False
+784,Dani Enskaitis,13,False
+785,Scott Gayton,6,False
+786,Lisa Ferenc,6,False
+787,Blair Easton,6,False
+788,Louis Wagner,6,False
+789,Hitam Treadwell,6,False
+790,Carla Shaw,6,False
+791,Hannah Clarke,6,False
+792,Diane Bird,6,False
+793,Christine Rensvold,6,False
+794,Tracy Burgess,6,False
+795,Angela Kelman,6,False
+796,Cam Patterson,6,False
+797,Jodene Restiaux,6,False
+798,Shiela Balzer,6,False
+799,Alison Patrick,6,False
+800,Lizbeth Reyna,6,False
+801,Katie Thomas,6,False
+802,Trevor Anderson,6,False
+803,Lana Chan,6,False
+804,Jessica Wenkoff,6,False
+805,Keith Gagne,6,False
+806,Mark Hustwaite,6,False
+807,Paul Zelinski,6,False
+808,Jason Pender,6,False
+809,June Pender,6,False
+810,Jenna Head,6,False
+811,Catalano Rest & Cicchetti Bar,8,False
+812,Darcy's Pub,8,False
+813,Arctic Meats,6,False
+814,Arctic Meats,6,False
+815,Ace Burger Bar,6,False
+816,Vance Oye,6,False
+817,1 Features,9,False
+818,Six Mile Pub,8,False
+819,Edible BC Retail,28,False
+820,Kyle Personal,6,False
+821,Me Ling Chu,6,False
+822,Paula Artley,6,False
+823,Shelley Maglaughlin,6,False
+824,Camosun College,8,False
+825,Extraordinary Organics,10,False
+826,Sammich Cafe,8,False
+827,Nina Velasquez,6,False
+828,Eagle Creek Lodge,10,False
+829,Gabe Holloway,6,False
+830,Smith and Co.,18,False
+831,Sea To Sky Organics,21,False
+832,Strathcona Hotel,8,False
+833,Cory Gallon,6,False
+834,Burdock & Co,29,False
+835,Eh Restaurant,6,False
+836,Island Naturals,10,False
+837,Peggy Vogler,6,False
+838,Hec Del Rio,6,False
+839,Brodo,18,False
+840,All Seasons Cafe,3,False
+841,Burger 55,18,False
+842,Michelle Murphy,6,False
+843,Lily Mae's,6,False
+844,Sunstone Ranch Golf Course,23,False
+845,Delta Hotel Burnaby,33,False
+846,Chicha,29,False
+847,Joan Johnson,6,False
+848,Jason Christensen,6,False
+849,Jodean Restiaux,6,False
+850,Jill Unsworth,6,False
+851,Liz Devillers,6,False
+852,Jillian McKenzie,6,False
+853,Karl Tegenfeldt,6,False
+854,Northwest Culinary Academy,29,False
+855,Florence Kainz,6,False
+856,DTC-Misc,6,False
+857,Heriot Bay Inn,10,False
+858,Michelle Passant,6,False
+859,Derek Hamanishi,6,False
+860,Arthur Hood,6,False
+861,Bodega Ridge Lodge,28,False
+862,SMAK Pender,28,False
+863,Margaret Mereigh,6,False
+864,Health Essentials,8,False
+865,Hester Creek Winery,18,False
+866,Parq BC Kitchen,28,False
+867,David Leff,8,False
+868,Market @ Spirit Ridge,18,False
+869,District of Saanich,8,False
+870,Sarah Coleman,6,False
+871,Solidarity Snacks - Retail,40,False
+872,The Bench Market,18,False
+873,Altmaerker Sausage House,32,False
+874,The Pony Retail,23,False
+875,C'est La V,3,False
+876,Ron Coyle,6,False
+877,Dolly's Shack,21,False
+878,Centreplate Whistler,22,False
+879,Vinoteca,6,False
+880,Direct to Consumer Misc,6,False
+881,Shoreline Middle School,8,False
+882,Whitetooth Mountain Bistro,3,False
+883,Justin Fraser/Robyn Lim,6,False
+884,Leftfield Cider,3,False
+885,Go Box Organics,8,False
+886,Artisan Culinary Concepts,18,False
+887,Vince Test Customer,5,False
+888,Josh Gallant,6,False
+889,The Joinery,21,False
+890,Ernie Bodie,6,False
+891,John Graham,6,False
+892,Dylan Goggs,6,False
+893,Nancy O's Restaurant,3,False
+894,Homer Street Cafe,28,False
+895,Memphis Blues,6,False
+896,IGA #75 Meat Retail,22,False
+897,The Grocery Store Retail,22,False
+898,Kwame Kumi,6,False
+899,Jonathan Kennedy,6,False
+900,Naama Sireni,6,False
+901,Healthyway Natural Foods,39,True
+902,Paul Parolin,6,False
+903,To Dine For Catering,6,False
+904,WestOak,28,False
+905,Kim King,6,False
+906,Dana Miller,6,False
+907,Fergies at Sunwolf,21,False
+908,Fergies at Sunwolf,6,False
+909,Tofino Co-Op,11,False
+910,Cuchillo,29,False
+911,Kim Fogarty,6,False
+912,Los Cuervos,29,False
+913,Jillian Trigg,6,False
+914,Bill & Kate Botham,6,False
+915,Kyle Lutes,6,False
+916,MacIsaac Private Chef & Catering,8,False
+917,Ashton Gary,6,False
+918,Union Food Market,29,True
+919,Road 13 Vineyards,15,False
+920,Details Catering@Waterfront Rest,15,False
+921,Kindy Riley,6,False
+922,Guild Freehouse,8,False
+923,Comex Foods(La Taqueria),27,False
+924,Ali Millerd,6,False
+925,Nathaniel Oliver,6,False
+926,Covert Farm Market,18,False
+927,Good Wolfe,6,False
+928,August Jack,6,False
+929,Farmers Apprentice,28,False
+930,Leesa Vreugde,6,False
+931,Harker's Organics,18,False
+932,Mcrae's Bistro,8,False
+933,Aussie Pie Guy,29,False
+934,Jennifer Howard,6,False
+935,Ilona Metcalfe,6,False
+936,Les Amis Retail,29,False
+937,Julie Durnan,6,False
+938,Meinhardt Fine Foods,28,False
+939,Union Food Market.,29,False
+940,Terry Tornes ,6,False
+941,Tap & Barrel CH,28,False
+942,Little Jumbo,8,False
+943,Theo's Restaurant,18,False
+944,Orca Point,10,False
+945,Heidi VanLith,21,False
+946,Dave Kitchen,12,False
+947,Sarah Clark,12,False
+948,Tomley's Market,8,False
+949,Daryn Collier,12,False
+950,Kim Steinhausen,12,False
+951,Dave Matiru,12,False
+952,Daniel Jarvis,12,False
+953,604 Food Co,28,False
+954,Just Catering,6,False
+955,Kristy Moller,6,False
+956,Taline Giragosian,12,False
+957,Volcanic Hills,15,False
+958,Sally Anne Hickin,12,False
+959,Lindsey Liddiard,12,False
+960,Sue-Ann MacCara,12,False
+961,SPUD,6,False
+962,Whole Food Market,18,False
+963,Jody Labriola,12,False
+964,Nancy Stonkus,12,False
+965,Michael Tomsette Ell,12,False
+966,Chris Schaalo,12,False
+967,Wes Stebbing,12,False
+968,Nicole Shaw,6,False
+969,Sandra,13,False
+970,Joanne Ingram,13,False
+971,Judy Morris,13,False
+972,Denise Pang,6,False
+973,Riverwood Sales,6,False
+974,Pamela Burton,6,False
+975,Shona Pearson,6,False
+976,Cantina del Centro,19,False
+977,Fraser D2C,6,False
+978,The Village Butcher,8,False
+979,Roast Carvery,8,False
+980,Solfeggio Whole Foods,23,False
+981,Chorizo and Co,8,False
+982,Belmiro's ,8,False
+983,Fiamo,8,False
+984,Kristy Moller,6,False
+985,Metropolitan Hotel,28,False
+986,Fat Jack's Diner,3,False
+987,Frankie's Italian Kitchen,6,False
+988,Hyatt Vancouver,28,False
+989,Roger Sleiman,15,False
+990,Twisted Dishes Cafe,10,False
+991,Vern Beckie,12,False
+992,Jose Chavarria,6,False
+993,Food for Thought Catering,8,False
+994,Real Food Made Easy,8,False
+995,Chameleon Cafe,34,False
+996,MOMA Bistro,31,False
+997,5th Street Bar & Grill,8,False
+998,To Die For Foods,6,False
+999,Keith Riel,13,False
+1000,Kristen Dillon,13,False
+1001,Alison Walker,13,False
+1002,Bismarck,6,False
+1003,HOUSE PROMO,6,False
+1004,Boca,28,False
+1005,Jen Ramos,13,False
+1006,La Cocina de Mama Oli,8,False
+1007,Global Relay,29,False
+1008,Ethical Kitchen,27,False
+1009,Cynthia Scheffers,6,False
+1010,Kristen Neis,6,False
+1011,Jason Mcdowell,3,False
+1012,10 Acres Bistro,8,False
+1013,Ben Patchell,6,False
+1014,Donnelly Group Catering,28,False
+1015,Craft Beer Market,29,False
+1016,Bistro 694,10,False
+1017,Stacey Daman-Willems,6,False
+1018,Michelle Hoodless,12,False
+1019,Hank's - Victoria,8,False
+1020,Blackbird,28,False
+1021,Douglas Giles,12,False
+1022,Jennifer Davies,12,False
+1023,Cathy Stokely,6,False
+1024,Norma Blann,6,False
+1025,Rosemary Eng,6,False
+1026,Sarah Clark,6,False
+1027,Roberta McCall,6,False
+1028,Abigail Cameron,6,False
+1029,Kathryn Cleven,6,False
+1030,Andrea Doby,6,False
+1031,Ryan Hodsman,12,False
+1032,Larry Johnston,6,False
+1033,Maria Thompson,6,False
+1034,Meagan Roberge,6,False
+1035,Annwen Loverin,6,False
+1036,Christine Lindsay,6,False
+1037,Paul Timperley,6,False
+1038,Sonia Mcleod,6,False
+1039,Marilyn Atchison,6,False
+1040,Ian Ogilvie,6,False
+1041,Blake Asselstine,6,False
+1042,Blake Asselstine,6,False
+1043,Anne Lee,6,False
+1044,Edward Houghland,6,False
+1045,Jenn Kernan,6,False
+1046,Sally Zaplatynsky,14,False
+1047,Sarah Moldenhauer,6,False
+1048,Dani Prem,6,False
+1049,Emily Mccullum,6,False
+1050,Craig Tomlinson,6,False
+1051,Cory Ripley,6,False
+1052,Christine Wright,6,False
+1053,Sean Monahan,6,False
+1054,Anne Nixon,6,False
+1055,Fraser Engel,6,False
+1056,Matthew Sharette,6,False
+1057,Sarah Boddez,6,False
+1058,Laurie Wooley,6,False
+1059,Olena,6,False
+1060,Mark Blancard,6,False
+1061,Jody Labriola,6,False
+1062,Stephanie Mckay,6,False
+1063,Heather Dunwoody,6,False
+1064,Melanie Neate,6,False
+1065,Andreas Tize,6,False
+1066,Oliver Steffen,6,False
+1067,Lola Gillies,6,False
+1068,Rhianna Thomas,6,False
+1069,Stella Boiser,6,False
+1070,Fairmont Empress,8,False
+1071,Andreas Tize,12,False
+1072,Lucas Bugg,12,False
+1073,Bill Sauder,6,False
+1074,Alice Schwarz,6,False
+1075,Craig Beatty,6,False
+1076,Good Omens Coffeehouse,18,False
+1077,Alexandra Sparling,12,False
+1078,Annie Morrisette,6,False
+1079,Rhonda Butler,6,False
+1080,Shayman Bjarnason,6,False
+1081,Ukee Juice,40,False
+1082,293 Wallace,6,False
+1083,Food Assure Lab,6,False
+1084,Michael Rothwell,12,False
+1085,Tableau Restaurant,28,False
+1086,Sheri Carter,6,False
+1087,Gary Given,6,False
+1088,Peter Williams INACTIVE,12,False
+1089,Nicole and Jason Turcotte,6,False
+1090,Bistro Wagon Rouge,29,False
+1091,Roo's Pub,6,False
+1092,On The Farm,21,False
+1093,Victoria Pie Co,8,False
+1094,La Taquisa - Blanshard St,8,False
+1095,Laura Nelson,6,False
+1096,Lana Kainz,8,False
+1097,Cactus Test Kitchen,6,False
+1098,Dianne Attfield,10,False
+1099,Stefanie Block,10,False
+1100,Jacqueline Heusdens,10,False
+1101,Lydia Henuset,10,False
+1102,Robert Ennis,10,False
+1103,Carol Stover,10,False
+1104,Lindsey Boulter,10,False
+1105,Paula Duffy,10,False
+1106,Darcy Lawley,10,False
+1107,Lori Koyamngi,10,False
+1108,James Brennan,10,False
+1109,Nicholas Epp-Evans,10,False
+1110,Troy Young,10,False
+1111,Wendy Gibbons,10,False
+1112,Robert Spiers,10,False
+1113,Kathleen Frisch,6,False
+1114,Grant Warkentin,10,False
+1115,Brock Thomson,10,False
+1116,Richard Finch,10,False
+1117,Peter Mckenzie,10,False
+1118,Hayley Datoo,10,False
+1119,Stacey Chow,10,False
+1120,Marie Lund,10,False
+1121,Louisel Rochefort,10,False
+1122,Kathleen Lagos,10,False
+1123,Tania Macdonald,10,False
+1124,Lee Ann Kruse,10,False
+1125,Hailey Sharko,10,False
+1126,Korryn Obuck,10,False
+1127,Theresa Sluggett,10,False
+1128,Jana Wingert,10,False
+1129,Susan Wingert,10,False
+1130,Josephine Rohne,10,False
+1131,Wilma Baase,10,False
+1132,Mandy Bond,10,False
+1133,Erin Lamb,10,False
+1134,Carmen Clark,10,False
+1135,Kathleen Morton,10,False
+1136,Charles Bar,29,False
+1137,Colony Bar,29,False
+1138,Jamie Willis,10,False
+1139,Ian Borenheim,10,False
+1140,Mike Newton,10,False
+1141,Crystal Prystai,6,False
+1142,Brassneck Brewery,29,False
+1143,Phoenix School Fundraiser,10,False
+1144,Joanne Paul,6,False
+1145,David Leff,8,False
+1146,D2C-Misc,6,False
+1147,Jean-Anne Duncan,6,False
+1148,Patrick Essinger,6,False
+1149,Kenny Electrician,6,False
+1150,Stephanie French,6,False
+1151,Lelem Cafe,38,False
+1152,S'wich Cafe,27,False
+1153,CR Springs Gymnastics,10,False
+1154,Jane Petterson,6,False
+1155,Atom B Fundraiser,10,False
+1156,Christian Faucheux,6,False
+1157,Thomas Landon,6,False
+1158,All Natural Exotic Meats,27,False
+1159,Ying Ying Lee,6,False
+1160,Greg Allen,6,False
+1161,Green Earth Organic's,6,False
+1162,Elizabeth Hardie-Dowler,6,False
+1163,Delices de France,8,False
+1164,Randy Law,6,False
+1165,Lauren Branson,6,False
+1166,Mark Paluch,6,False
+1167,Mary Nuytten,6,False
+1168,Heather Bailey,6,False
+1169,Aja Rowley,6,False
+1170,John Crawford,6,False
+1171,Blue Water Cafe,28,False
+1172,Kim King,6,False
+1173,Kenneth Grant,6,False
+1174,Merchants Workshop,29,False
+1175,Chris Tunnoch,6,False
+1176,Megan Hanna,6,False
+1177,Michael Moore-Oferrall,6,False
+1178,Lift Bar and Grill,28,False
+1179,Dylan & Cara Goggs,6,False
+1180,Samantha Gutmanis,6,False
+1181,Ralph Eltec,6,False
+1182,Ben & Lynne Whitaker,6,False
+1183,Doug Whitaker,6,False
+1184,Stantons Cookhouse,3,False
+1185,The Cheese Man,27,False
+1186,Tim Knutton,6,False
+1187,Upper Deck,28,False
+1188,Norma Blann,6,False
+1189,Dan Hirner,6,False
+1190,Nicole Turcotte,6,False
+1191,Blanket and Spoon B&B,10,False
+1192,Daniel Curry,6,False
+1193,Shanti's Curries,29,False
+1194,Andrew Simpson,6,False
+1195,Gwen Lowney,6,False
+1196,Ashley Arden,6,False
+1197,Marianne Mange,6,False
+1198,Larry Johnson,6,False
+1199,Dennis Rickman,6,False
+1200,John North,6,False
+1201,Bruce Carroll,6,False
+1202,Shaelene Raffaele,6,False
+1203,Rachel Higgins,6,False
+1204,Lesley Mcpherson,6,False
+1205,Despina Hill,6,False
+1206,Melody Mclorie,6,False
+1207,Cypress Mountain,27,False
+1208,Tiffany Gilmore,6,False
+1209,Mohamud Kassam,6,False
+1210,Roberta McCall,6,False
+1211,Patrick Ma,6,False
+1212,Shea Coulson,6,False
+1213,Lionel Wilson,6,False
+1214,Kessel and March,29,False
+1215,Matt Ciolfi,12,False
+1216,Brooksbank Elementary,27,False
+1217,Vita Mavronicolas,6,False
+1218,Glen,6,False
+1219,Barbara Mcalpine,6,False
+1220,Paul Currie,6,False
+1221,Joshua Lee,6,False
+1222,Bill Humphries,6,False
+1223,Lee Finch,6,False
+1224,Carla Whippy,6,False
+1225,Andrea Perrino,6,False
+1226,Claire Archibald,6,False
+1227,Shelley Doby,6,False
+1228,Linda McLean,6,False
+1229,Mona Christensen,6,False
+1230,Cheri Campbell,6,False
+1231,On The Farm Retail,21,False
+1232,Peter Kobzar,6,False
+1233,On The Farm Retail #2,21,False
+1234,Buy-Low 080028,6,False
+1235,Buy- Low 080069,6,False
+1236,Buy- Low 081017,6,False
+1237,Buy-Low 088867,6,False
+1238,Buy- Low 086198,6,False
+1239,Amie Kukkola,6,False
+1240,Henry Lum,6,False
+1241,Michelle Reid,6,False
+1242,Joe Easton,6,False
+1243,Stuart Cowan,6,False
+1244,Karen Savolainen,6,False
+1245,Noa Glow,6,False
+1246,Potluck Cafe Society,29,False
+1247,Heather Dunwoody,6,False
+1248,Zach Gibson,6,False
+1249,Frest St Market,27,False
+1250,Anita Dutton,6,False
+1251,WM Vernon,6,False
+1252,Arvin Mazhary,6,False
+1253,Stacey Doran,6,False
+1254,Marnie Newell,6,False
+1255,Whistler Blackcomb Garibaldi Lift Co,22,False
+1256,Paul Farina,15,False
+1257,Ivy Arcos,6,False
+1258,Jack Cameron,6,False
+1259,Verona Ko,6,False
+1260,Michael Etherington,6,False
+1261,TLH Helisking,17,False
+1262,Kathryn Boyd,6,False
+1263,Dolan Home Delivery,16,True
+1264,Down 2 Earth Catering,15,False
+1265,England U9 Soccer,6,False
+1266,Pamela Burton,6,False
+1267,Rachel Rice,6,False
+1268,Tamara Jaswal,6,False
+1269,Naama Sireni,6,False
+1270,West Coast Natural Foods,8,True
+1271,Ilona Metcalfe,6,False
+1272,Carmen Sonnenburg,12,False
+1273,Mt Seymore Resort,27,False
+1274,Pomme Natural Market,34,False
+1275,Julie Durnan,6,False
+1276,Spinnakers - On the Fly,8,False
+1277,Kristin Campbell,13,False
+1278,Rob Blanchard,6,False
+1279,Lisa Billings,6,False
+1280,Jenn Millerd,6,False
+1281,Irina Ivan,6,False
+1283,Ravenstone Farm Artisan Meats,8,False
+1284,Wayne Rutherford,6,False
+1285,NkMip Cellars,18,False
+1286,Lynn Valley Gr 7 Fundraiser,6,False
+1287,Test,6,False
+1288,Laura Zaplatynsky,6,False
+1289,Pamela Yoon Drakos,6,False
+1290,Cleaver and Crumb,32,False
+1291,Angela Leung,6,False
+1292,Mary Lynn Tardelli,12,False
+1293,Tara Holmberg,6,False
+1294,Sonia Jeffries,6,False
+1295,Sonia Jeffries,6,False
+1296,Earls Yaletown,28,False
+1297,Vince Peel,6,False
+1298,Orla Belserene,6,False
+1299,Foodie Kids Inc.,27,False
+1300,Fire Pots Restaurant,6,False
+1301,Blackberry Cove Marketplace,11,False
+1302,John Noble,6,False
+1303,Donavin Kuhl,6,False
+1304,Spencer Plaitin,6,False
+1305,Curtis Gagnon,6,False
+1306,Neighbours Choice Market,6,False
+1307,Le Parisien,28,False
+1308,Scott Moorehead,6,False
+1309,Burgundy,6,False
+1310,Neil Young,6,False
+1311,Sabatinos,35,False
+1312,Amanda Robinson,6,False
+1313,Veronica Foy,6,False
+1314,Shirley Toews,14,False
+1315,Spotted Bear Bistro,11,False
+1316,Liquidity Wines,18,False
+1317,Exile,28,False
+1318,Petes Pies,8,False
+1319,Dijana Kolundzija,6,False
+1320,Scott Gurney,6,False
+1321,Sara Place,6,False
+1322,Negar Ghorashi,6,False
+1323,Ringside Lounge,6,False
+1324,Timothy Maledy,6,False
+1325,Spruce Goose & Chop,17,False
+1326,Squamish Lilwat Cultural Centre,22,False
+1327,Sea To Sky Gondola,21,False
+1328,Dubh Linn Gate Pub,22,False
+1329,Ukee Dogs,40,False
+1330,Wolf in the Fog,40,False
+1331,Red Can Gourmet,11,False
+1332,Anthony Starratt,6,False
+1333,Kurt's Deli,16,False
+1334,Michelle Mark,6,False
+1335,Biggest Little Fruit- Deli,3,False
+1336,Biggest Little Fruit Stand,3,False
+1337,Jennifer Lomas,6,False
+1338,Zoe's Bakery and Cafe,40,False
+1339,Lauren Alexander,6,False
+1340,Delta Hotel Vancouver,28,False
+1341,Krisney Lamsim,6,False
+1342,Armin Teimoori,6,False
+1343,See Ya Later-Arterra Wines,18,False
+1344,Guadalupe Restaurant,33,False
+1345,Kelowna Yacht Club,15,False
+1346,The Living Room Restaurant,21,False
+1347,Al Larry,6,False
+1348,Eileen Shackell,6,False
+1349,Blue eyed Mary's,27,False
+1350,Prospect Point Cafe,28,False
+1351,Stanley Park Pavilion,28,False
+1352,Alexandra Tsourpis,6,False
+1353,The Wood Restaurant & Lounge,23,False
+1354,Relay for Life,6,False
+1355,Tim Hoffman,6,False
+1356,Charlotte Queen Adventures,32,False
+1357,Main St. Brewing,29,False
+1358,Adam Pereira,6,False
+1359,Jim Pike,6,False
+1360,Caveman Grocer,22,False
+1361,Pizza Fabrika,28,False
+1362,Fox Foods Dundarave,27,False
+1363,Fox Foods Whytecliff,6,False
+1364,Fat Badger,28,False
+1365,Village Rest - Estevan,8,False
+1366,Eric Kilian,6,False
+1367,Jordan Copeland,6,False
+1368,Jordan Copeland,6,False
+1369,Rutherford Fundraiser,6,False
+1370,Vancouver Aquarium,28,False
+1371,Mica Restaurant,18,False
+1372,Spirit Ridge Market,18,False
+1373,Goodlife Cafe,23,False
+1374,Warren Bente,6,False
+1375,Meelod Mirfakhraii,6,False
+1376,Laura Nelson,6,False
+1377,Lisa Fairburn,6,False
+1378,Creekside Market,22,False
+1379,Village Rest - Royal Oak,8,False
+1380,Poppy Coombes,6,False
+1381,Picnic Charcuterie,11,False
+1382,Sandra Hughes,6,False
+1383,Yassine Ezzemrani,6,False
+1384,Smoke On The Water,20,False
+1385,Shane Waskrewich,6,False
+1386,Jennifer Reyes,6,False
+1387,Peter Williams,6,False
+1388,Mike Klajnert,6,False
+1389,Ice House Oyster Bar,11,False
+1390,James Watson,6,False
+1391,Kitchen Quickies Retail,21,True
+1392,Fridas Mexican Restaurant,20,False
+1393,Capilano Suspension Grill,27,False
+1394,Shaughnessy Rest,28,False
+1395,King Pacific Lodge,31,False
+1396,Steve Wolken,6,False
+1397,Stonesedge,22,False
+1398,Birken Lakeside Grille,23,False
+1399,Iris Gibbons,6,False
+1400,Tony Shackell,6,False
+1401,Grist Mill,18,False
+1402,White Whale Public House,10,False
+1403,Arran Point,10,False
+1404,Gourmet Syndicate - Tostitos,6,False
+1405,Kootenay Smokehouse,3,False
+1406,Robert Buckley,6,False
+1407,Amanda Roberts,6,False
+1408,Kate Botham,6,False
+1409,Patrick Kimball,6,False
+1410,Shaun Conway,6,False
+1411,Colin Green,6,False
+1412,Gian - DTC,8,False
+1413,The Collective Kitchen,22,False
+1414,Potluck Cafe Society,29,False
+1415,Fiona Watkins,6,False
+1416,Pamela London,6,False
+1417,Joel Elsdon,6,False
+1418,Travis Starinovich,6,False
+1419,Lisa Millerd,6,False
+1420,Beacon Pub & Eatery,22,False
+1421,Kenson Ho,6,False
+1422,Gypsy Wagon Catering,19,False
+1423,Whistler Blackcomb Essentially Blackcomb,22,False
+1424,Andrew Cameron,14,False
+1425,Susan Foster,6,False
+1426,Sarah Puddicombe,6,False
+1427,Drake Eatery,8,False
+1428,The Drake Eatery,8,False
+1429,Copper Cayuse Outfitters,23,False
+1430,Alex Coombes,6,False
+1431,Corx & Brix Bistro,18,False
+1432,Buffalo Bills,22,False
+1433,Jons Edstrand,6,False
+1434,Grace Yaginuma,6,False
+1435,Raewyn Broady,6,False
+1436,Cafe Medina,28,False
+1437,Jenny Grimes,6,False
+1438,The Fitzsimmons Pub,22,False
+1439,Dianna Budden,6,False
+1440,Carol Zupan,6,False
+1441,Kara Pongracz,6,False
+1442,Krafty Kitchen,15,False
+1443,Sean Stevenson,6,False
+1444,Cheri Lowden,6,False
+1445,Josh Dalessio,6,False
+1446,Coast Coal Harbour Hotel,28,False
+1447,Joanna Runciman,22,False
+1448,Benjamin Patchell,6,False
+1449,Shayna & Shulman,18,False
+1450,Katie Kordyback,6,False
+1451,Nico Mcnabb,6,False
+1452,Gibbons Concessions,22,False
+1453,Part and Parcel,8,False
+1454,Rachel Wyles,6,False
+1455,Joyce Bauer,6,False
+1456,Kristen Jones,3,False
+1457,Cafe Ca Va,27,False
+1458,Annie Morisette,6,False
+1459,Alma Mater UBC,28,False
+1460,Corey Wittig,6,False
+1461,Nicli Next Door,29,False
+1462,Arctic Outgoing,6,False
+1463,Ron Klassen,6,False
+1464,Pig BBQ - Westshore,8,False
+1465,Victoria Marriott,8,False
+1466,The Local - Victoria,8,False
+1467,Chorizo & Co,8,False
+1468,Bodega Tapa Bar,8,False
+1469,Reyna Ransanz,6,False
+1470,The Cannery Brewing,18,False
+1471,Central Kitchen & Bar,15,False
+1472,Benz Henrikson,18,False
+1473,Georgina Lee,6,False
+1474,Robert Otto,6,False
+1475,Hilary's Cheese & Wine Bar,8,False
+1476,Au Comptoir,28,False
+1477,Christine Wright,6,False
+1478,Jennifer Wall,6,False
+1479,Tapenade Bistro,31,False
+1480,Wendels cafe,38,False
+1481,Wayne Hobson,6,False
+1482,Tour De Feast,27,False
+1483,JamJar Commercial,29,False
+1484,Belgium Terrior,27,False
+1485,Carla Crozier,6,False
+1486,Cam Lloyd-Jones,6,False
+1487,Martin Jones,6,False
+1488,Stephanie Toevs,6,False
+1489,Sarah Berto,6,False
+1490,Kathryn Cleven,6,False
+1491,Barbie Murphy,6,False
+1492,Emilia Halasz,6,False
+1493,Emily Woeste,6,False
+1494,Shelley Pelech,6,False
+1495,Layna Vestergaard,6,False
+1496,Kelly Manchester,6,False
+1497,Richard Campbell,6,False
+1498,Chris Obst,6,False
+1499,Diane Purvey,6,False
+1500,Karlis Silins,6,False
+1501,Lee Sibbald,6,False
+1502,Sean Richardson,6,False
+1503,John Separovich,6,False
+1504,Kim Gould,14,False
+1505,Doughgirls Bakeshop,28,False
+1506,Michael Blomfield,6,False
+1507,Donna Nevins,6,False
+1508,Stu Mcmaster,6,False
+1509,Invitro,6,False
+1510,Doolin's,28,False
+1511,FREEZER STOCK *PACK TO INVENTORY*,6,False
+1512,Prit Gill,6,False
+1513,Garrett Nyhaug,6,False
+1514,Canucks Sports,29,False
+1515,Feast Restaurant,27,False
+1516,Genevieve West,6,False
+1517,Mo Nosard,6,False
+1518,Nicole Shaw,6,False
+1519,Pee Wee B's,6,False
+1520,Whistler Blackcomb Base 2,22,False
+1521,Sea to sky seasonings,6,False
+1522,Peter Stoddart,13,False
+1523,Gretchen McLenna,6,False
+1524,Happy Valley Lodge,15,False
+1525,Devils Elbow,29,False
+1526,DJ Bachinski,6,False
+1527,Bella Yaletown,28,False
+1528,Marian Robertson,13,False
+1529,Collingwood Fundraiser,6,False
+1530,Fat Duck Truck,29,False
+1531,Laura Motyka,6,False
+1532,Red Dog Blue Kat,46,False
+1533,Steve Lien,6,False
+1534,Melissa Russo,6,False
+1535,Danica's,6,False
+1536,Bob Sokol,14,False
+1537,Biercraft Univercity,33,False
+1538,Stuart Wyse,6,False
+1539,Blacksmith Bakery,38,False
+1540,Cartems donuts,28,False
+1541,Tacofino Venables,29,False
+1542,Scott Woolley,13,False
+1543,Elysian Coffee #3 Ontario,29,False
+1544,Brian Kruse Dance,6,False
+1545,Nourish Vancouver,28,False
+1546,Sara Salmon,6,False
+1547,Retallack Lodge,3,False
+1548,Anne Vernon,6,False
+1549,Martina Busch,6,False
+1550,Dave Reid,14,False
+1551,Liane,14,False
+1552,Grecos Specialty Foods,37,True
+1553,Green Leaf Brewing,27,False
+1554,Sarah Boddez,14,False
+1555,Sally Zaplatynsky,14,False
+1556,Kieran Twohig,14,False
+1557,Krisin Breckenridge,14,False
+1558,Mary Neytten,14,False
+1559,Megan Melnyk,14,False
+1560,Jaymie Tracey,14,False
+1561,Cathy Houghland,14,False
+1562,Andrew Cameron,14,False
+1563,Guy Wigham,14,False
+1564,Sarah Lawson,14,False
+1565,Maria Thompson,14,False
+1566,Alex Tielker,14,False
+1567,Paul Needham,14,False
+1568,Keith Rosborough,14,False
+1569,Linda Davidson,14,False
+1570,Ann Gazsity,14,False
+1571,Erik Helssen,14,False
+1572,Paul Domke,14,False
+1573,Lola Gillies,14,False
+1574,Jacquie Stebbings,14,False
+1575,Sean Monahan,14,False
+1576,Chris Obst,14,False
+1577,Denise Chang,14,False
+1578,Christy Lutz,14,False
+1579,Robert Fraser,14,False
+1580,Cash Sale - Gian,8,False
+1581,Tacofino Gastown,29,False
+1582,Jerry Fyfe,6,False
+1583,Larry Barker,6,False
+1584,Mara Tessier,6,False
+1585,Ian Banks,6,False
+1586,Chisato Mori,6,False
+1587,Michelle McIntosh,14,False
+1588,William Thompson,6,False
+1589,Chez Totoche,3,False
+1590,David Muncaster,6,False
+1591,Susan Lamb,6,False
+1592,Tim Shelton,6,False
+1593,Jason Miller,6,False
+1594,Carissa Geddes,6,False
+1595,Rachel Barker,6,False
+1596,Keenan Moyes,6,False
+1597,Jonathan Hayward,6,False
+1598,Elizabeth Burton-Brown,14,False
+1599,Colleen Lowe,6,False
+1600,Brian Zonailo,6,False
+1601,Stephanie Bythell,13,False
+1602,Angeline McKirdy,13,False
+1603,Nicole Ellington,6,False
+1604,Kitskitchen,29,False
+1605,Albreda Lodge,17,False
+1606,Wilma Rybchinsky,6,False
+1607,Chad Nex,12,False
+1608,Sahar Peiravani,6,False
+1609,Salida 7,6,False
+1610,Upper Village Market,22,True
+1611,Jesse Croy,6,False
+1612,Victoria Pollock,6,False
+1613,Hilton Vancouver Airport,31,False
+1614,Ask For Luigi,29,False
+1615,Realm Food Co,40,False
+1616,Puccini's Deli,27,False
+1617,John Hawkins,6,False
+1618,Jennifer Leask,6,False
+1619,Sai Woo,29,False
+1620,Matt Bancroft,6,False
+1621,Maria Darquier,6,False
+1622,Isa Sikkes,13,False
+1623,Sea To Sky Provision,6,False
+1624,Candice Malpus,6,False
+1625,Gary Foster,6,False
+1626,Farm Food To Go,8,False
+1627,J&A Living Wells,8,False
+1628,Ryan Jarvis,6,False
+1629,Jack Newton,6,False
+1630,Pantheon Lodge/White Saddle Ranch,38,False
+1631,Carson Graham Fundraiser,27,False
+1632,Jesse Misc - Kelowna,15,False
+1633,Giovanni's Ristorante,10,False
+1634,Big Rock Eatery,29,False
+1635,Trish Scott,6,False
+1636,North West Shito Kai,39,False
+1637,Sai Woo,6,False
+1638,Christine Taylor,6,False
+1639,Cocktails & Canapes,29,False
+1640,Coast Hotel,6,False
+1641,Giovanni's Ristorante,10,False
+1642,33 Acres Brewing,29,False
+1643,Andrea Tully,6,False
+1644,Bauhaus,29,False
+1645,Anne Fischer,6,False
+1646,Curious Cafe,15,False
+1647,Heaven On Earth Natural Foods,40,True
+1648,Sandra Mayne,6,False
+1649,Kinome Japanese,28,False
+1650,Painted Rock,18,False
+1651,Mandy Hengeveld,6,False
+1652,Bin 4 Burger - Saanich,8,False
+1653,O'Hares Pub,31,False
+1654,Gus Taylor,6,False
+1655,Kathleen Minehan,6,False
+1656,Karen Dunwoody,6,False
+1657,Nomad Vancouver,29,False
+1658,True Flavor,37,False
+1659,Alexandra Schaalo,12,False
+1660,Rahel Thomson,6,False
+1661,Woolsey Creek Bistro,16,False
+1662,Glo Restaurant & Lounge,8,False
+1663,The Apple Box,8,False
+1664,Coast Lunch Box,8,False
+1665,Cracked Pepper,22,False
+1666,Stephanie Mccool,6,False
+1667,Tara Lazarski,6,False
+1668,Jordan Andrews,6,False
+1669,Brittany Anderson,6,False
+1670,InGrain,27,False
+1671,Sproat Lake Landing,10,False
+1672,Lisa Cotton,6,False
+1673,What's Up Hot Dog,29,False
+1674,Diane Underhill,6,False
+1675,Philip Pistruga,6,False
+1676,Campbell River Sausage Shop,39,False
+1677,Mary-Lou Bird,6,False
+1678,Eat Fresh Market,10,False
+1679,Cafe Orso,27,False
+1680,BLVD Bistro,27,False
+1681,BNA Brewery,15,False
+1682,Austin Johnson,6,False
+1683,Heather Evans,6,False
+1684,Victoria Jealouse,6,False
+1685,Matt Murphy,6,False
+1686,West Coast Fish -North Island Lodge,31,False
+1687,Ageless Living Cafe,8,False
+1688,The Mexican Corner,22,False
+1689,Maran Lazarksi,6,False
+1690,Melora Koepke,6,False
+1691,Sabrina Trotter,6,False
+1692,Marianne Stowe-Thomson,6,False
+1693,The Rockin ' Wok,22,False
+1694,Longtail Kitchen,30,False
+1695,Tree House Cafe,8,False
+1696,RNB Dance Fundraiser,6,False
+1697,House - Retail,6,False
+1698,Pilgrim and Pearl,15,False
+1699,Terra Breads Wholesale,29,False
+1700,Daniel's Kitchen,30,False
+1701,Joie Farm,18,False
+1702,Greg Kramer,6,False
+1703,Enisa Hot,6,False
+1704,Roshy Bickford,6,False
+1705,Dolci Social House,18,False
+1706,Lory Fairfield,14,False
+1707,Bacaro,15,False
+1708,Derek Hardy,6,False
+1709,Deafined,28,False
+1710,Melanie Kirkland,6,False
+1711,Itza,19,False
+1712,EK's Grill,15,False
+1713,Ed's Daily,29,False
+1714,Andrea Helleman,13,False
+1715,Stephane Grefford,6,False
+1716,Pasqual Stufano,6,False
+1717,Picnix,29,False
+1718,Amanda Lee,6,False
+1719,Matt Samson,13,False
+1720,Deborah Gibson,6,False
+1721,Adam Freund,6,False
+1722,Lory Fairfield,6,False
+1723,Eric Sewell,6,False
+1724,Mark Topacio,6,False
+1725,Richard Pretty,6,False
+1726,Stephanie Moccia,13,False
+1727,Dolores Barnett,6,False
+1728,Joanne Yuasa,6,False
+1729,Chad Hendren,13,False
+1730,Lynne Wik,6,False
+1731,Julie Lomenda,6,False
+1732,Le Tigre,29,False
+1733,Maria Hawk,6,False
+1734,Andrew Gunn,6,False
+1735,Nourish Cafe - Quebec St,8,False
+1736,Melanie Bradley,6,False
+1737,My After Eight,28,False
+1738,Charlotte and the Quail,8,False
+1739,Britton Low,6,False
+1740,Cordova Bay Golf,8,False
+1741,Cari Derbitsky,6,False
+1742,Emily Pitman,6,False
+1743,Jason Schweigel,6,False
+1744,Elizabeth LaFramboise,13,False
+1745,Birds and the Beets,29,False
+1746,Dance Unlimited,6,False
+1747,Platinum Bench Winery,18,False
+1748,Fort Berens Estate Winery,17,False
+1749,Black Hills WInery,18,False
+1750,Wayne Riopel,6,False
+1751,Mission,28,False
+1752,Blind Channel Resort,39,True
+1753,Loghouse Pub,8,False
+1754,Gordon Kalisch,6,False
+1755,Wally Lucie & Sons,35,False
+1756,Elisabeth Wagorn,12,False
+1757,Adrian Preece,6,False
+1758,Big Trouble,6,False
+1759,Relish Food & Coffee,8,False
+1760,Craig Campbell,6,False
+1761,Kafkas Coffee,29,False
+1762,Northern Quarter,8,False
+1763,William Ferguson,6,False
+1764,Eat Pure Market,24,True
+1765,Bowen Island Pizza Co.,27,False
+1766,Aramark- Nat Bailey,29,False
+1767,Bridget Sacks,6,False
+1768,Maple Bay Market,40,True
+1769,Beach Bay Cafe,28,False
+1770,Glenrosa Farm Restaurant,8,False
+1771,Surf Junction Campground,11,False
+1772,Fiona Galvani,6,False
+1773,El Taquero,3,False
+1774,Christine Stuart,6,False
+1775,Dubh Linn Gate Pub Main St,29,False
+1776,Old Meadows Farm,15,False
+1777,Royal Dinette,28,False
+1778,Hugo's Tacos,38,False
+1779,Locals Restaurant,10,False
+1780,H and L Foods,31,False
+1781,Vital supply co,29,False
+1782,Sally Bell,6,False
+1783,Torafuku,29,False
+1784,Le Marche,16,True
+1785,293 Wallace,3,False
+1786,Pilgrimme,6,False
+1787,Boulevard Kitchen & Oyster Bar,28,False
+1788,Coast Hotel Comox St,28,False
+1789,Leesa Vreugde,6,False
+1790,Jen Gauthier,6,False
+1791,Red Racer Kitchen,28,False
+1792,Olé Market,28,False
+1793,Fat Mao,28,False
+1794,Amalie Pasternak,6,False
+1795,Legs Diamond,22,False
+1796,Big Smoke Burgers Broadway,28,False
+1797,Allan Goulding,6,False
+1798,Basalt,22,False
+1799,Basil and Mint,15,False
+1800,Joanne Unsworth,6,False
+1801,Freebird,30,False
+1802,Memphis Blue's,29,False
+1803,Saveur Restaurant,8,False
+1804,Pemberton Valley Supermarket,23,True
+1805,Matt Hall,6,False
+1806,Dreamy Catering,15,False
+1807,Rufina Espanol,6,False
+1808,Tammy Koert,6,False
+1809,Odd Society Spirits,29,False
+1810,James Irwin,6,False
+1811,Brooke Browning,6,False
+1812,Lin Smith,6,False
+1813,Ben Edmundson,6,False
+1814,Sarah Hargrave-Pawson,6,False
+1815,Spitfire Grill,8,False
+1816,Bianca Jewell,6,False
+1817,Baccano,28,False
+1818,Dani Willetts,6,False
+1819,Kim Kirk,12,False
+1820,AJ MacFarlane,12,False
+1821,Meat @ O'Neills,27,False
+1822,Jeff Zeilstra,6,False
+1823,Maria Obretenov,6,False
+1824,Nordstrom,28,False
+1825,Granville Room,28,False
+1826,Barry Cruickshank,6,False
+1827,Duffers,15,False
+1828,Graeme Macdonald,12,False
+1829,Jay Pacheco,6,False
+1830,Nora IIiakis,12,False
+1831,Kitchen Sync Catering,15,False
+1832,Old Firehouse Winebar,47,False
+1833,Osteria Savio Volpe,29,False
+1834,Daniel Walden,6,False
+1835,Alicia Parker-Sutton,6,False
+1836,Adrianne Gilbride,6,False
+1837,Monica Petersen,6,False
+1838,Jenna Kossey,6,False
+1839,Richmond Rampage,6,False
+1840,Beck Williams,6,False
+1841,Francine Rattray,12,False
+1842,Latab,28,False
+1843,Cinara,28,False
+1844,Nadja Graham,6,False
+1845,Susan Croome,6,False
+1846,David Kyle,6,False
+1847,Nicholas Vipond,6,False
+1848,Tracy Tuck,6,False
+1849,Scott Leigh,6,False
+1850,El Santo,30,False
+1851,Denise Lum,6,False
+1852,Hiroko Blazevic,6,False
+1853,Farm To Table Market,27,True
+1854,Rose Walter,6,False
+1855,Philippe MacInnes,6,False
+1856,Chantal Branson,6,False
+1857,Laurie Wooley,6,False
+1858,Laurie Usher,6,False
+1859,Beth Denny,6,False
+1860,Sebastien Lagors,6,False
+1861,Melanie Neate,6,False
+1862,Jordan White,6,False
+1863,David Sheldon,6,False
+1864,Shelley Peterson,6,False
+1865,Sebastian Prange,6,False
+1866,Jada Harry,6,False
+1867,Katherine Lester,6,False
+1868,Arlene Penolio,6,False
+1869,Dark Table,28,False
+1870,Joscelyne Hung,6,False
+1871,Tandis Torkoladi,6,False
+1872,Jesse Croy- Staff,15,False
+1873,Jesse Croy,15,False
+1874,Kristen Auger,6,False
+1875,Terry Craig,6,False
+1876,Heather Crandall,6,False
+1877,Eve Cafe-Simons,27,False
+1878,Liz Gowan,6,False
+1879,Denise Thilippe,6,False
+1880,Blind Sparrow,28,False
+1881,Anna Mihalik,6,False
+1882,Gian - Staff Purchase,8,False
+1883,Michele Comeau Thompson,6,False
+1884,Boned Broth,37,False
+1885,Corduroy Pie Co.,28,False
+1886,Yale Saloon,28,False
+1887,Craig Tomsett,6,False
+1888,Janine Boom,6,False
+1889,Sydney Morrison,6,False
+1890,Lee-Ann Kruse,6,False
+1891,Cabrito,29,False
+1892,Scott Gayton,6,False
+1893,Butchart Gardens,8,False
+1894,Globe Tapas,15,False
+1895,Jenni Chancey,13,False
+1896,Viva Fine Foods,6,False
+1897,BA SAusage,24,False
+1898,Dream CAfe,18,False
+1899,Argyle Music Association,27,False
+1900,Nanaimo Diamonds Synchro Club,10,False
+1901,John Norquay PAC,29,False
+1902,Chena Swim Club,27,False
+1903,Brian Freeman,6,False
+1904,Mel Endelman,6,False
+1905,Sylvia Hotel,28,False
+1906,Rob Hindley,6,False
+1907,Erica Taylor,6,False
+1908,Rob Grieves,6,False
+1909,Jerome Pimmel,6,False
+1910,Lesley Stav,6,False
+1911,Promo - Gian,8,False
+1912,Agrius - Fol Epi,8,False
+1913,Social Corner,28,False
+1914,Cypress Mountain,27,False
+1915,West Coast Wild Foods,31,False
+1916,Juniper,29,False
+1917,Pacific Gateway Hotel,31,False
+1918,Jane McKernan,6,False
+1919,Mike Hendren,6,False
+1920,Tuck Shoppe,29,False
+1921,John Vance,6,False
+1922,Brady Sinnott,6,False
+1923,Brady Sinott,6,False
+1924,Brady Sinnott,6,False
+1925,Ann Marie Kellaway,6,False
+1926,Eric Greenwood,6,False
+1927,Jane O'Connor,6,False
+1928,Canteen and Supply,30,False
+1929,Salt,29,False
+1930,Six Degrees Big White,15,False
+1931,Eleven22,24,False
+1932,Jackalopes Dive,29,False
+1933,Dellas Cafe & Grocery,40,False
+1934,Francisco Gatchalian,6,False
+1935,SPCA Squamish,21,False
+1936,Ten Ten Tapas,28,False
+1937,Hubbub Robson,28,False
+1938,Hubbub Hornby,28,False
+1939,Hubbub Cambie,28,False
+1940,Carnation House,6,False
+1941,Caffe Fantastico - Roastery,8,False
+1942,Kerrie Sinclair,6,False
+1943,Anita Wood,6,False
+1944,Village Butcher,8,False
+1945,Katarina Djurasaj,6,False
+1946,Caffe Fant Dockside - Deli,8,False
+1947,Sharon Theilmann,6,False
+1948,Peter's Rd House,6,False
+1949,Jennifer Novak,6,False
+1950,Ageless Living - Retail,8,False
+1951,Mark Roberts,6,False
+1952,Breana Paulson,6,False
+1953,Fresh St Market West Van #33,27,False
+1954,Propaganda Coffee,29,False
+1955,Brooke Copeland,14,False
+1956,Alicia Woods,14,False
+1957,Sophia Nourozi,14,False
+1958,Leslie Cos,6,False
+1959,Moe NCS,6,False
+1960,Andrea Laird,6,False
+1961,Bruce Thompson,6,False
+1962,Joan Harman,14,False
+1963,Marlis Yassin,14,False
+1964,Michelle Messinger,14,False
+1965,Jennifer Doherty,14,False
+1966,L'oven,15,False
+1967,The Venue,22,False
+1968,Dockside,28,False
+1969,Lauren Gibson,14,False
+1970,Lydia Forssander,14,False
+1971,Eva Liman,14,False
+1972,Helen Hall,14,False
+1973,Brad Gunderson,14,False
+1974,David Culbard,14,False
+1975,Doug Chalk,14,False
+1976,Sarah Koenig,14,False
+1977,Katrina Keinhorst,14,False
+1978,Chris Hoeschen,14,False
+1979,Tim Polluck,14,False
+1980,Annalena,28,False
+1981,Merritt Hutchins,14,False
+1982,Matina Busch,14,False
+1983,Rebecca Johnston,14,False
+1984,Nicholas Atkins,14,False
+1985,Andrew Statham,14,False
+1986,Bruce Carroll,6,False
+1987,Stephanie Asselstine,14,False
+1988,Supermarine,28,False
+1989,Carol Oswald,6,False
+1990,Emily Beers,6,False
+1991,Michael Kelly,6,False
+1992,Meredith Mueller,6,False
+1993,Marina Moroney,6,False
+1994,Heather Smythe,6,False
+1995,Jason Topolnisk,6,False
+1996,Mike Henry,6,False
+1997,Greg Britnell,6,False
+1998,Jasmine Barry,6,False
+1999,Paul Murphy,6,False
+2000,Lee Lactin,6,False
+2001,Ashley Lonsdale,6,False
+2002,Brian Lee,6,False
+2003,Michael Schurink,6,False
+2004,Shaina Moriyama,6,False
+2005,Krista Smyth,6,False
+2006,Stephanie Prokop,6,False
+2007,Kinnon Chiropractic Inc,6,False
+2008,Keith Isabey,6,False
+2009,Lupo,28,False
+2010,Slickity Jim's West 7th,28,False
+2011,Nar Cafe Bistro,8,False
+2012,The Apple Box - Retail,8,False
+2013,Emily Wissell,6,False
+2014,Ritual,28,False
+2015,Cheryl Chang,6,False
+2016,Eat Your Cake,28,False
+2017,Karly Mahood,6,False
+2018,Lissa Buckler,6,False
+2019,Fresh Thinking Catering,29,False
+2020,Vij's Restaurant,29,False
+2021,Bufala Kerrisdale,28,False
+2022,Leslie Sielski,6,False
+2023,Kings Links,32,False
+2024,Laura Secord Quebec Exchange,29,False
+2025,Chris Hardy,14,False
+2026,Village Rest - Torquay,8,False
+2027,Drift Cafe and Bistro,20,False
+2028,Heather Paul,6,False
+2029,Fiona Harrison,14,False
+2030,William Griffiths,6,False
+2031,Mabel Che,6,False
+2032,Sooke Dance Studio PAC,8,False
+2033,Mandy Blewett,14,False
+2034,Semiramis,28,False
+2035,Field & Social Duns,28,False
+2036,Jennifer Takata,6,False
+2037,Savoy Hotel,19,False
+2038,Front st Brasserie,18,False
+2039,Babac Imami,6,False
+2040,Van Isle Water,8,False
+2041,Salt & Pepper Fox,8,False
+2042,John Martin,6,False
+2043,Aaron Newson,14,False
+2044,Sue Foster,27,False
+2045,Big Smoke Burgers SFU,33,False
+2046,Savannah Gerrishl,6,False
+2047,Jerrylynn Mccann,6,False
+2048,Campbell River Children's Choir,10,False
+2049,Lynn Dawson,27,False
+2050,Dan Graham,6,False
+2051,Gillian Paton,27,False
+2052,Jessica Purver,6,False
+2053,Keith Tsang,6,False
+2054,Craft Bierhaus,16,False
+2055,Nightingale,28,False
+2056,Peggi Diebel,6,False
+2057,Nineteen33 Speakeasy,6,False
+2058,One Big Table,15,False
+2059,Forras Hungarian Folk Ensemble,29,False
+2060,Isabel Creek Store,42,True
+2061,Tracey Lazenby,27,False
+2062,L'Abattoir,29,False
+2063,Bryce Osborn,6,False
+2064,Jessica Purver,6,False
+2065,Relvas Catering,15,False
+2066,Ridgeway Elementary,27,False
+2067,Spud Back Log Grinds,6,False
+2068,Jacob Mandy,6,False
+2069,Gringo,29,False
+2070,Pemberton Dance Studio,23,False
+2071,Sherry Elser,14,False
+2072,Salt & Brick,15,False
+2073,Shannon Lake Golf,15,False
+2074,Andrew Powter,6,False
+2075,Byrdie Funk,6,False
+2076,Smoke and Oak,18,False
+2077,Laura Nickerson,14,False
+2078,Mark Singson,28,False
+2079,St. Regis Hotel,28,False
+2080,Mike Hudson,6,False
+2081,Sue Windrum,6,False
+2082,Kelly K Misc,6,False
+2083,Dianne Olsen,27,False
+2084,Jasper Croy,26,False
+2085,Domenic Smaldino,6,False
+2086,X-Change Table,15,False
+2087,Dyllan Blewett,6,False
+2088,Lynx Cafe,23,False
+2089,The Livet,8,False
+2090,Kissa Tanto,29,False
+2091,JBAA,8,False
+2092,Nanaimo Hornets Rugby Club,10,False
+2093,Four Winds,32,False
+2094,Jenna Corby,6,False
+2095,Andrew Peterson,6,False
+2096,Elizabeth Ayre,13,False
+2097,Lake Village Bakery,18,False
+2098,Rockridge Secondary School,27,False
+2099,Mackenzie Room,29,False
+2100,Artisan Bistro,8,False
+2101,Scott Mccara,6,False
+2102,Julie Richmond,6,False
+2103,Sharon Bader,6,False
+2104,Elysian Coffee #1 West 5th,28,False
+2105,Culinary Capers Catering,28,False
+2106,Highlands Preschool PAC,27,False
+2107,Saj and Co.,28,False
+2108,Ingrid Vik,14,False
+2109,Robert Vreugde,6,False
+2110,Market Meats 4th,28,False
+2111,Picnique,18,False
+2112,Il Castello Pizzeria,27,False
+2113,Elysian Coffee #4 Burrard,28,False
+2114,Teahouse,28,False
+2115,MY Hotei,28,False
+2116,Rockwater Resort,20,False
+2117,Karolla Karalic,6,False
+2118,Pure Bone Broth,29,False
+2119,Mark and Shanee Myles,27,False
+2120,Naomi Ito,27,False
+2121,Ross Road Elementary,27,False
+2122,Tory Jackson,8,False
+2123,Purebread Bakery,22,False
+2124,Melanie Wong,6,False
+2125,S+L Kitchen and Bar,38,False
+2126,Be Fresh Cypress,28,True
+2127,SPUD Grind Log,6,False
+2128,Chris Mitchell,14,False
+2129,Burgoo Point Grey,28,False
+2130,River Rock Casino,31,False
+2131,Julie Weninger,15,False
+2132,Burgoo Main St,29,False
+2133,Burgoo Kits,28,False
+2134,Burgoo Lonsdale,27,False
+2135,Potluck Cafe and Catering Fundraiser,29,False
+2136,Alison Behrner,6,False
+2137,D.E.R. Resorts,31,False
+2138,Abbodanza Pizza,11,False
+2139,East Bench B & B,18,False
+2140,Sarah Baldwin-Ross Road,27,False
+2141,Dione Gillette,6,False
+2142,Dixies BBQ,29,False
+2143,Great Dane Coffee,28,False
+2144,Red Light Ramen,19,False
+2145,Friends Of Fraser,6,False
+2146,Laurie Bagneres,6,False
+2147,Ursula Dadashzadeh,6,False
+2148,Barn Nork,23,False
+2149,Luke Test,6,False
+2150,One20 Public House,32,False
+2151,Dylan Ricci,6,False
+2152,Craft Corner Kitchen,18,False
+2153,Dianne Olsen,6,False
+2154,Montana Dullemond,6,False
+2155,Toscano's Trattoria,10,False
+2156,Matthew Henn,6,False
+2157,Yield Test,6,False
+2158,Red Fox Club,15,False
+2159,Lower Dean River Lodge,38,False
+2160,Soul Fitness,6,False
+2161,Jenna Fukushima,6,False
+2162,Natures Fare White Rock,35,False
+2163,Amy Savard-Cook,6,False
+2164,Ryan Malcolm,6,False
+2165,CRYSA,10,False
+2166,The Cambie Bar & Grill,29,False
+2167,Terroir Kitchen,27,False
+2168,Tap & Barrel Shipyards,27,False
+2169,TAPShack Burrard,28,False
+2170,TAPShack Coal Harbour,28,False
+2171,The Table Cafe,15,False
+2172,La Petite Souris,20,False
+2173,Tall Tree Music Festival,8,False
+2174,Bethany Vodnak,6,False
+2175,Good Hope Cannery,10,False
+2176,Smoke & Anchor,8,False
+2177,Ruby Forest Services,28,False
+2178,Argyle Girls Soccer,27,False
+2179,Jennifer Chevewaty,6,False
+2180,Louise Carlsen,6,False
+2181,Okanagan Crush Pad Winery,18,False
+2182,Tessa Feuchuk,6,False
+2183,Urban Ground Market,8,False
+2184,Portland Craft,29,False
+2185,Mitra's Market,27,False
+2186,Andrea Soukeroff,6,False
+2187,Pemberton Youth Soccer Association,23,False
+2188,Fable Diner,29,False
+2189,Columbus Meat Market,29,False
+2190,Mary-Ellen Kelm,6,False
+2191,Camilla Topola,6,False
+2192,Joan Lee,6,False
+2193,Fresh St Market Fleetwood #9,37,False
+2194,David Twanow,6,False
+2195,Crowbar,29,False
+2196,Nanaimo Hospice Society,40,False
+2197,The Point,22,False
+2198,St. Francis in the Wood,27,False
+2199,Matthew Bell-Irving,6,False
+2200,Norman Serapio,6,False
+2201,Deadbeetz Food Truck,8,False
+2202,Susan Shamash,6,False
+2203,Vancouver Murder Men's Roller Derby,22,False
+2204,Meryn Bowen,6,False
+2205,Cathy Pacheco,6,False
+2206,Peter Kim,6,False
+2207,Kara Malcolm,6,False
+2208,Ronnie Pole,6,False
+2209,Kim Ivany,6,False
+2210,Juke Restaurant,29,False
+2211,Emmy Brake,6,False
+2212,Ride to Conquer Cancer,27,False
+2213,Britannia Brewing Steveston,31,False
+2214,Clarke & Co,8,False
+2215,Sarah Balakshin,6,False
+2216,Victoria Hospice,8,False
+2217,Scott Mccullough,6,False
+2218,Dave Graham,6,False
+2219,MKGG- Alzheimer's Association,27,False
+2220,Bradley Brown,6,False
+2221,Play Estate Winery,18,False
+2222,Sam Grobler,6,False
+2223,Carey Jamieson,6,False
+2224,Ben Lutes,6,False
+2225,Oliver House Bed & Breakfast,18,False
+2226,Camilo Kobek,6,False
+2227,John Campbell,6,False
+2228,Sam Grobler,6,False
+2229,Predator Ridge Market,16,False
+2230,Lisa Brown,14,False
+2231,La Taqueria,27,False
+2232,Phoebe Beronio,6,False
+2233,Lois Cudmore,13,False
+2234,Georels Bone Broth,29,False
+2235,Villa Eyrie Resort,47,False
+2236,Sagebrush,17,False
+2237,Ela Niemczyk,6,False
+2238,Trading Post Brewing,38,False
+2239,Janet Savard,6,False
+2240,Nolan Heuchert,6,False
+2241,Heather Watson,6,False
+2242,Tacofino Yaletown,28,False
+2243,Breakfast Table,28,False
+2244,Joel Bendicio,6,False
+2245,Vanessa Viloria,6,False
+2246,Harvest Catering,22,False
+2247,Mustafa Sabanci,6,False
+2248,SMAK Granville,28,False
+2249,The Salted Vine,21,False
+2250,Jennifer Buck,6,False
+2251,Storm Crow Tavern,29,False
+2252,Half Fool,29,False
+2253,Nawel Izard,6,False
+2254,Glen Aquash,6,False
+2255,Just Jakes,40,False
+2256,Chi Restaurant,28,False
+2257,Daniel Rasmussan,6,False
+2258,Scott Mclennan,6,False
+2259,Sanna Seppanen,6,False
+2260,The Cottage Picnic,8,False
+2261,Lifestyle Markets,8,True
+2262,Gene Quan,6,False
+2263,Owen Unbehaun,14,False
+2264,Shelby MacKinnon,6,False
+2265,Heritage Asian Eatery,28,False
+2266,Lesley Baker,6,False
+2267,Kirby Koochin,6,False
+2268,Michelle Gomes,6,False
+2269,Ignite Cafe,38,False
+2270,Fresh St Market Panorama Surrey #8,37,False
+2271,Table 21,8,False
+2272,Jerky Baron,29,False
+2273,Tyler McBride,6,False
+2274,Cathy Urquhart,6,False
+2275,Humphries Construction,6,False
+2276,Louie Nabulan,6,False
+2277,Capilano Rugby Club-fundraising,27,False
+2278,5th Garry Oak Bay Scouts,8,False
+2279,Hearthstone Tap & Forno,27,False
+2280,Kris Fredheim,6,False
+2281,Jennifer Lowson,6,False
+2282,Sarah Drader,6,False
+2283,Cindy Lee,6,False
+2284,Dylan Labelle,6,False
+2285,Florrie McCallum,6,False
+2286,Pete Cameron,6,False
+2287,Amber Carter,6,False
+2288,Jamie Lawson,6,False
+2289,Kim McMeans,6,False
+2290,Pon Fu Premium Choice,37,False
+2291,Yum Son,36,False
+2292,Noah Morantz,6,False
+2293,Paul Gross,6,False
+2294,Tom Laughlin,6,False
+2295,Robin Lim,6,False
+2296,Kristina Alary,6,False
+2297,Santino Ditoro,6,False
+2298,Growing Chefs!,27,False
+2299,Nina Hobbis,6,False
+2300,Chris Schmidt,6,False
+2301,Karen Kausky,6,False
+2302,Tom Dodd,6,False
+2303,Canuck Place Hospice,4,False
+2304,Le Grand Fromage,36,False
+2305,Be Fresh YMCA,28,False
+2306,Be Fresh Bentall,28,False
+2307,CR Killer Whales Swim Club,10,False
+2308,Alexandra Sherron,6,False
+2309,Kathy Phillips,6,False
+2310,Leanne Fraser,6,False
+2311,Cafe Mexico,8,False
+2312,The Gibsons Butcher,20,False
+2313,Andrew Lightheart,6,False
+2314,Boardworks,8,False
+2315,Ian Angus,6,False
+2316,Basted Baker,20,False
+2317,Koffie,28,False
+2318,Dalina,29,False
+2319,Choices Market #788 Kelowna,37,False
+2320,Choices Market #906 Cambie,29,False
+2321,Glowbal Georgia,28,False
+2322,Tim Wilkins,6,False
+2323,Choices Market #515 Drive,29,False
+2324,Choices Market #518 Marine,33,False
+2325,Choices Market #521 Abbotsford,9,False
+2326,Choices Market #524 N.Van,27,False
+2327,Choices Market #787 White Rock,35,False
+2328,Choices Market #789 Crest,33,False
+2329,Choices Market #902 West 16th,28,False
+2330,Choices Market #905 Head Office,32,False
+2331,Choices Market #907 Yaletown,28,False
+2332,Choices Markets #908 Kerrisdale,28,False
+2333,The Breakfast Courier,29,False
+2334,Send Ashley to Germany,10,False
+2335,Hugo Sakamoto,6,False
+2336,Ken Macintyre,6,False
+2337,Geoff Dawson,6,False
+2338,Mesa Grill & Patio,18,False
+2339,Colin Minguy,6,False
+2340,Bao Down Snackbar,29,False
+2341,Bao Down Gastropub,29,False
+2342,Stay Wild Natural Health,7,False
+2343,Monashee Powder Snowcats,16,False
+2344,The Westin Bayshore,28,False
+2345,Kyle McLaws,6,False
+2346,Fraser Mittlestead,6,False
+2347,Fran Jare,6,False
+2348,Dolpan Seoul BBQ,31,False
+2349,Adelena Perfonic,6,False
+2350,Whitewater Ski Resort,36,False
+2351,Adam Henderson,6,False
+2352,Banh Mi Tres Bon,31,False
+2353,Summit Lodge,22,False
+2354,The Wicked Chef Catering,18,False
+2355,Ruth Hume,6,False
+2356,Westcoast Poke,28,False
+2357,Park Royal Village Taphouse,27,False
+2358,TWG Tea Salon,28,False
+2359,Kathleen Cork,6,False
+2360,Renee Bourchier,6,False
+2361,Farm & Field Butchers,8,False
+2362,Taania Lipkovitts,6,False
+2363,Eric Goodwin,6,False
+2364,Talia Clarke,6,False
+2365,The Bison Lodge,16,False
+2366,Forbes Pharmacy,8,False
+2367,Kurtis Reeves,6,False
+2368,VFC U15 Girls,4,False
+2369,Havana Restaurant,29,False
+2370,Dzan Nguyen,6,False
+2371,Pamela Uyeyama,6,False
+2372,City Reach,9,False
+2373,Judy Aitken,6,False
+2374,Shane Daly,6,False
+2375,Jasmin Bell,6,False
+2376,Northern Escape Heliski,52,False
+2377,Shelley Hutchins,6,False
+2378,VFC 2003 Girls Team,4,False
+2379,Bradley Curtis,6,False
+2380,Stephen Taylor,6,False
+2381,Marcia Novauer,6,False
+2382,Sheena Trenholm,6,False
+2383,Brooklynn Lee,6,False
+2384,Natalie Witt,6,False
+2385,Nate Obrien,6,False
+2386,Corky Mcintyre,6,False
+2387,Simone Perfonic,6,False
+2388,Marion Nuypten,14,False
+2389,Cam Matheson,14,False
+2390,Sylvia Coleman,14,False
+2391,Amy Allen,14,False
+2392,Ken Statham,14,False
+2393,Joyee Lau,14,False
+2394,Lana Sammut,14,False
+2395,Rosie Harris,14,False
+2396,Terry Warren,14,False
+2397,Saray Dennis,14,False
+2398,Claire Lomas,14,False
+2399,Andrea Doby,14,False
+2400,Stacy Cook,14,False
+2401,Norry Nixon,14,False
+2402,Mona Patel,14,False
+2403,Erica Wootten,14,False
+2404,Chris Wattam,14,False
+2405,Stacey Daman-Willems,14,False
+2406,Frank Christiaens,14,False
+2407,Nancy South,14,False
+2408,Black Kettle Brewing,27,False
+2409,Elizabeth Wong,14,False
+2410,Anja Pakendorf,14,False
+2411,Sandy Shokar,14,False
+2412,Linda Chung,6,False
+2413,Sherie Chow,14,False
+2414,Dylan Grigg,6,False
+2415,Koreann Webster,14,False
+2416,Carolyn Finnbogason,14,False
+2417,Joani Paul,6,False
+2418,Marguerite Duplessis,14,False
+2419,Scott Monro,14,False
+2420,Jonathan Freeman,6,False
+2421,Craig McMahon,6,False
+2422,Maxine's Cafe & Bar,28,False
+2423,Gostlin Keefer Lake Lodge,16,False
+2424,Milton Street Public House,10,False
+2425,Gaile Stephens,6,False
+2426,Erica Drexl,6,False
+2427,Ryan Johnson,6,False
+2428,Jody Peck,6,False
+2429,Jusu Bars,8,False
+2430,Ken Rekrutiak,6,False
+2431,Kim Clark,14,False
+2432,Eat Wild,4,False
+2433,Alex Troll,6,False
+2434,The Keg Steakhouse & Bar,15,False
+2435,Heirs Pears,28,False
+2436,Deerholme Farm,8,False
+2437,Neal Sikkes,13,False
+2438,Ben Bravington-Sim,6,False
+2439,Sandra Hyndman,14,False
+2440,Steel Toad Brewing Co,29,False
+2441,Loka Middle Eastern,36,False
+2442,Bridge Brewing,27,False
+2443,Nicky Peterson,6,False
+2444,Irish Heather,29,False
+2445,Barcelona Tapas,7,False
+2446,Be Fresh Bayswater,28,False
+2447,Juno Kim Catering,29,False
+2448,The Kal Eatery,16,False
+2449,Tara Gregg,6,False
+2450,Quartermaster Eatery,16,False
+2451,Karen Brown,14,False
+2452,Allan MacCara,14,False
+2453,Jamjar Granville,28,False
+2454,Mak N Ming Restaurant,28,False
+2455,Carson Graham Secondary,27,False
+2456,Tiffany Reid,6,False
+2457,Parallel 49 Brewing,29,False
+2458,Tom Dubowski,14,False
+2459,Emily Lehnen,13,False
+2460,Shannon Hamil,8,False
+2461,Karen Hayes,8,False
+2462,Malone's Social Lounge,28,False
+2463,Covenant House,4,False
+2464,Lift Breakfast Bakery,27,False
+2465,The New Well Tavern,31,False
+2466,Mike Low,6,False
+2467,Jerry Diaz,6,False
+2468,Garrett Grimshire,6,False
+2469,Carley Fitzpatrick,14,False
+2470,Miles Forster,14,False
+2471,Stephen Shevchuk,14,False
+2472,Kelly McKeown,13,False
+2473,Henry Campbell,6,False
+2474,Kim Carlile,14,False
+2475,Nelson the Seagull,29,False
+2476,Allie Barr,14,False
+2477,Unsworth Vineyard Restaurant,47,False
+2478,Deniz T-Medina,28,False
+2479,Jennifer Marsh,14,False
+2480,Carmelo's Ristorante,27,False
+2481,Angus Stuart,14,False
+2482,Michelle Tung,14,False
+2483,Dussa's Ham & Cheese,28,False
+2484,Five Kitchen & Oyster Bar,35,False
+2485,Jerry Grinstein,14,False
+2486,Heather Grant,14,False
+2487,Fayuca Restaurant,28,False
+2488,St.Lawrence Restaurant,29,False
+2489,Mandalay Burmese Kitchen,29,False
+2490,Shelley Demmett,14,False
+2491,Katharine Kerr,14,False
+2492,Mount Arrowsmith Brewing,10,False
+2493,Jaime Hill,13,False
+2494,Railway Club,28,False
+2495,Outer Shores Expeditions,8,False
+2496,Union Kitchen Inc,18,False
+2497,Simon Lemay,14,False
+2498,Oliver Osoyoos Winery,18,False
+2499,Sen Pad Thai,28,False
+2500,Darcy Olson,14,False
+2501,Burgoo Downtown,28,False
+2502,Penny Bees,14,False
+2503,Michele Foster,14,False
+2504,Blueridge PAC,27,False
+2505,Kate Karamycheva,14,False
+2506,Jeff Pare,6,False
+2507,Deanna Summers,14,False
+2508,The Union Club of BC,8,False
+2509,Bench 1775 Winery,18,False
+2510,Corey Mclachlan,6,False
+2511,Norman Rudy's Pub,21,False
+2512,Urtica Eatery,18,False
+2513,Experience Wine Tours,15,False
+2514,49th Parallel Roasters,28,False
+2515,Nikola Plavakove,6,False
+2516,Jennifer Bayley,14,False
+2517,Broadway Deli Bistro,3,False
+2518,Stoney's,22,False
+2519,Mother Natures Sidney,8,False
+2520,John Calveley,14,False
+2521,Steve Britnell,14,False
+2522,La Grotta del Formaggio,29,False
+2523,Amo La Vita Food Truck,22,False
+2524,Fitzpatrick Family Vineyards,15,False
+2525,Heart & Bone Provisions,43,False
+2526,Caramba Restaurant,22,False
+2527,The Rise Eatery,28,False
+2528,Frank Sullivan,14,False
+2529,DSRF Campaign,33,False
+2530,Hunter Gather,22,False
+2531,Haus Sausage House,8,False
+2532,Patrick Naccarato,29,False
+2533,The Ellis,28,False
+2534,Jim Bayles,6,False
+2535,Dr. Peters Foundation,4,False
+2536,Van JR Roller Derby,29,False
+2537,Jason Siebenga,15,False
+2538,Samuel Claro,6,False
+2539,Brandon Warren,6,False
+2540,Whistler Food Company,22,False
+2541,Fifi's Bistro,22,False
+2542,Beach Fire Brewing,39,False
+2543,Dolphins Resort,10,False
+2544,Jennifer Olson,14,False
+2545,Mark Fuller,14,False
+2546,Tofino Resort & Marina,40,False
+2547,John Dignon,14,False
+2548,Hector Gomez,6,False
+2549,Joe Nemeth,14,False
+2550,Carly Neate,14,False
+2551,Arrowleaf Cellars,15,False
+2552,Dave Mackie,6,False
+2553,Pitchfork Eatery,19,False
+2554,Jennifer Hill,14,False
+2555,Turtle Valley Bison Ranch,6,False
+2556,Dandelions & Dragonflies,21,False
+2557,Bows & Arrows Coffee,29,False
+2558,Whistler Blackcomb Roundhouse,22,False
+2559,Whistler Blackcomb Rendevous,22,False
+2560,Andrew Clough,13,False
+2561,Quaaout Lodge,3,False
+2562,Candice Wu,14,False
+2563,Kootenay Cabin Restaurant,36,False
+2564,Stong's Markets Northwoods,27,True
+2565,Liana Schou,14,False
+2566,Christine Montgomery,14,False
+2567,Louise Solomon,6,False
+2568,Stong's Market Dunbar,28,True
+2569,Alison Lam,14,False
+2570,Dave Mackie,6,False
+2571,Yun Kim,14,False
+2572,Lindsay Taylor,14,False
+2573,Chancho Enterprises,29,False
+2574,Natures Fare Penticton #2,18,False
+2575,Lorraine Bishop,6,False
+2576,Cedar Creek Staff,15,False
+2577,Elymar Cueva,6,False
+2578,Nick Johnston,16,False
+2579,North Arm Farm Retail,23,False
+2580,Steve Pollock,14,False
+2581,Victoria Deboon,13,False
+2582,Sherri Pierce,14,False
+2583,David Green,14,False
+2584,Dyan Dossantos,14,False
+2585,Tacofino Bentall,28,False
+2586,Diana Wood,6,False
+2587,Amber Lim,6,False
+2588,Gitesh Anand,6,False
+2589,Two Rivers Retail,6,False
+2590,Rust Wine Company,18,False
+2591,Vagabond Kitchen,18,False
+2592,LaCasse Maritime,31,False
+2593,The 101 Taphouse,7,False
+2594,Peter Sanford,14,False
+2595,Stephen Shevchuk,14,False
+2596,Miles Forster,14,False
+2597,Batch Food,31,False
+2598,Grant Bosworth,14,False
+2599,Whistler Children's Centre,7,False
+2600,Chef's Kitchen,28,False
+2601,Ellison's Market,19,True
+2602,Two Rivers Deli,6,False
+2603,Two Rivers Kitchen,6,False
+2604,Ai Lin Toh,14,False
+2605,Select Ready Foods,6,False
+2606,Dominion Bar & Kitchen,37,False
+2607,Willie's Fine Foods,8,False
+2608,Boris Alfaro,6,False
+2609,Clifford Nudalo,6,False
+2610,Bistro Pastis,28,False
+2611,Trans Am,29,False
+2612,Filipe Carballo,6,False
+2613,John Rono,6,False
+2614,Parq Honey Salt,28,False
+2615,Parq Victor,28,False
+2616,Parq Market East,28,False
+2617,Margot Ware,14,False
+2618,El Papalote,28,False
+2619,The Sprouted Fig,16,False
+2620,Ramon Fernandez,6,False
+2621,Mercedes Abdo,14,False
+2622,Chris Pow,14,False
+2623,Bells & Whistles - Fraser St,29,False
+2624,Estate Craft,27,False
+2625,Sara Walker,14,False
+2626,West Coast Grill,15,False
+2627,Parq 1886,28,False
+2628,The Stable House,28,False
+2629,The Keefer Bar,29,False
+2630,Jennifer Mansour,13,False
+2631,Peter Pocklington,14,False
+2632,Nesters Whis Retail,7,False
+2633,Ryan Olson,14,False
+2634,Katie Megale,14,False
+2635,Lara Hodge,14,False
+2636,Kim Young,14,False
+2637,Stephan Vali,14,False
+2638,Colin Vyner,14,False
+2639,Adele Barnett,14,False
+2640,Lydia Walmsley,14,False
+2641,Karen Ritchie,14,False
+2642,Joanna Burke,14,False
+2643,Meg Sedmak,14,False
+2644,Susanne Mcbeth,14,False
+2645,Mark Blancard,14,False
+2646,Quest Outreach,29,False
+2647,Angela Anzovino,14,False
+2648,Ben Kaye,14,False
+2649,Jaclyn Marks,14,False
+2650,Karry Zibin,14,False
+2651,Nikola Plavakova,6,False
+2652,Van Isl Motorsport Circuit,40,False
+2653,Nemesis Coffee Gastown,29,False
+2654,Eltie Boyer,14,False
+2655,Touran Edsall,14,False
+2656,Zayne Heyes,6,False
+2657,Liam Foram,6,False
+2658,Jack Macken,6,False
+2659,Ravindra Naripati,6,False
+2660,Hans Edstrand,14,False
+2661,Heather Petrusic,14,False
+2662,Jenna Mawjee,14,False
+2663,Michael Kelly,6,False
+2664,Jen Kane,13,False
+2665,Michael Kelly,6,False
+2666,Beatniks Bistro,38,False
+2667,Rail & River Bistro,38,False
+2668,Stem Japanese Eatery,33,False
+2669,Sandra Sovernigo,14,False
+2670,Waterfront Cafe,15,False
+2671,Bridges Restaurant,28,False
+2672,Josh Goulding,6,False
+2673,Parq D6,28,False
+2674,Nuba Davie,28,False
+2675,Harsha Girish,6,False
+2676,Masayoshi,29,False
+2677,Amber Academy Fund,8,False
+2678,Bee In The Enterprises,15,False
+2679,Two Crows Perogies,20,False
+2680,SuperValu #3323,20,True
+2681,The Shuswap Grill,17,False
+2682,Plethora Fine Foods,20,False
+2683,Aaron Leung,6,False
+2684,Amonte Claro,6,False
+2685,Shirley Leong,6,False
+2686,Elisa Hoole,6,False
+2687,Colin Churchill,13,False
+2688,"Holiday Customer Dec 19, 2017",14,False
+2689,"Holiday Customer Dec 20, 2017",14,False
+2690,"Holiday Customer Dec 21, 2017",14,False
+2691,"Holiday Customer Dec 22, 2017",14,False
+2692,"Holiday Customer Dec 23, 2017",14,False
+2693,Ryan Phillips,6,False
+2694,Whistler Secondary School,7,False
+2695,Joseph Bouten,6,False
+2696,Kathy Corris,6,False
+2697,Whistler Secondary,7,False
+2698,The Pie Shoppe,29,False
+2699,Cedar Hill Middle School,8,False
+2700,Umami Personal Chef,30,False
+2701,Canyon Heights Elementary,27,False
+2702,Breakwater Bistro,8,False
+2703,Di Beppe,29,False
+2704,Pender Grocery,28,False
+2705,Alain Stewart,6,False
+2706,50th Parallel Estate,15,False
+2707,Sebastien Bernier,13,False
+2708,Alexander Deacon,6,False
+2709,Jenna Gleeson,14,False
+2710,Michelle Scheibel,15,False
+2711,Il Caminetto,22,False
+2712,Sean Knowlden,6,False
+2713,Heather Mountain Lodge,24,False
+2714,Peter McNamee,14,False
+2715,Mike Leprieur,6,False
+2716,Monty Young,6,False
+2717,Be Fresh Commissary,5,False
+2718,Fraser Personal- Family,6,False
+2719,Sun Peaks Lodge,17,False
+2720,North Shore United,6,False
+2721,Rebel Fitness Squamish,13,False
+2722,Landon Bolin,6,False
+2723,The Italian Osteria,38,False
+2724,Andrea Sum,14,False
+2725,Trump Hotel,28,False
+2726,Saha Eatery,21,False
+2727,Coquille Restaurant,29,False
+2728,Accio,8,False
+2729,Alicia Woods,6,False
+2730,Hana Cairns,14,False
+2731,Fiore Restaurant,28,False
+2732,Social 242,15,False
+2733,Connor Knickerbocker,6,False
+2734,Shred Whistler,22,False
+2735,Miho Shinbo,6,False
+2736,Melanie Stutt,17,False
+2737,Lions Bay Elementary,27,False
+2738,Elisa Ferri,6,False
+2739,Lucky Taco,28,False
+2740,Vancouver Lawn & Tennis,28,False
+2741,Shauna Jones,6,False
+2742,Start Fresh,15,True
+2743,Gordon Keith,27,False
+2744,Thomas Haas North Van,27,False
+2745,Ryan Duffy,6,False
+2746,Jason Sakundiak,24,False
+2747,Marta Orellana,14,False
+2748,John Moonen,14,False
+2749,Moltaqa Restaurant,29,False
+2750,Gaia Kitchen,27,False
+2751,Wescoast Poke Richmond,31,False
+2752,Caffe Fant Dockside - Kitchen,8,False
+2753,The Wienery,18,False
+2754,Disc Foods Oyster,39,False
+2755,Disc Foods Oyster River,39,False
+2756,Ashely Gordon,7,False
+2757,Deep Cove Brewers,27,False
+2758,Walton Warriors Fundraiser,27,False
+2759,Courtney Room,8,False
+2760,IL Posto,32,False
+2761,Stong's Northwoods Deli,27,False
+2762,Michaela Jurickova,6,False
+2763,Thierry Chocolates,28,False
+2764,BFLP Fundraiser,27,False
+2765,Natalia Rosales,6,False
+2766,Thomas Haas Broadway,28,False
+2767,Langara Island Lodge,31,False
+2768,Langara Fishing Lodge,31,False
+2769,Tuesday Pickle,34,False
+2770,Kishimoto,29,False
+2771,Tocador,29,False
+2772,Nowhere A Restaurant,8,False
+2773,Sam Rowan,6,False
+2774,Sleep is for Sissies,19,False
+2775,Craft Beer Kelowna,15,False
+2776,Smugglers Smokehouse,18,False
+2777,Project Samuel,27,False
+2778,Devon Simpson,6,False
+2779,O'Rourke's Peak Cellars,15,False
+2780,Sonora Resort Staff,39,False
+2781,Janice McLean,14,False
+2782,Andrea Lamont,14,False
+2783,Tyler Evans,6,False
+2784,Raegan Place,14,False
+2785,Raegan Place,14,False
+2786,Shirley Fraser,6,False
+2787,Squamish U18 Boys Soccer,21,False
+2788,Silk Dinner Lounge,29,False
+2789,Greg Mcfetridge,6,False
+2790,Jose Carrillo,6,False
+2791,Legend Distilling,18,False
+2792,Chief Hospitality,21,False
+2793,The Modern Pantry,27,False
+2794,Frog City Cafe,18,False
+2795,Backcountry Brewing,21,False
+2796,Ashleigh Cater,20,False
+2797,Ex Nihilo Vineyards,15,False
+2798,Andrew Roberts,6,False
+2799,Pepino's Spaghetti House,29,False
+2800,Vice & Virtue,15,False
+2801,Jaime Rendon,6,False
+2802,Zaldy Labasan,6,False
+2803,Max Subbotin,6,False
+2804,AT Johnston,6,False
+2805,Christopher West,6,False
+2806,Buono Osteria,20,False
+2807,Bouchons Bistro,15,False
+2808,West Coast Wilderness Lodge,20,False
+2809,JR Roller Derby,21,False
+2810,Time Winery & Kitchen,18,False
+2811,Eagle Pointe,41,False
+2812,Felicidad Rendon,6,False
+2813,Odinn Helgason,14,False
+2814,Jason Gallagher,6,False
+2815,Temper Pastry,27,False
+2816,Cleveland Elementary,6,False
+2817,The London Chef,8,False
+2818,Arleigh Wood,14,False
+2819,Pawwow Pet,23,False
+2820,Bin 4 Burger - Granville,28,False
+2821,Cousteau School Fundraiser,6,False
+2822,Fundraiser Misc,6,False
+2823,Cycle of Life Fundraiser,39,False
+2824,Ride to Conquer- Jocelyn,6,False
+2825,Delta Gymnastics,32,False
+2826,Como Taperia,29,False
+2827,Oliver Eats,18,True
+2828,Serendipity Winery,18,False
+2829,Farm To Table Yaletown,28,True
+2830,Lodge @ Arrow Lakes,19,False
+2831,Farm's Gate Foods,47,False
+2832,Entre Deux Mers Bistro,20,False
+2833,Cops for Cancer,6,False
+2834,Brown's Test Kitchen,6,False
+2835,Daisuke Suenaga,6,False
+2836,DL Chicken Shack - Commercial,29,False
+2837,Little Engine Wines,18,False
+2838,SPUD Fresh TRAPP,33,False
+2839,Isagani Santos,6,False
+2840,Selkirk College,36,False
+2841,Pebble's Restaurant,7,False
+2842,Their There,28,False
+2843,Jake Carter,6,False
+2844,Sam Johnston,6,False
+2845,Maple Leaf Adventures,42,False
+2846,Ernie De La Cruz,6,False
+2847,Laurence & Chico,28,False
+2848,Halfmoon General Store,20,False
+2849,Randy Bernard,6,False
+2850,Fiore Famiglia,28,False
+2851,Paisley Notebook,15,False
+2852,Lot 1 Pasta Bar,8,False
+2853,The Diamond,29,False
+2854,Laurie Sterritt,6,False
+2855,Brandon Edwards,6,False
+2856,Seahorse Grill,37,False
+2857,JW Marriot Parq,28,False
+2858,Salt Spring Wild Cider,43,False
+2859,The Corner Deli,7,False
+2860,Amiel Guiao,6,False
+2861,Ian Davidson,6,False
+2862,Gusto Di Quattro,27,False
+2863,Jack’s on Bernard,15,False
+2864,Brakne Holdings,29,False
+2865,Mumbai Local,28,False
+2866,Nolan Saunders,6,False
+2867,The Gull Bar & Kitchen,27,False
+2868,Daisuke Suenaga,6,False
+2869,Motor Yacht Gran Finale,28,False
+2870,Kafka Coffee Northern Way,29,False
+2871,Khats' Market & Juicery,28,False
+2872,M8 Restaurant,28,False
+2873,The Garden,29,False
+2874,The Nest,18,False
+2875,Sherwood Victoria,8,False
+2876,Marzano,36,False
+2877,Oliver Bautista,6,False
+2878,Allan Gustafson,6,False
+2879,Armarn Roland,6,False
+2880,West Van Child Development,27,False
+2881,Town Square,23,False
+2882,Five Star Joes,15,False
+2883,Jay Hannah,6,False
+2884,Nero Belgian Waffle,28,False
+2885,Biercraft Commercial,29,False
+2886,Biercraft Wesbrook,29,False
+2887,Collective Wine Bar,8,False
+2888,Samira Aghamiri,6,False
+2889,Natalia Capuozzo,6,False
+2890,WF Exports Inc.,5,False
+2891,Meat & Bread Abbotsford,9,False
+2892,Caffe La Tana,29,False
+2893,Northyards Cider Co.,7,False
+2894,Dan Scinocca,6,False
+2895,Tristan Toderan,6,False
+2896,Edward Salimbay,6,False
+2897,Cynthia Enns,18,False
+2898,Rolando Gordo,6,False
+2899,Robert Harrington,6,False
+2900,Hunnybee,29,False
+2901,Little Brother,9,False
+2902,Coast Capri Hotel,15,False
+2903,Toque Catering,8,False
+2904,Ricco Bambino Wines,15,False
+2905,Fraser Valley Poultry,9,False
+2906,Government House,8,False
+2907,Autostrada Osteria,28,False
+2908,Dane Rocco,6,False
+2909,Sorella Restaurant,29,False
+2910,Pan Pacific Vancouver,28,False
+2911,Brewhall,29,False
+2912,The Josie Hotel,19,False
+2913,Campbell River Golf & Country,39,False
+2914,truLOCAL,37,True
+2915,Beere Brewing,27,False
+2916,Alfonso Law Corp,15,False
+2917,Jenn Millerd,6,False
+2918,Dublin Calling,28,False
+2919,Be Fresh Edgemont,27,False
+2920,Super Mario's,39,False
+2921,Tacofino Mount Pleasant,29,False
+2922,Geo Cider Co,21,False
+2923,Meat & Bread Robson,28,False
+2924,Pet-Pep,7,False
+2925,Elisa,28,False
+2926,Revolver Coffee Inc.,28,False
+2927,The Ainslie,40,False
+2928,Flying Pig- Yaletown,28,False
+2929,Jim McLeod,6,False
+2930,Aaron Lam,6,False
+2931,Tessa Stover,39,False
+2932,Mountain United,33,False
+2933,LV Parent Preschool,27,False
+2934,Alan Tam,28,False
+2935,Squamish Eagles Atom A2,7,False
+2936,Miko Gamboa,6,False
+2937,MC Klien Salazar,6,False
+2938,Sutton Place Hotel,28,False
+2939,Dan Misc,6,False
+2940,Squamish Pirates,21,False
+2941,Meat and Bread Truck,29,False
+2942,Ryan Byrd,6,False
+2943,Pokey Okey,31,False
+2944,Trading Post Abbotsford,9,False
+2945,Restaurant Yugo,29,False
+2946,Bell 2 Lodge,52,False
+2947,Vic High Fundraiser,8,False
+2948,Douce Diner,27,False
+2949,Jamieson Elementary,28,False
+2950,Spirit Ridge,18,False
+2951,Nourishment Meals,21,False
+2952,Nicli Edgemont,27,False
+2953,Dachi Vancouver,29,False
+2954,Kreiz Nudalo,6,False
+2955,Amiel Patena,6,False
+2956,Nicholas Burian,6,False
+2957,Colin McGlenister,6,False
+2958,Steve Hodge,6,False
+2959,The Raven Pub,27,False
+2960,Riders Pizza,39,False
+2961,Kevin Kinakin,6,False
+2962,Lisa Nahanee,6,False
+2963,The Raven Room,22,False
+2964,Essen & Trinken,28,False
+2965,Kevin Boyd,6,False
+2966,Stephen John Bonita,6,False
+2967,Vilynda Viloria,6,False
+2968,Chute Lake Lodge,18,False
+2969,Flying Pig-Olympic Village,29,False
+2970,Pluvio Restaurant,11,False
+2971,Point Grey Golf & Country,28,False
+2972,Owly Cafe,8,False
+2973,Wheelies Motorcycles,8,False
+2974,Marta Cafe & Pantry,8,False
+2975,Church and State Wines,8,False
+2976,Pacific Institute of Culinary Arts,28,False
+2977,North King Lodge,41,False
+2978,Bin 4 Burger Lounge Kelowna,15,False
+2979,Bin 4 Burger - Kelowna,15,False
+2980,Gray Monk Estate Winery,15,False
+2981,Hachiro Ramen Bar,27,False
+2982,Chef Alessandro Vianello,27,False
+2983,Sing Sing,29,False
+2984,Med Grill Restaurant,8,False
+2985,The Slocan,29,False
+2986,Perch Cafe and Lounge,15,False
+2987,Nicole Turcotte,6,False
+2988,Wobbly Canoe,20,False
+2989,Sheraton Wall Centre,28,False
+2990,The Magnet,28,False
+2991,Yolks Restaurant Hastings,29,False
+2992,Yolks Restaurant Broadway,28,False
+2993,Meyer Family Vineyards,18,False
+2994,LL Meat,7,False
+2995,Cactus Test Kitchen,28,False
+2996,Cactus Cafe- Burrard,28,False
+2997,Cactus Cafe- Southpoint,37,False
+2998,Cactus Cafe- Yaletown,28,False
+2999,Crush Volleyball Fundraiser,39,False
+3000,Brandon Mollica,6,False
+3001,Legs Diamond,7,False
+3002,Rabbit Hole Cafe,27,False
+3003,Vanessa Fraguas,6,False
+3004,Shane Marriott,6,False
+3005,Westwind Fundraiser,31,False
+3006,Richard Matangat,6,False
+3007,Capilano Christian Church,27,False
+3008,Block 300 Casual Steakhouse,18,False
+3009,Smak Howe,28,False
+3010,Slackwater,18,False
+3011,1908 Restaurant & Lounge,18,False
+3012,Mountain Trek Fitness Retreat,36,False
+3013,Collingwood School,27,False
+3014,Bayassist Marine Group,28,False
+3015,Elma Restaurant,18,False
+3016,La Mezcaleria Gastown,29,False
+3017,La Mezcaleria Commercial,29,False
+3018,Wildeye Brewing,27,False
+3019,Rob Spurgeon,6,False
+3020,Holy Trinity School,27,False
+3021,Bongo Bistro,18,False
+3022,Stevie Friel,6,False
+3023,Squamish Scouts,7,False
+3024,Bulkley River Lodge,25,False
+3025,Abkhazi Tea House,8,False
+3026,Greg Lewis,6,False
+3027,Flying Pig Victoria,8,False
+3028,Flip City Gymnastics,38,False
+3029,Reinvent Inc,28,False
+3030,Flaca's Tacos,7,False
+3031,Boom & Batten,8,False
+3032,Farm Bound,16,False
+3033,Brie & Barrel,40,False
+3035,Cycle of Life Nanaimo,40,False
+3036,Novo Pizzeria,28,False
+3037,Tastebuds,8,False
+3038,Session Bistro & Fitness,39,False
+3039,Carlotta Perrozzi,6,False
+3040,Sweet Meadows Market,47,True
+3041,Nada Grocery,29,False
+3042,Ballyhoo Public House,28,False
+3043,Jay Dulatre,6,False
+3044,Lost Horn Food Inc,15,False
+3045,Qualicum Beach Inn,10,False
+3046,Lonsdale Creek Daycare,6,False
+3047,North Shore Stars,6,False
+3048,The Loft,28,False
+3049,Gordon Food Service,32,False
+3050,Watermark Retail,18,False
+3051,DBD Catering Kitchen,38,False
+3052,Out N About Al Fresco,18,False
+3053,Bardia Ilbeiggi,28,False
+3054,Yuji Hyde,6,False
+3055,Skinny Duke's,15,False
+3056,Aaron Wong,6,False
+3057,Ugly Dumpling,29,False
+3058,Cyrus Hagn-Wilcox,6,False
+3059,Bruno Feldeisen,29,False
+3060,Lukasz Jonca,6,False
+3061,Sun Dog Cart,20,False
+3062,Wind Cries Mary,8,False
+3063,Oxtale,28,False
+3064,Foxy Produce,27,True
+3065,Crismar Alipala,6,False
+3066,Meat & Bread Broadway,28,False
+3067,Row Fourteen,18,False
+3068,Katarina Edwards,6,False
+3069,Cactus Cafe- Station Square,33,False
+3070,Papi's Seafood & Oyster,28,False
+3071,Ancora Waterfront Dining,27,False
+3072,Sunreal Organics,15,False
+3073,Category 12 Brewing,8,False
+3074,Livia Sweets,29,False
+3075,Orbaek Meats,27,False
+3076,Namrick Agpalo,6,False
+3077,Waverley Hotel & Pub,39,False
+3078,Carnivore Meats,8,False
+3079,Sardine Can,29,False
+3080,Bomber Brewing,28,False
+3081,Sun Peaks-Masa's Bar & Grill,17,False
+3082,Farina Pizza a Legna,27,False
+3083,Ken Yen,31,False
+3084,DL Burgers,29,False
+3085,VV Tapas Lounge,29,False
+3086,Diether Mangahas,6,False
+3087,Mark O'neill,6,False
+3088,Market Meats Kerrisdale,28,False
+3089,Copper Chimney,28,False
+3090,Glenn Rennie,6,False
+3091,North Star Montessori,27,False
+3092,Flying Pig Gastown,29,False
+3093,Donna Nahanee,6,False
+3094,Bufala Edgemont,27,False
+3095,Zach Wilczewski,6,False
+3096,Forecast Coffee Function,22,True
+3097,Wildtale - Yaletown,28,False
+3098,Poplar Grove Winery,18,False
+3099,The Royal - Nelson,36,False
+3100,Liberty Food Store,19,False
+3101,Squamish Eagles Atom A1,7,False
+3102,Seaside Hotel Nvan,27,False
+3103,Darren Wilson,6,False
+3104,Black Sage Butcher,18,False
+3105,Bartholomew,28,False
+3106,Eric Thur,6,False
+3107,Loden Hotels,28,False
+3108,Lift Production Bakery,27,False
+3109,Tushar Tondvalkar,27,False
+3110,The Modest Butcher,15,False
+3111,1931 Gallery Bistro,28,False
+3112,Old Bird,29,False
+3113,Sun Peaks Grand Hotel,17,False
+3114,Capow Guiding,16,False
+3115,École Mer-et-montagne,39,False
+3116,Marvin Francisco,6,False
+3117,Broken Hill,36,False
+3118,Container Brewing,29,False
+3119,Fresh Prep,29,False
+3120,The Marquis Grill,28,False
+3121,LVPPP,27,False
+3122,Zach W - Misc,4,False
+3123,Nemesis Polygon,27,False
+3124,Fresh St Van House #55,28,False
+3125,Fresh St Market Whistler #75,22,False
+3126,Antonius Looijschelder,6,False
+3127,SuperValu #98,29,False
+3128,Field & Social MP,29,False
+3129,ColinM Test Customer,6,False
+3130,Seaweeds Health Food,20,False
+3131,Published on Main,29,False
+3132,The Bread Bunker,22,False
+3133,Vancouver Convention Centre,28,False
+3134,City Avenue Market- Commercial,29,False
+3135,City Avenue Market- New West,30,False
+3136,City Avenue Market- Poco,46,False
+3137,CR Atom A Tyees,39,False
+3138,North Point Brewing,27,False
+3139,Ahmet Bilgin,6,False
+3140,David Gee,6,False
+3141,Lone Wolf Provisions,20,False
+3142,Varsity Karate,8,False
+3143,Ophelia - Olympic Village,29,False
+3144,House of Funk,27,False
+3145,Kristian Joven,6,False
+3146,Fresh St #055,28,False
+3148,Brass Fish,28,False
+3149,Rockridge Secondary Fundraiser,6,False
+3150,Hey Happy,8,False
+3151,7 Star Organics,33,False
+3152,Plaza Premium Lounge,31,False
+3153,MOSI,8,False
+3154,SPUD HASTINGS,29,False
+3155,SPUD HPP,46,False
+3156,Tractor Foods- Robson,28,False
+3157,Squamish Montessori,7,False
+3158,Friends of Dorothy,15,False
+3159,Michel Leroux,6,False
+3160,Squamish Minor Hockey,21,False
+3161,Reyou Fabros,6,False
+3162,Queensbury Elementary,27,False
+3163,Sentinel Secondary,27,False
+3164,Edu Dulatre,6,False
+3165,Tractor Foods- Marine,28,False
+3166,Tractor Foods- Olympic Vill,29,False
+3167,Tractor Foods- Ash,28,False
+3168,Tractor Foods- Digital,28,False
+3169,Tractor Foods- Pender,28,False
+3170,Tractor Foods- Victoria,8,False
+3171,Tractor Foods- Park Royal,27,False
+3172,Haven Kitchen & Bar,38,False
+3173,Mama Said Pizza,9,False
+3174,Winston,27,False
+3175,Dent Island Lodge,39,False
+3176,Anne Buch Brandt,6,False
+3177,Pane Vino,15,False
+3178,Superflux Beer Co,29,False
+3179,Lonsdale BridgeDeck,27,False
+3180,Field & Social Royal Centre,28,False
+3181,Squamish Scouts- Agenda 21,21,False
+3182,Brgr Brgr,45,False
+3183,Hop Creek Farms,21,False
+3184,Sourdough School House,15,False
+3185,Joseph's Seafood Co.,29,False
+3186,Stratus Catering,18,False
+3187,Arrow & Anchor Pizza,19,False
+3188,BCLocalRoot.ca,27,False
+3189,Nourish Eatery & Juicery,20,False
+3190,Fife Bakery,29,False
+3191,Fed,29,False
+3192,McAteer SKM Welding,16,False
+3193,Valton Landrum,6,False
+3194,Tractor Foods- Kits,28,False
+3195,Nesters Woodwards,29,False
+3196,SPUD Fresh HASTINGS,29,False
+3197,Ellen Bjornson,27,False
+3198,Northwest Fresh Catering,27,False
+3199,Nesters Yaletown,28,False
+3200,Nesters Fraser Heights,37,False
+3201,Nesters Main St,29,False
+3202,Nesters Simon Fraser,33,False
+3203,Nesters Dollarton,27,False
+3204,Nesters Surrey Gateway,37,False
+3205,Nesters Broadway,29,False
+3206,Nesters Kelowna,38,False
+3207,Nesters Summerland,38,False
+3208,Nesters Lakeview Heights,38,False
+3209,Nesters Gabriola Island,38,False
+3210,Luz Tacos,21,False
+3211,Online Pick Up- TRSM,6,False
+3212,Squamish Nation,27,False
+3213,Potluck Hawker Eatery,29,False
+3214,The Story Cafe,31,False
+3215,Organic Ocean Seafood,9,False
+3216,Frind Winery,15,False
+3217,Vandula Farms,32,False
+3218,Come Arepa,28,False
+3219,Blind Rabbit,29,False
+3220,Tractor Foods- Victoria,8,False
+3221,Rustic Reel Brewing,15,False
+3222,Scott Gurney,8,False
+3223,Neue Catering,31,False
+3224,Van Native Housing Society,29,False
+3225,Holy Chow,29,False
+3226,Gather,42,False
+3227,Bakery Sate,29,False
+3228,My Endeavour,27,False
+3229,Geoff Richards,6,False
+3230,Salt Spring Cheese Company,43,False
+3231,Clansey's Restaurant,19,False
+3232,The Bella Life,28,False
+3233,Francis Alviz,6,False
+3234,Cork & Craft Taphouse,21,False
+3235,Kafka's Main Street,29,False
+3236,Karat Chocolate,15,False
+3237,Elite Autohouse Ltd.,31,False
+3238,Uma Sushi,28,False
+3239,Frying Pan,29,False
+3240,Local Farm Market,28,True
+3241,Duck Soup Holdings,21,False
+3242,The Italian Grocer,33,False
+3243,Upper Lynn Elementary,27,False
+3244,El Segundo,20,False
+3245,Cafe il Nido,28,False
+3246,Regal Beagle Grill,28,False
+3247,Phantom Creek Estates,18,False
+3248,Doorway Drop,8,False
+3249,Coho Coffee,29,False
+3250,Straight & Marrow,29,False
+3251,Kitchen Table Group,29,False
+3252,Kembali,27,False
+3253,Dustin Sepkowski,28,False
+3254,Seymour 11th Scouts,27,False
+3255,Kieran Simpson-Sigurdson,6,False
+3256,Sushi Village,22,False
+3257,Aritzia Commissary,29,False
+3258,Scapegoat Grazing,6,False
+3259,Five Sails Restaurant,28,False
+3260,GTO Burger Mart,29,False
+3261,Gabriel Milne Inc,8,False
+3262,Vancouver Private Dining,4,False
+3264,Perseval & Young Cheesemongers,15,False
+3265,Nick Menzies,29,False
+3266,Tutto Restaurant & Bar,28,False
+3267,Hartinder Sahota,27,False
+3268,La Boqueria Restaurant,29,False
+3269,Hestia Supreme Food Inc,28,False
+3270,Naked Naturals - Parksville,40,True
+3271,Naked Naturals - Qualicum Beach,40,True
+3272,Naked Naturals - Parksville,40,False
+3273,Naked Naturals - Qualicum,40,False
+3274,The Big Baller,29,False
+3275,Ivy Rose Lounge,28,False
+3276,GSL Football,27,False
+3277,NS Twins Baseball Fundraiser,6,False
+3278,Giovane Cafe,28,False
+3279,Edible Island Whole Foods,40,False
+3280,Bells & Whistles - Dunbar,28,False
+3281,Coast Restaurant,28,False
+3282,Italian Kitchen,28,False
+3283,Katherine Man,31,False
+3284,Alberni Power & Marine,40,False
+3285,West Coast Ethical Meats,8,False
+3286,San Juan,28,False
+3287,Six Acres Cafe,29,False
+3288,Bin 4 Burger - Nanaimo,40,False
+3289,Side Hustle Sandwiches,29,False
+3290,Corey Hess,28,False
+3291,Tonik Distilling,19,False
+3292,Pawesome Dog Treat,46,False
+3293,Five Vines Cellars,18,False
+3294,Jerseyland Organics,19,True
+3295,Social Crust Cafe,28,False
+3296,Le Sasquatch,35,False
+3297,Asiatique,6,False
+3298,Copperhead Cattle Co,17,False
+3299,Big Smoke BBQ,22,False
+3300,Toby's North Shore,27,False
+3301,Smugglers' Trail Caskworks,38,False
+3302,Healthyway Foods - Deli,39,False
+3303,Famous Foods Markets,29,False
+3304,Definitive Culinary Consulting,4,False
+3305,Saba Cafe & Bistro,38,False
+3306,vinAmite Cellars,18,False
+3307,The Salty Somm,43,False
+3308,One Blind Dog,21,False
+3309,Chop & Chew Meals,27,False
+3310,Arike Restaurant,28,False
+3311,Eagle Ranch Resort,24,False
+3312,Russell Fabros,6,False
+3313,Kristian Leidig,6,False
+3314,Victoria Urban Grocer,8,False
+3315,Cardero's Restaurant,28,False
+3316,Fanny Bay Oyster Bar,28,False
+3317,A Filthy Lot,31,False
+3318,Tug Eatery,8,False
+3319,Fresh St Market Kamloops #1152,17,False
+3320,Radiate Wellness,6,False
+3321,Mt. Boucherie Estate,15,False
+3322,*Blowout,6,False
+3323,S&L Kitchen - Abbotsford,45,False
+3324,S&L Kitchen - Surrey,37,False
+3325,S&L Kitchen - Langley,38,False
+3326,Tokyo Mazesoba- Seymour,28,False
+3327,Brix & Mortar,28,False
+3328,Vanskiver Co.,6,False
+3329,Ridgeview Elementary,27,False
+3330,Seymour Heights Preschool,27,False
+3331,Rain Dogs Wine Bar,8,False
+3332,Butcher's Table,30,False
+3333,Crack on Food Truck,29,False
+3334,Paper Lantern Food Co,8,False
+3335,Babalicious Culinary,22,False
+3336,The Raving Gamer Bistro,38,False
+3337,Tokyo Mazesoba- Lougheed,46,False
+3338,Tractor Commissary,29,False
+3339,Watt School of Irish Dance,29,False
+3340,Pizza Carano,29,False
+3341,Jess' Restaurant,28,False
+3342,6 Degrees Eatery,28,False
+3343,Kameo Trading Ltd.,29,False
+3344,Field & Social Yaletown,28,False
+3345,Chefs' Table Society Fundraiser,6,False
+3346,Cul De Sac Kitchen,21,False
+3347,International House of Caviar,33,False
+3348,Online Delivery,29,False
+3349,Bacon-Eh,22,False
+3350,Mowi Canada West,39,False
+3351,RMU Outdoors Whistler,22,False
+3352,UpMeals,28,False
+3353,Coppin Health,31,False
+3354,Marine Drive Golf Club,28,False
+3355,Kanae Restaurant,31,False
+3356,Sungiven Foods - City Square,28,False
+3357,Sungiven Foods - West Broadway,28,False
+3358,Sungiven Foods - Burnaby Hastings,33,False
+3359,Sungiven Foods - White Rock,35,False
+3360,Sungiven Foods - Richmond Bridgeport,31,False
+3361,Sungiven Foods - South Surrey,37,False
+3362,Sungiven Foods - North Van,27,False
+3363,Goodly Foods Society,28,False
+3364,Graffito Pizza,24,False
+3365,Modus Coffee Roasters,28,False
+3366,Cure Culinary Provisions,17,False
+3367,Fitness Foods,6,False
+3368,Molly's Reach Rest,20,False
+3369,Dead Frog Brewery,38,False
+3370,Fairmont Hotel Van,28,False
+3371,Meat Matters,24,False
+3372,Sirius Craving Vancouver,29,False
+3373,Pickles' Pantry,40,False
+3374,Salt Spring Coffee,43,False
+3375,Off the Grid Winery,15,False
+3376,Aubrey Pingitore,9,False
+3377,Baan Lao Thai Restaurant,31,False
+3378,Peace Meals,15,False
+3379,Mon Pitou Bistro & Bakery,28,False
+3380,Your Independent Grocer #1792,28,False
+3381,The Mad Italian,38,False
+3382,Score on Davie,28,False
+3383,The Farmer's Daughter,8,False
+3384,Thank You Pizza,29,False
+3385,Linda Hodgins,15,False
+3386,Addy Gowe,6,False
+3387,A Chefs Life,23,False
+3388,NWVRA,27,False
+3389,Valeria Matveeva,6,False
+3390,Cenote Restaurant and Lounge,8,False
+3391,Michael Yapp,6,False
+3392,Cream Pony,27,False
+3393,Kalamansi,15,False
+3394,Lance Browning,15,False
+3395,Bilston Creek Farm,8,False
+3396,Kelsey Sask,27,False
+3397,Ephraim Maducdoc,6,False
+3398,Livelyhood Public House,46,False
+3399,Reinhard Foerderer,15,False
+3400,Okanagan College,15,False
+3401,Garibaldi Highlands Elementary,7,False
+3402,Gleneagles Ch'axay School,27,False
+3403,Woodstone Manor,32,False
+3404,West Bay Elementary,27,False
+3405,Campbell River Springs Gymnastics,10,False
+3406,The Black Cauldron,19,False
+3407,Sungiven Foods - Head Office,33,False
+3408,.,21,False
+3409,Indigo Hospitality Solutions,21,False
+3410,Nest Grocers,16,False
+3411,Nemesis Coffee GNW,29,False
+3412,Pizza Coming Soon,29,False
+3413,Taka Ramen + Sushi,21,False
+3414,Greenhorn Cafe,28,False
+3415,Westview Elementary,27,False
+3416,Brockton School,27,False
+3417,Claren Academy,28,False
+3418,LocalMotive Organic Delivery,18,False
+3419,Tin Tin Food Wholesale,9,False
+3420,IGA- #1036 Coquitlam,46,False
+3421,Route 14 Sooke,8,False
+3422,IGA #1049-West Van,27,False
+3425,IGA #1011- Vancouver,28,False
+3426,IGA #1016- Vancouver,28,False
+3427,IGA #1017- Langley,38,False
+3428,IGA #1023- Vancouver,28,False
+3429,IGA #1025- Port McNeill,10,False
+3431,IGA- #1034- West Vancouver,27,False
+3432,Fresh St Market North Van #45,27,False
+3433,IGA #1039- Vancouver,28,False
+3434,IGA- #1050- Richmond,31,False
+3435,IGA- #1172- Kelowna,15,False
+3436,I(GA- #1165- Summerland,3,False
+3438,IGA- #1102- Kelowna,15,False
+3439,IGA- #1103- Peachland,15,False
+3440,IGA- #1114- Penticton,18,False
+3441,IGA- #1121- Lake Country,15,False
+3442,IGA- #1163- Valemount,16,False
+3443,IGA- #1186- Enderby,16,False
+3444,IGA- #1087- Langley,38,False
+3445,IGA- #1066- Langley,38,False
+3447,IGA- #1053- Sechelt,20,False
+3449,IGA- #1056- Gibsons,20,False
+3450,IGA- #1071- Port Moody,34,False
+3451,IGA- #1078- Madeira Park,20,False
+3452,O Sushi,28,False
+3453,Marco Viernes,27,False
+3454,Parthenon Market,28,False
+3455,Dip Co. Delights,27,False
+3456,Burgerland Smash Up Foods,29,False
+3457,Justin Robertson,27,False
+3458,Tree To Me,18,False
+3459,Britannia Brewing Ladner,32,False
+3460,Rocky Point Ice Cream,46,False
+3461,Don Ross Middle School,21,False
+3462,The Westin Bear Mountain,8,False
+3463,Refire Kitchen,8,False
+3464,Almathea Catering,15,False
+3465,Camper Hampers,9,False
+3466,Sechelt Pizza Co,20,False
+3467,The Galley Patio & Grill,28,False
+3468,Caffe Artigiano Burnaby,33,False
+3469,Caffe Artigiano  Edgemont,27,False
+3470,Caffe Artigiano Manitoba Street,29,False
+3471,Caffe Artigiano Shipyards,27,False
+3472,Caffe Artigiano Hornby,28,False
+3473,Caffe Artigiano Kerrisdale,28,False
+3475,Caffe Artigiano Main St.,29,False
+3476,Caffe Artigiano Park Place,28,False
+3477,Caffe Artigiano Park Royal,27,False
+3478,Caffe Artigiano Pender,28,False
+3479,Caffe Artigiano Underhill,33,False
+3480,Caffe Artigiano Yaletown,28,False
+3481,Caffe Artigiano YVR,31,False
+3482,Parade Agency,29,False
+3483,Yuko Okui,27,False
+3484,Little Mexico Cantina,31,False
+3485,The Artisan Bake Shoppe,29,False
+3486,Kong Supreme Meat,33,False
+3487,Carlino Restaurant,28,False
+3488,Squamish Waldorf School,21,False
+3489,Annie B. Jamieson Elementary School,29,False
+3490,West Vancouver Little League,27,False
+3491,Wayfarer Oyster House,31,False
+3492,Oh Carolina,29,False
+3493,Hook Seabar,28,False
+3494,Bitter Sweet Kitchen,29,False
+3495,Skitchine Lodge,17,False
+3496,Long Table Grocery,3,False
+3497,Cantina Norte - Edgemont,27,False
+3498,Sahand Shamami,27,False
+3499,White Spot,31,False
+3500,Feed Micronutrients,27,False
+3501,The Charlatan,29,False
+3502,Valley Kitchen,17,False
+3503,Kayanara Guest Ranch,26,False
+3504,Montessori Children's Community,29,False
+3505,Saeid Shamami,27,False
+3506,Nautical Dog Cafe,18,False
+3507,Barnside Brewing Co.,32,False
+3508,JRG Head Office,37,False
+3509,The Brickworks,22,False
+3510,Irwin Park Elementary,27,False
+3511,Schoolhouse Farm,32,False
+3512,Nomad FC Baked Goods,23,False
+3513,Saje and Vine,31,False
+3514,Trading Post Brewing - Oliver,18,False
+3515,Terraces on 7th Residences LLP,28,False
+3516,The Westin Airport,31,False
+3517,Honey Doughnuts & Goodies,27,False
+3518,United Strangers Corner Store,27,False
+3519,Alimentaria Mexicana Foods,28,False
+3521,The Griffin Pub,39,False
+3522,Kyuquot Beach House,11,False
+3523,Campbell River Hospice,39,False
+3524,Ruddy Potato,9,False
+3525,Blackcomb Private Chefs,22,False
+3526,Burdy Eatery,29,False
+3527,Coho - Gibsons,20,False
+3528,Benjamin Lang,27,False
+3529,Chester Santisteban,6,False
+3530,El Loco Taco,43,False
+3531,Kenwest Trading Ltd,33,False
+3532,Delara Restaurant,28,False
+3533,Ericson Santisteban,6,False
+3534,North Shore Twins Baseball,27,False
+3535,Okini,28,False
+3536,Blnd Tiger Dumplings,29,False
+3537,Claudia's Charcuterie Kitchen,29,False
+3538,Gino Gambong,27,False
+3539,Strange Fellows Brewing,29,False
+3540,Per Se Social Corner,28,False
+3541,Forecast Coffee - Main,29,False
+3542,Sherry Yuan,6,False
+3543,Graze Wilder,21,False
+3544,Blind Tiger,4,False
+3545,Aloutte,28,False
+3546,Black Rock Oceanfront Resort,8,False
+3547,Sprout Bread,15,False
+3548,Hydra Estiatorio,28,False
+3549,Cordelia's Locket,21,False
+3550,Streetcar Brewing,27,False
+3551,Palermo Cucina,27,False
+3552,Collective Wholesale,9,False
+3553,Ian Hougardy,6,False
+3554,Mamietaylors Popup,4,False
+3555,Hotel Belmont,4,False
+3556,Christian McDonald,6,False
+3557,DL Chicken Shack - UBC,28,False
+3558,Caffe Artigiano Whistler,22,False
+3559,One Under,28,False
+3560,Club Versante,31,False
+3561,Wildflower Bakeshop and Cafe,40,False
+3562,The Vancouver Fish Company,28,False
+3563,Brandon Zamboni,6,False
+3564,Rosette Restaurant,28,False
+3565,Tiggy,28,False
+3566,Sophie's Cosmic Cafe,28,False
+3567,Johnston Outgoing,27,False
+3568,Frederick Agpalo,6,False
+3569,Cultivate Roots,10,False
+3570,Foglifter Coffee,29,False
+3571,Federal Store,29,False
+3572,Jason Caplan,15,False
+3573,Cultured Kombucha,8,False
+3574,Marlonn Alvarez,6,False
+3575,Tiggy Granville,28,False
+3576,Tiggy Hastings,29,False
+3577,Bar Corso,29,False
+3578,Kin Kao Song,29,False
+3579,Petit Crepe Bistro,16,False
+3580,Stuart Percival,6,False
+3581,Eva Schnitzelhaus,8,False
+3582,The Rootcellar - Oxford Corner,8,False
+3583,UpMeals,27,False
+3584,Superbaba Main St,29,False
+3585,Seant Rodriguez,6,False
+3586,Tiggy 6th Ave,29,False
+3587,Langley Venom Hockey Club,38,False
+3588,JDF Minor Hockey,8,False
+3589,Eagle Pass Heliski,16,False
+3590,Mamma Musey's Pierogi,20,False
+3591,Mike Tousignant,6,False
+3592,Coco Rico Cafe,28,False
+3593,Langford Lanes Bowling Alley,8,False
+3594,C&C Sandwiches and Pastry,29,False
+3595,The Grizzly Grub,15,False
+3596,Shorba Bone Broth,29,False
+3597,Livlite,29,False
+3598,Pacific Yacht Charters,28,False
+3599,Reve Chalet,17,False
+3600,Hyatt Place Kelowna,15,False
+3601,Can West Hotels,15,False
+3602,Juno Provisions,29,False
+3603,Victoria High School,8,False
+3604,Hero's Heroes,29,False
+3605,Rossberry Hill,19,False
+3606,Skeena Cat Skiing and Boarding,25,False
+3607,Katrina Mackie,6,False
+3608,Split Decisions Craft Beer & Burger Bar,15,False
+3609,BlkHeart,20,False
+3610,Yasma,28,False
+3611,Bella Soriah,19,False
+3612,Ian McHale,6,False
+3613,Susane Cameron,27,False
+3614,Vancouver Island Seals U18,40,False
+3615,Devon Samson,27,False
+3616,Casereccio Foods,28,False
+3617,The Masthead Restaurant,47,False
+3618,Angus Raglin,27,False
+3619,Roundel Cafe,29,False
+3620,JNS Modern Bistro & Bakery LTD.,28,False
+3621,Fernwood General Store,8,False
+3622,Richard Nahanee,6,False
+3623,Larson Elementary,27,False
+3624,North Van Hockey,27,False
+3625,Buzzy's Luncheonette,43,False
+3626,Bramasole Restaurant & Wine Bar,24,False
+3627,White Table Catering,45,False
+3628,Therapy Vineyards,18,False
+3629,Fable Bar,28,False
+3630,Black and Blue,28,False
+3631,Acquafarina,28,False
+3632,The Cheese Pusherman Roadhouse,23,False
+3633,Saku,28,False
+3634,Tiggy South Burnaby,30,False
+3635,Tiggy North Vancouver,27,False
+3636,Tiggy Vancouver West,28,False
+3637,Sector 7,31,False
+3638,Shanzee's Biscuit Cafe,8,False
+3639,North West Vancouver Ringette,27,False
+3640,Super Veloce,28,False
+3641,Pokey Okey W 4th,28,False
+3642,Mountain Goodness,16,True
+3643,Richmond Country Club,31,False
+3644,Archer on Alberni,28,False
+3645,University Club of Victoria,8,False
+3646,Blasted Church Vineyards,18,False
+3647,Ratio Coffee & Pastry,16,False
+3648,Century Plaza Hotel,28,False
+3649,Miantiao,28,False
+3650,Kitoki Inn,7,False
+3651,Skeena Spey Riverside,3,False
+3652,Carisbrooke Elementary,27,False
+3653,Black Forest Meats & Sausage Ltd,27,False
+3654,Tightrope Winery,18,False
+3655,Ian McHale - Misc,6,False
+3656,Sweet Maple Lounge,31,False
+3657,TR Park Royal,27,False
+3658,Greta Bar Vancouver,29,False
+3659,Cocina Monarca,29,False
+3660,RUEX Cafe and Bistro,37,False
+3661,Isetta Cafe Bistro,27,False
+3662,Callister,29,False
+3663,Villa Rosa,18,False
+3664,R&D Kitchen,33,False
+3665,Ecole Les Aiglons,21,False
+3666,Capo & Spritz,28,False
+3667,Le Marche St. George,29,False
+3668,Pinnacle Hotel,28,False
+3669,Cup and Bun Cafe,33,False
+3670,Tap & Barrel Bridges,28,False
+3671,Brett Ineson,27,False
+3672,Tony Bao,6,False
+3673,Dan Stewart,15,False
+3674,Glass House Estates Winery,38,False
+3675,Ainsworth Hot Springs Resort LP,19,False
+3676,Cheakamus Centre,7,False
+3677,North Van Football Club,27,False
+3678,Erica Jane Restaurant,15,False
+3679,Gateway Casinos,33,False
+3680,Kingyo Izakaya,28,False
+3681,Kululu Cafe,21,False
+3682,NOX,28,False
+3683,The Grazing Company,19,False
+3684,Water St. Café,29,False
+3685,Pretty Good Sandwiches,29,False
+3686,Casa Mia,27,False
+3687,Naramata General Store,18,False
+3688,Fairmont W Georgia,28,False
+3689,The Palms Inspired Kitchen & Cocktails,8,False
+3690,Charlemagne Siniclang,6,False
+3691,Skyridge Montessori,21,False
+3692,Grammas Pub,20,False
+3693,Valton Landrum - Misc,6,False
+3694,Mark Samson,6,False
+3695,Langley Golf Centre Ltd.,38,False
+3696,ADI Benefits INC.,31,False
+3697,Scott Gadsby,22,False
+3698,Miller's Fries,23,False
+3699,Mark Charlemagne,6,False
+3700,Atlas Steak and Fish Langley,38,False
+3701,Atlas Steak and Fish Kamloops,17,False
+3702,Vivace on the Drive,29,False
+3703,Doe Coffee,29,False
+3704,Food on the Table,29,False
+3705,DashMart West End 51,28,False
+3706,DashMart East Van,29,False
+3707,Wild Blue,22,False
+3708,DNATA,31,False
+3709,Chasters,20,False
+3710,Global Grocers - Oliver,18,False
+3711,Cocktails & Canapes - Penticton,18,False
+3712,Coquette Brasserie,28,False
+3713,Small Gods Brewing,8,False
+3714,Casablanca Food Truck,45,False
+3715,Wild Northern Way,7,False
+3716,UNI-ONE FOOD GROUP INC.,32,False
+3717,Vennie's Sub Shop,29,False
+3718,Drive Canteen,29,False
+3719,Brentwood Bay Resort,8,False
+3720,Braggot Brewing,27,False
+3721,Mount Pleasant Vintage & Provisions,29,False
+3722,Nicli Pronto,27,False
+3723,Parham Bakhtav,6,False
+3724,Dino Gazzola,6,False
+3725,Nobi Nobi Japanese Cuisine,31,False
+3726,Fresh St Market #015 Langley,38,False
+3727,Hanai,29,False
+3728,Ben's Appetite,18,False
+3729,Avenue Bistro,39,False
+3730,Roots98,31,False
+3731,Artilier Catering,15,False
+3732,Romualdo Castro,6,False
+3733,Mucker Next Door,29,False
+3734,High Point Beer Wine Spirits,29,False
+3735,Cambium,16,False
+3736,Suika Snack Bar,28,False
+3737,The Hallway,8,False
+3738,Frontier Steelhead Experience,25,False
+3739,The Gourmet Warehouse,29,False
+3740,La Fabrique St-George Winery,29,False
+3741,Farmers on Duty,21,False
+3742,Sun Nassiri,6,False
+3743,Black Forest Deli,27,False
+3744,Real Canadian Superstore Surrey,37,False
+3745,Real Canadian Superstore NS,27,False
+3746,Real Canadian Superstore Langley,38,False
+3747,Real Canadian Superstores Coquitlam,46,True
+3748,SPUD CALGARY,6,False
+3749,Pier 7,27,False
+3750,St. Eugene Golf Resort & Casino,24,False
+3751,Popeye's Nv,27,False
+3752,Sunflower Cafe,34,False
+3753,ECOchef,28,False
+3754,Online Pick Up- PARK ROYAL,27,False
+3755,End of the Line General Store,27,False
+3756,Natureway International Foods,29,False
+3757,Sysco,50,False
+3758,Mr Bannock,27,False
+3759,Sanjo Sushi,30,False
+3760,Randel Ona,6,False
+3761,Stanley Park Brewing Restaurant and Brewpub,28,False
+3762,Brut Charcuterie Inc.,20,False
+3763,Squamish Youth Soccer Association,21,False
+3764,Meadowbrook,20,False
+3765,Sushi Hil,29,False
+3766,Whistler Minor Hockey,22,False
+3767,L'Apero Bistro,8,False
+3768,Free Bird Table & Bar,31,False
+3769,Stadium Market,29,True
+3770,Harajuku Izakaya,22,False
+3771,Bar Tartare,29,False
+3772,Batch,28,False
+3773,North Shore Winter Club,27,False
+3774,The Human Group,21,False
+3775,Gastronomy Gastown,29,False
+3776,Nature's Fare Warehouse,16,False
+3777,Johnny Umamanikanta,6,False
+3778,Miso Taco,29,False
+3779,Fine Pallet Charcuterie & Wine,21,False
+3780,Backcountry Snowcats,23,False
+3781,Owen Grimes,6,False
+3782,Oca Pastificio,29,False
+3783,Bin 4 Burger - Burnaby,33,False
+3784,Whistler Coastal Chef,22,False
+3785,Anh and Chi,29,False
+3786,Fox & Monocle Cafe,8,False
+3787,Cleveland Meats,21,False
+3788,RVL Management,17,False
+3789,Brightside,28,False
+3790,Zandro Dolor,6,False
+3791,Four Top Hospitality,8,False
+3792,Courtside,29,False
+3793,Moody Ales & Co,48,False
+3794,Alex Lambert - Vernon,16,False
+3795,Alex Lambert - Kelowna,15,False
+3796,Jay Fabros,6,False
+3797,Bows and Arrows Coffee Roasters,8,False
+3798,Ca Marche Creperie,28,False
+3799,Don at Kitsilano,28,False
+3800,Chef Mike Quigley,21,False
+3801,Bitter Creek Cafe,44,False
+3802,Ugly Duckling Dining & Provisions,8,False
+3803,Barney Cerka,6,False
+3804,DashMart North Van 53,27,False
+3805,Wildlight Kitchen & Bar,28,False
+3806,Earnest Ice Cream,29,False
+3807,The Deluxe Chinese Restaurant,31,False
+3808,Seaport City Restaurant,28,False
+3809,Molly's Mountain Meals,22,False
+3810,Baker's Breakfast Joint,33,False
+3811,Brave Brewing Company,48,False
+3812,Shed,40,False
+3813,Strathcona Beer Company,29,False
+3814,Stoke Market,24,False
+3815,Mexican Fiesta Food Service,22,False
+3816,Outbound Station,21,False
+3817,Barnabas Family Ministries Society,20,False
+3819,Eleven Experience,17,False
+3820,Billy Boi,29,False
+3821,Fromagerie De Baie,20,False
+3822,The One Sixty Cafe And Bar,48,False
+3823,Mediterraneo,18,False
+3824,Ian-Misc-S2S,22,False
+3825,Meat Craft Island Butchery,40,False
+3826,Bean Around The World,27,False
+3827,Mediterranean Grill and Bar,28,False
+3828,Hale Dewar,6,False
+3829,Left Coast Catering,22,False
+3830,Sirius Craving White Rock,35,False
+3831,Stong's Market Dunbar DELI,28,False
+3832,Discovery Organics,29,False
+3833,Bangers,8,False
+3834,Coast Mountain CrossFit,27,False
+3835,Timbertrain Coffee Roasters,29,False
+3836,Jagerhof Restaurant,27,False
+3837,Torch Song (Bows&Arrows),8,False
+3838,Twin Peaks Construction Inc.,27,False
+3839,Ethical Table,27,False
+3840,Austria Vancouver Club,31,False
+3841,Sea to Sky Stars Volleyball,22,False
+3842,Kam Chutti,6,False
+3843,Tenderland Meats,28,False
+3844,Chateau Okanagan,15,False
+3845,Civic Hotel,37,False
+3846,Monashee Community Co-op,16,False
+3847,Mindy Mudhar,6,False
+3848,Renegades Tournament,27,False
+3849,Raisu,28,False
+3850,Jungle Room INC.,28,False
+3851,Kev's Epicerie,28,False
+3852,Tasty Market & Cafe Ltd.,29,False
+3853,Luigi Salvaloza,6,False
+3854,Jocelyn Gabriel,6,False
+3855,Wild Goose Winery (Bistro),18,False
+3856,SNS Meals,37,False
+3857,Sergey Voit,6,False
+3858,Freebird Squamish,21,False
+3859,Richard Isaac,6,False
+3860,Micro Bar & Bites,15,False
+3861,The Market Gardens,8,True
+3862,Herald Street Brew Works,8,False
+3863,Birdies Restaurant,33,False
+3864,Rebel Rebel (Jacob),29,False
+3865,Rupert Hancock,6,False
+3866,Kimsquit Bay Lodge,31,False
+3867,New Fuji,28,False
+3868,InnChanter Inc.,11,False
+3869,Natures Fare Kamloops ND,17,False
+3870,Howe Sound Secondary,21,False
+3871,Hestia + Bar,31,False
+3872,Forecast Coffee Village,22,False
+3873,The Brass Spoon Cafe,7,False
+3874,West Coast Wilderness Lodge,20,False
+3875,Country Grocer,43,False
+3876,Yellow Dog Brewing Company Inc.,18,False
+3877,Street Hawker,29,False
+3878,Elite Chef Events,15,False
+3879,Beauties,36,False
+3880,The Break Cafe & Bistro,11,False
+3881,Don-O-Ray Farms,15,True
+3882,Blacksmith Bakery Maple Ridge,34,False
+3883,Blacksmith Bakery 83A Ave,38,False
+3884,EEC Industries,27,False
+3885,Wesco Foods,40,False
+3886,The Local General Store,8,True
+3887,Body Energy Club - Davie,28,False
+3888,The Bridge Cafe,27,False
+3889,Black Walnut Steak & Fish,29,False
+3890,Marcus Kemelmajer,6,False
+3891,Arturo Gomez,6,False
+3892,Sunshine Market,15,False
+3893,Terra Firma's Kitchen,16,False
+3894,Capilano Golf and Country Club,27,False
+3895,Two Donkeys Bakery Ltd.,15,False
+3896,Humo Izakaya,15,False
+3897,Chef Hans Comfort Foods,17,False
+3898,Merlins Wizard,22,False
+3899,Turf,28,False
+3900,MacKenzie Beach Resort,11,False
+3901,The Block at Railtown,36,False
+3902,Mensch Kitchen and Catering,47,False
+3903,Two Rivers Wholesale,6,False
+3904,Salt N Sear Catering,34,False
+3905,The Great Canadian Glass Gathering,39,False
+3906,The Butcher,38,False
+3907,The Parker Hotel Rooftop,28,False
+3908,Bradley Barker,6,False
+3909,Shatterbox Coffee Co,8,False
+3910,Fellas Pizzeria,27,False
+3911,Sports Illustrated Eats,28,False
+3912,Good Fridays General Store,20,False
+3913,The Watson,29,False
+3914,The Point Artist-Run Centre,22,False
+3915,Donald's Market,29,False
+3916,Dishing with Tay,49,False
+3917,Akedo Showten Ramen+Gyoza,38,False
+3918,SYU,31,False
+3919,Two Rivers - Misc,6,False
+3920,Nicli Commissary,29,False
+3921,Bluebonnet Culinary,18,False
+3922,Take Sushi,29,False
+3923,Stu Mittlestead,6,False
+3924,Coast Island Marine Ltd.,39,False
+3925,Fratelli,39,False
+3926,Doc Morgan's Restaurant & Pub,20,False
+3927,Mountain Equipment Company,37,False
+3928,Charisse Abenoja,6,False
+3929,Mark Filatow,15,False
+3930,Body Energy Club - Pender,28,False
+3931,Glacier Valley Farm,21,False
+3932,Lachlan Irwin-Roberts,6,False
+3933,UBC - Gather at Place Vanier,28,False
+3934,Revelry Events Kelowna Ltd.,15,False
+3935,Mongolie Grill,22,False
+3936,Beaumont Catering Inc.,8,False
+3937,Britannia Brewing Corp,15,False
+3938,Azur F&B Division,28,False
+3939,Island Chef Pepper,8,False
+3940,Dear Gus Holdings,29,False
+3941,Okanagan Pasta Company Inc.,15,False
+3942,Collective Catering,8,False
+3943,Chef Mike Wilkins,3,False
+3944,Prairie West Meats,51,False
+3945,Lachlan Irwin-Roberts,6,False
+3946,Country Grocer,40,False
+3947,Glenlyon Norfolk School,8,False
+3948,Kootenay Corner Gardens,19,False
+3949,Sargol Saffron Trading Corp.,31,False
+3950,Brian Heslop,21,False
+3951,Cam Gore,21,False
+3952,Whoa Nellys Food Lab Corp,28,False
+3953,Midnight Joe's,29,False
+3954,Monzo Burger,28,False
+3955,Yoosef Kahe,6,False
+3956,House Misc,6,False
+3957,Hazelmere Golf and Tennis Club Ltd.,37,False
+3958,Body Energy Club - Robson,28,False
+3959,Valhalla Mountain Touring,19,False
+3960,NVIT,17,False
+3961,Edwin Apagalang,6,False
+3962,Allan Nicolas,6,False
+3963,Sparkling Hill Wellness Hotel Ltd.,16,False
+3964,Tony's Meats,18,False
+3965,Tombo Eats Ltd.,8,False
+3966,Skye Hospitality,37,False
+3967,Red Beard Cafe,17,False
+3968,The Beer Farmers,23,False
+3969,Pacific Institute of Culinary Arts,28,False
+3970,Ex Nihilo Chef,15,False
+3971,Maciej Saletnik,27,False
+3972,Braemar Elementary,27,False
+3973,Picnic Whistler Deli Inc,22,False
+3974,Savoury City Foods Ltd.,29,False
+3975,Alex Moreno,6,False
+3976,VinceRob Test,28,False
+3977,Steven Joyner,6,False
+3978,Hani Seyedmohammad,6,False
+3979,Arshad Ailam,6,False
+3980,Great Canadian Casino Resort,46,False
+3981,Craft (Vancouver) Ltd.,28,False
+3982,Ethos Cafe Inc.,24,False
+3983,Bouchier,15,False
+3984,BJ's Country Market,3,False
+3985,Dominic Solmaz,6,False
+3986,V9Y Culinary Services Inc.,40,False
+3987,Sumibiyaki Arashi,29,False
+3988,Tommy's Cafe,27,False
+3989,Better U Market,40,False
+3990,Dandelion Kitchen,10,False
+3991,Donnie's Bistro,19,False
+3992,My Chef,16,False
+3993,Beijing Mansion,31,False
+3994,Naturally Pacific Resort Ltd.,39,False
+3995,Daniel Ilea,6,False
+3996,Ime Pangan,6,False
+3997,Bob the Dog Pet Supplies,27,False
+3998,Clock Tower Coffee,15,False
+4000,St Augustines,29,False
+4001,Integra Tire North Van,27,False
+4002,Cartems Donuts,46,False
+4003,The Rooted Table Collective,19,False
+4004,Devils' Bath Brewing,10,False
+4005,The Marigold Cafe,8,False
+4006,White Wilderness Heliskiing,3,False
+4007,Lina's Deli,28,False
+4008,Vancouver Aboriginal Friendship Centre Society,29,False
+4009,Tango's Meats & Deli,28,False
+4010,Top of The Mountain Foods Ltd.,28,False
+4011,Knead,27,False
+4012,Tyler Tomczyk,6,False
+4013,Long Beach Event Co,11,False
+4014,Shakya Wijesinghe,21,False
+4015,William Quinn,6,False
+4016,Market Grill,28,False
+4017,Bar Gobo,29,False
+4018,The Stock Market,28,False
+4019,Cornell Lazurca,6,False
+4020,Tyron Justin,6,False
+4021,Root's Natural,34,False
+4022,Bufala River District,33,False
+4023,The Corner Store Cafe,28,False
+4024,Jonathan Hicks,6,False
+4025,Bearpaw Heli-Skiing Ltd.,44,False
+4026,Golden Ears Cheesecrafters,34,False
+4027,Relay C 835,31,False
+4028,Deepwater Spirit,31,False
+4029,Red Cedar,31,False
+4030,Relay / Illy 836,31,False
+4031,Coastal News International,31,False
+4032,Johnny Gazzola,6,False
+4033,Jake Graham,6,False
+4034,Greg Clutch,6,False
+4035,Kiran Kaur,6,False
+4036,Azra Mocyat,6,False
+4037,Yurii Kolotylyn,6,False
+4038,Salmon N Bannock Bistro On The Fly,31,False
+4039,Salmon N Bannock Bistro,28,False
+4040,Kafka's Coffee - Park,28,False
+4041,Karavan Premium Meats,32,False
+4042,The Hudson Group,9,False
+4043,David Hanover,6,False
+4044,Tradish's The Ancestor Cafe,49,False
+4045,Taras Parandii,6,False
+4046,Squamish Volleyball Club,21,False
+4047,Mid-Town Station Kitchen+ Drink,15,False
+4048,Train Station Pub,15,False
+4049,Lance's Sportsfishing,11,False
+4050,Breakwater Boutique,8,False
+4051,1933 Liquor Co,29,False
+4052,All Fur Love Treat,40,False
+4053,Angie Vassone,6,False
+4054,DashMart Van 54,29,False
+4055,Body Energy Club- W Broadway,28,False
+4056,Furry Creek Golf,21,False
+4057,Kyle San Diego,6,False
+4058,Oliver Nveng,6,False
+4059,Jose Ruiz,6,False
+4060,Taylin Coyle,6,False
+4061,Stans Snacks,21,False
+4062,Paella Guys,33,False
+4063,Dudes Coffee House,37,False
+4064,Beva Brewing And Blending Ltd.,27,False
+4065,Wilder Cookies Inc.,22,False
+4066,DashMart Van 57,33,False
+4067,La Bettolina,20,False
+4068,Rhys Wright,6,False
+4069,Bobby Kahe,6,False
+4070,Smooth Hermans,29,False
+4071,Body Energy Club - UBC,28,False
+4072,Dunbar Lumber Supply,28,False
+4073,The Local Farm Market,28,False
+4074,Hoo Hoo Club 229,47,False
+4075,Locanda dell'Orso,28,False
+4076,Key-oh Hotel,53,False
+4077,Jerold Bayubay,6,False
+4078,Kelowna Christian School,15,False
+4079,Miso Taco,29,False
+4080,Thrive And Conquer,4,False
+4081,Walter Alvarez,6,False
+4082,Fraser Valley Basket Co.,45,False
+4083,Cannon Estate Winery,45,False
+4084,Sagebrush Golf Course Holdings Ltd.,17,False
+4085,Mickael Loiodice,22,False
+4086,Lunch Lady,29,False
+4087,Jesse Misc - Kamloops,17,False
+4088,Jesse Misc - Penticton,18,False
+4089,Body Energy Club - W 12th Ave,28,False
+4090,Body Energy Club - W Georgia,28,False
+4091,Body Energy Club - Cordova,28,False
+4092,Body Energy Club - E 3rd Ave,29,False
+4093,Aroma Foods,3,False
+4094,The Rise Resort,16,False
+4095,Monk's Market,35,False
+4096,BCause Ventures LTD,8,False
+4097,UBC – Harvest at Brock,28,False
+4098,Derrick's Steakhouse,15,False
+4099,Bankhead Elementary,15,False
+4100,BCO Volleyball Club,27,False
+4101,Granville Island Brewing,28,False
+4102,Biscuit: A Place to Sup,24,False
+4103,Arsh Kaur,6,False
+4104,Samantha Whiffin,27,False
+4105,Vesper Lounge,28,False
+4106,UBC - Feast at Totem,28,False
+4107,Meat Fuel for Coast Mountain CrossFit,27,False
+4108,Millers Meatcraft,20,False
+4109,Timo Humphries,6,False
+4110,Panam Performance Holdings Inc.,31,False
+4111,Clare Stenham-Brown,21,False
+4112,Tsawwassen Springs/Pat Quinn's Restaurant & Bar,32,False
+4113,Hunnybee Bruncheonette,29,False
+4114,Oak; Catered Events,15,False
+4115,Big Bay Landing,39,False
+4116,Sage Hayward Vineyards,11,False
+4117,Alex Shiff,27,False
+4118,Brayden Cluett,6,False
+4119,Niwa Restaurant,29,False
+4120,Joshua's Footlong Glizzys,33,False
+4121,Beest,28,False
+4122,Beefway Meats,29,False
+4123,Walter's Exotic Meats,38,False
+4124,Langley Farm Market - Austin,46,False
+4125,Langley Farm Market - 207,34,False
+4126,Langley Farm Market (Maple) Inc,34,False
+4127,Langley Farm Market - Harris (Pitt),34,False
+4128,Edge Catering,29,False
+4130,Cow Wings,37,False
+4131,The Bay Gibsons,20,False
+4132,Tsawwassen Joe’s Farm Market,32,False
+4133,Casa Molina,29,False
+4134,Boss Halal Meat - Broadway,28,False
+4135,Organic Warehouse,37,False
+4136,Burnt Orange Cafe,33,False
+4138,Roman Shevchenko,6,False
+4139,Good Thief,29,False
+4140,John Paul Pagaran,6,False
+4141,Michael Macababbad,6,False
+4142,Petrichor Social,28,False
+4143,Copperpenny Distilling,27,False
+4144,Windsor Quality Meats,29,False
+4145,Becca June's Table,29,False
+4146,JOSS,28,False
+4147,Air North Charter And Training,31,False
+4148,Sungiven Foods- Burnaby Greystone Store,33,False
+4149,Sungiven Foods- Burnaby Big Bend Store,33,False
+4150,Bar Luna,40,False
+4151,Cassidy Country Kitchen,40,False
+4152,Strathcona Brewing North,27,False
+4153,Lynn Valley Girls Basketball,27,False
+4154,Kelly Hardman,6,False
+4155,MRC Liquids+Solids,29,False
+4156,Marilena Cafe & Raw Bar,8,False
+4157,Lumache Foods,8,False
+4158,Bartholomew’s Pub,8,False
+4159,Little Karp Restaurant,31,False
+4160,Le Doux Ciel,28,False
+4161,Vicinity Mart,27,False
+4162,Teaghan Trewitt,6,False
+4163,Stay Wild Natural Health Inc,23,False
+4164,The Britannia General Store,21,False
+4165,Basic & Bare,27,False
+4166,NHV Natural Pet Products,28,False
+4167,West Coast Strength & Movement,28,False
+4168,Restaurant Kavita,29,False
+4169,Dogged,29,False
+4170,Negin Nazemi,6,False
+4171,The Kootenay Bakery Cafe Co-op,19,False
+4172,Kin & Folk,18,False
+4173,Loam Bistro,27,False
+4174,Lions Bay General Store,21,False
+4175,Coast Mountain Academy,6,False
+4176,Kozak Ukrainian Restaurant,30,False
+4177,Always Fresh Meat,37,False
+4178,Pacific Farm Markets,31,False
+4179,Jeff McCutcheon,6,False
+4180,Major Chef Inc,29,False
+4181,University Women's Club of Vancouver,28,False
+4182,Andonis Vancouver,28,False
+4183,JDK Fine Foods Limited,31,False
+4184,Brendon Webster,6,False
+4185,Kelowna Gospel Mission,15,False
+4186,Vasyl Pistruga,6,False
+4187,Cow-op,47,False
+4188,Breeze Bar,29,False
+4189,Stong's Markets Squamish,21,False
+4190,Counter Cultured Foods,19,False
+4191,Sushi MAHANA,27,False
+4192,Rabbit Rabbit Wine Bar,8,False
+4193,Whistler Skating Club,22,False
+4194,Weber Powder,16,False
+4195,Boss Halal Meat - 45th Ave,29,False
+4196,Ave Maria Health,44,False
+4197,Aura Natural Market,38,False
+4198,Heritage Restaurant & Bar,29,False
+4199,Courtney Gordon,15,False
+4200,Coasters Coffee,30,False
+4201,Nesvog Meats,40,False
+4202,Meat Craft Island Butchery,40,True
+4203,Meat Craft Qualicum Butchery,40,False
+4204,Oram,27,False
+4205,Brian Whelan,6,False
+4206,Montgomery Deforest,6,False
+4207,Earth Candy Farm,43,False
+4208,Max Morrison,6,False
+4209,At Your Service Catering,38,False
+4210,Timber Shuswap,17,False
+4211,Global Grocers - Penticton,18,False
+4212,Mekong Restaurant,22,False
+4213,Elysees Cafe & Bakery,29,False
+4214,King Taps Kelowna Lakeside,15,False
+4215,Rob Hatch - Misc,6,False
+4216,The Village Taphouse,27,False
+4217,Anita Pichlmeier,6,False
+4218,Thai House Restaurant,27,False
+4219,Randy Goodwin,22,False
+4220,House of Dawn,31,False
+4221,Christopher Parkinson,6,False
+4222,Savoured Elevations,19,False
+4223,**DO NOT FILL** Darren EateryXfer List,4,False
+4224,Scott Switzer,6,False
+4225,Scott Switzer - Misc,6,False
+4226,Loyd Bulalakaw,6,False
+4227,Carson Graham Secondary,27,False
+4228,Chu Chan,33,False
+4229,The Old Farm Market - Courtenay,39,False
+4230,Prime Renders,29,False
+4231,Wellstand,40,False
+4232,European Deli,28,False
+4233,Peya YVR,29,False
+4234,Unkel's Street Eats,36,False
+4235,Missing Chopsticks,31,False
+4236,Home Bistronomy,22,False
+4237,Patrick Niegos,6,False
+4238,Matt Cusano,8,False
+4239,Matt Cusano - Misc,8,False
+4240,Urban Grocer,8,False
+4241,Arlos Naturals,29,False
+4242,MCG Aviation,32,False
+4243,I Woof Treats,33,False
+4244,Middlechild,20,False
+4245,Randy Rolfe,6,False
+4246,Saxe Point Public House,8,False
+4247,Urban Distilleries,15,False
+4248,Spudukes,24,True
+4249,Bray's,8,False
+4250,White Spot YVR,31,False
+4251,Nemesis Coffee Central,37,False
+4253,Malik Diallo,6,False
+4254,Chau Cafe,29,False
+4255,Mountainside Secondary School,27,False
+4256,Nero Tondo,29,False
+4257,Rockit Coffee Co.,22,False
+4258,Seasoned Dining Experiences,8,False
+4259,The Community Farm Store Ltd,47,False
+4260,DBA Roar Restaurant,11,False
+4261,Mike Cochrane - Misc,6,False
+4262,Mike Cochrane,6,False
+4263,King Taps Willowbrook,38,False
+4264,Nui Eatery,29,False
+4265,St. Thomas Aquinas Regional Secondary School,27,False
+4266,Ripple Rock Elementary,39,False
+4267,WSS Athletic Department,22,False
+4268,The Cook Shack,44,False
+4269,Canadian Zinc Corp,3,False
+4270,Madame Danh,29,False
+4271,Mott 32 Vancouver,28,False
+4272,Aragon Hospitality Ltd,8,False
+4273,Mile One Ventures Ltd.,6,False
+4274,Sea Cider Ltd.,8,False
+4275,The Fort Neighbourhood Pub,38,False
+4276,Socotra Trading Ltd.,29,False
+4277,Ask Pablo,15,False
+4278,Daniel Harvey,33,False
+4279,Michael Vins,6,False
+4280,Fawn Bluff,39,False
+4281,Lorette Brasserie,22,False
+4282,Qualicum Beach Cafe,40,False
+4283,Cafe Brio,8,False
+4284,Luke Annunziello,27,False
+4285,Antonio Gonzalez-Delgado,6,False
+4286,Rizaldy Reterta,6,False
+4287,Windsor Meats Steveston,31,False
+4288,Vows & Vines Vineyard,18,False
+4289,Radisson Hotel Van Airport,31,False
+4290,Shanoj Panakkal,6,False
+4291,DashMart Surrey,37,False
+4293,Wildling,15,False
+4294,Brackendale Art Gallery,21,False
