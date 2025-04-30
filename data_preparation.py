@@ -92,12 +92,23 @@ def prepare_full_data(raw: dict) -> pd.DataFrame:
     numeric_cols = ["QuantityShipped", "SalePrice", "UnitCost", "WeightLb", "ItemCount"]
     df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors="coerce").fillna(0.0)
 
-    per_item = df["WeightLb"] / df["ItemCount"].replace(0, np.nan)
-    is_wt = (df["UnitOfBillingId"] == "3") & (df["WeightLb"] > 0)
-    df["ShippedWeightLb"] = np.where(is_wt, df["WeightLb"], df["ItemCount"] * per_item.fillna(0))
+    # Correct revenue calculation per business logic
+    df["ShippedWeightLb"] = np.where(
+        df["UnitOfBillingId"] == "3",
+        df["WeightLb"],
+        df["ItemCount"]
+    )
 
-    df["Revenue"] = np.where(df["IsProduction"] != "1", df["ShippedWeightLb"] * df["SalePrice"], 0.0)
-    df["Cost"] = np.where(df["IsProduction"] != "1", df["ShippedWeightLb"] * df["UnitCost"], 0.0)
+    df["Revenue"] = np.where(
+        df["IsProduction"] != "1",
+        df["ShippedWeightLb"] * df["SalePrice"],
+        0.0
+    )
+    df["Cost"] = np.where(
+        df["IsProduction"] != "1",
+        df["ShippedWeightLb"] * df["UnitCost"],
+        0.0
+    )
     df["Profit"] = df["Revenue"] - df["Cost"]
 
     df["Date"] = pd.to_datetime(df.get("CreatedAt_order"), errors="coerce").dt.normalize()
