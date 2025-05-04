@@ -87,6 +87,41 @@ def display_seasonality_heatmap(
     st.plotly_chart(fig, use_container_width=True, key=key)
 
 @st.cache_data
+def rfm_scatter(
+    df: pd.DataFrame,
+    key: str
+) -> None:
+    """
+    Compute RFM segments and render a scatter plot.
+    """
+    now = df["Date"].max()
+    rfm = (
+        df.groupby("CustomerName")
+          .agg(
+              Recency   = ("Date", lambda x: (now - x.max()).days),
+              Frequency = ("OrderId", "nunique"),
+              Monetary  = ("Revenue", "sum")
+          )
+          .reset_index()
+    )
+    rfm["R"] = pd.qcut(rfm.Recency,   4, labels=[4,3,2,1]).astype(int)
+    rfm["F"] = pd.qcut(rfm.Frequency, 4, labels=[1,2,3,4]).astype(int)
+    rfm["M"] = pd.qcut(rfm.Monetary,  4, labels=[1,2,3,4]).astype(int)
+    rfm["Segment"] = rfm.R.map(str) + rfm.F.map(str) + rfm.M.map(str)
+
+    fig = px.scatter(
+        rfm,
+        x="Recency",
+        y="Monetary",
+        size="Frequency",
+        color="Segment",
+        hover_data=["CustomerName"],
+        title="RFM Segmentation"
+    )
+    fig.update_layout(xaxis_title="Recency (days)", yaxis_title="Monetary ($)")
+    st.plotly_chart(fig, use_container_width=True, key=key)
+
+@st.cache_data
 def compute_interpurchase(df: pd.DataFrame) -> pd.Series:
     """
     Compute days between successive orders for each customer.
@@ -108,8 +143,8 @@ def compute_volatility(
     period: str = "M"
 ) -> pd.DataFrame:
     """
-    Compute mean, std and coefficient of variation of `metric` aggregated
-    by each calendar period (month) per ProductName.
+    Compute mean, std and CV of `metric` aggregated by
+    each calendar period (month) per ProductName.
     """
     ts = (
         df
@@ -156,7 +191,7 @@ def get_monthly_supplier(
     metric: str = "Revenue"
 ) -> pd.DataFrame:
     """
-    Returns month-by-month totals of `metric` per supplier.
+    Month-by-month totals of `metric` per supplier.
     """
     m = (
         df.groupby([pd.Grouper(key="Date", freq="M"), "SupplierName"])[metric]
