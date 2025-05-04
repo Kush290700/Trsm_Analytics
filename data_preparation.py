@@ -136,13 +136,31 @@ def prepare_full_data(raw: dict) -> pd.DataFrame:
         df.loc[pm, ["Revenue","Cost","Profit"]] = 0.0
         logger.info(f"Excluded {pm.sum():,} production items from margin")
 
-    # 8) Final dates and delivery metrics
-    df["Date"]         = pd.to_datetime(df.get("CreatedAt_order"), errors="coerce").dt.normalize()
-    df["ShipDate"]     = pd.to_datetime(df.get("ShipDate") or df.get("DateShipped"), errors="coerce")
-    df["DeliveryDate"] = pd.to_datetime(df.get("DeliveryDate"), errors="coerce")
-    df["DateExpected"] = pd.to_datetime(df.get("DateExpected"), errors="coerce")
-    df["TransitDays"]  = (df["DeliveryDate"] - df["ShipDate"]).dt.days.clip(lower=0).fillna(0)
-    df["DeliveryStatus"] = np.where(df["DeliveryDate"]<=df["DateExpected"], "On Time", "Late")
+        # 8) Final dates and delivery metrics
+    # CreatedAt_order → Date
+    df["Date"] = pd.to_datetime(df.get("CreatedAt_order", None), errors="coerce").dt.normalize()
+
+    # ShipDate: prefer ShipDate column, fallback to DateShipped
+    if "ShipDate" in df.columns:
+        df["ShipDate"] = pd.to_datetime(df["ShipDate"], errors="coerce")
+    elif "DateShipped" in df.columns:
+        df["ShipDate"] = pd.to_datetime(df["DateShipped"], errors="coerce")
+    else:
+        df["ShipDate"] = pd.NaT
+
+    # DeliveryDate: already merged or in raw packs fallback
+    df["DeliveryDate"] = pd.to_datetime(df.get("DeliveryDate", None), errors="coerce")
+
+    # DateExpected
+    df["DateExpected"] = pd.to_datetime(df.get("DateExpected", None), errors="coerce")
+
+    # TransitDays & DeliveryStatus
+    df["TransitDays"] = (df["DeliveryDate"] - df["ShipDate"]).dt.days.clip(lower=0).fillna(0)
+    df["DeliveryStatus"] = np.where(
+        df["DeliveryDate"] <= df["DateExpected"],
+        "On Time",
+        "Late"
+    )
 
     logger.info(f"✅ Prepared full data: {len(df):,} rows")
     return df
