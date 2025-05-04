@@ -1,5 +1,4 @@
 # File: filters.py
-
 import pandas as pd
 import streamlit as st
 
@@ -29,47 +28,29 @@ def apply_filters(df: pd.DataFrame) -> pd.DataFrame:
 
     mask = df['Date'].dt.date.between(start_date, end_date)
 
-    # — Product (SKU – ProductName) filter —
-    sku_prod = (
-        df[['SKU', 'ProductName']]
-        .dropna(subset=['SKU','ProductName'])
-        .drop_duplicates()
-        .sort_values(['SKU','ProductName'])
-    )
+    # — Product filter —
     prod_options = ["All"] + [
-        f"{row.SKU} – {row.ProductName}"
-        for _, row in sku_prod.iterrows()
+        f"{sku} – {name}"
+        for sku, name in sorted(
+            df[['SKU', 'ProductName']]
+              .dropna()
+              .drop_duplicates()
+              .apply(tuple, axis=1)
+        )
     ]
-    selected_prods = st.sidebar.multiselect(
-        "Product(s)",
-        prod_options,
-        default=["All"],
-        key="filt_sku_prod"
+    sel_prods = st.sidebar.multiselect(
+        "Product(s)", prod_options, default=["All"], key="filt_sku_prod"
     )
-    if "All" not in selected_prods:
-        chosen_names = [item.split("–",1)[1].strip() for item in selected_prods]
-        mask &= df['ProductName'].isin(chosen_names)
+    if "All" not in sel_prods:
+        chosen = [item.split('–',1)[1].strip() for item in sel_prods]
+        mask &= df['ProductName'].isin(chosen)
 
     # — Region filter —
-    regions = get_unique(df, "RegionName")
+    regions = ["All"] + get_unique(df, "RegionName")
     sel_regions = st.sidebar.multiselect(
-        "Region(s)",
-        ["All"] + regions,
-        default=["All"],
-        key="filt_region"
+        "Region(s)", regions, default=["All"], key="filt_region"
     )
     if "All" not in sel_regions:
         mask &= df['RegionName'].isin(sel_regions)
-
-    # — Sales Rep filter —
-    reps = get_unique(df, "SalesRepId")
-    sel_reps = st.sidebar.multiselect(
-        "Sales Rep(s)",
-        ["All"] + reps,
-        default=["All"],
-        key="filt_rep"
-    )
-    if "All" not in sel_reps:
-        mask &= df['SalesRepId'].isin(sel_reps)
 
     return df.loc[mask].copy()
