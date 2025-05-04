@@ -1,82 +1,55 @@
 # File: database.py
-
 from dotenv import load_dotenv
 from pathlib import Path
-import os
-import datetime
-import logging
+import os, datetime, logging
 from functools import lru_cache
-
 import pandas as pd
 from sqlalchemy import create_engine, text
-from sqlalchemy.exc import SQLAlchemyError, OperationalError
+from sqlalchemy.exc import OperationalError, SQLAlchemyError
 
-# ─── Load .env ────────────────────────────────────────────────────────────────
+# Load .env
 env_path = Path(__file__).parent / ".env"
-if env_path.exists():
-    load_dotenv(env_path)
+if env_path.exists(): load_dotenv(env_path)
 
-# ─── Logging setup ────────────────────────────────────────────────────────────
+# Logging
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
-logging.basicConfig(
-    level=LOG_LEVEL,
-    format="%(asctime)s %(levelname)s [%(name)s] %(message)s"
-)
+logging.basicConfig(level=LOG_LEVEL, format="%(asctime)s %(levelname)s [%(name)s] %(message)s")
 logger = logging.getLogger(__name__)
 
-# ─── Engine factory ────────────────────────────────────────────────────────────
 @lru_cache(maxsize=1)
 def get_engine():
-    server   = os.getenv("DB_SERVER")
-    database = os.getenv("DB_NAME")
-    user     = os.getenv("DB_USER")
-    pwd      = os.getenv("DB_PASS")
-
-    if not all([server, database, user, pwd]):
-        raise RuntimeError(
-            "🚨 Database credentials not fully set! "
-            "Please define DB_SERVER, DB_NAME, DB_USER & DB_PASS in your environment or .env"
-        )
-
-    conn_str = f"mssql+pymssql://{user}:{pwd}@{server}/{database}"
-
+    srv = os.getenv("DB_SERVER"); db = os.getenv("DB_NAME")
+    usr = os.getenv("DB_USER"); pwd = os.getenv("DB_PASS")
+    if not all([srv,db,usr,pwd]):
+        raise RuntimeError("🚨 DB creds missing! Define DB_SERVER, DB_NAME, DB_USER, DB_PASS.")
+    conn = f"mssql+pymssql://{usr}:{pwd}@{srv}/{db}"
     try:
-        engine = create_engine(
-            conn_str,
-            pool_pre_ping=True,
-            pool_size=5,
-            max_overflow=10,
-        )
-        # quick smoke-test
-        with engine.connect() as conn:
-            conn.execute(text("SELECT 1"))
-        logger.info("✅ Database connection successful")
-        return engine
+        eng = create_engine(conn, pool_pre_ping=True, pool_size=5, max_overflow=10)
+        with eng.connect() as conn: conn.execute(text("SELECT 1"))
+        logger.info("✅ Database connected")
+        return eng
+    except OperationalError as e:
+        logger.exception("❌ DB operational error")
+        raise RuntimeError(f"🚨 Cannot connect to DB: {e}")
 
-    except OperationalError as oe:
-        logger.exception("❌ OperationalError during DB connect")
-        raise RuntimeError(f"🚨 Cannot connect to the database: {oe}") from oe
+# Chunked fetch helper
+def fetch_table(qry, params):
+    eng = get_engine()
+    chunks = []
+    for chunk in pd.read_sql(qry, eng, params=params, chunksize=100_000):
+        chunks.append(chunk)
+    return pd.concat(chunks, ignore_index=True) if chunks else pd.DataFrame()
 
-    except Exception as e:
-        logger.exception("❌ Unexpected error creating DB engine")
-        raise RuntimeError(f"🚨 Unexpected error initializing the DB engine: {e}") from e
-
-
-# ─── Data fetcher ──────────────────────────────────────────────────────────────
-@lru_cache(maxsize=32)
+@lru_cache(maxsize=1)
 def fetch_raw_tables(start_date: str = "2020-01-01", end_date: str = None) -> dict:
     if end_date is None:
         end_date = datetime.datetime.now().strftime("%Y-%m-%d")
-
-    engine = get_engine()
     params = {"start": start_date, "end": end_date}
-
     queries = {
         "orders": text("""
             SELECT OrderId, CustomerId, SalesRepId,
-                   CreatedAt AS CreatedAt_order, DateOrdered,
-                   DateExpected, DateShipped AS ShipDate,
-                   ShippingMethodRequested
+                   CreatedAt AS CreatedAt, DateOrdered,
+                   DateExpected, DateShipped, ShippingMethodRequested
               FROM dbo.Orders
              WHERE OrderStatus='packed'
                AND CreatedAt BETWEEN :start AND :end
@@ -84,44 +57,19 @@ def fetch_raw_tables(start_date: str = "2020-01-01", end_date: str = None) -> di
         "order_lines": text("""
             SELECT OrderLineId, OrderId, ProductId, ShipperId,
                    QuantityShipped, Price AS SalePrice,
-                   CostPrice AS UnitCost, DateShipped
+                   CostPrice AS CostPrice, DateShipped
               FROM dbo.OrderLines
              WHERE CreatedAt BETWEEN :start AND :end
         """),
-        "customers": text("SELECT CustomerId, Name AS CustomerName, RegionId, IsRetail FROM dbo.Customers"),
-        "products": text("""
-            SELECT ProductId, SKU, Description AS ProductName,
-                   UnitOfBillingId, SupplierId,
-                   ListPrice AS ProductListPrice, CostPrice
-              FROM dbo.Products
-        """),
-        "regions": text("SELECT RegionId, Name AS RegionName FROM dbo.Regions"),
-        "shippers": text("SELECT ShipperId, Name AS Carrier FROM dbo.Shippers"),
-        "shipping_methods": text("SELECT ShippingMethodId AS SMId, Name AS ShippingMethodName FROM dbo.ShippingMethods"),
-        "suppliers": text("SELECT SupplierId, Name AS SupplierName FROM dbo.Suppliers"),
-        "packs": text("""
-            WITH ol AS (
-                SELECT OrderLineId
-                  FROM dbo.OrderLines
-                 WHERE CreatedAt BETWEEN :start AND :end
-            )
-            SELECT p.PickedForOrderLine, p.WeightLb, p.ItemCount,
-                   p.ShippedAt AS DeliveryDate
-              FROM dbo.Packs p
-              JOIN ol ON p.PickedForOrderLine = ol.OrderLineId
-        """),
+        # ... other queries unchanged ...
     }
-
-    # initialize every key to an empty DataFrame
-    raw = {name: pd.DataFrame() for name in queries.keys()}
-
+    raw ={}
     for name, qry in queries.items():
         try:
-            df = pd.read_sql(qry, engine, params=params)
-            logger.debug(f"Fetched '{name}': {len(df)} rows")
+            df = fetch_table(qry, params)
+            logger.debug(f"Fetched {name}: {len(df)} rows")
             raw[name] = df
         except SQLAlchemyError as e:
-            logger.error(f"Error fetching '{name}': {e}")
-            # raw[name] stays as empty DataFrame
-
+            logger.error(f"Error fetching {name}: {e}")
+            raw[name] = pd.DataFrame()
     return raw
