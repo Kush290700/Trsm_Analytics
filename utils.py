@@ -1,5 +1,3 @@
-# File: utils.py
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -16,9 +14,7 @@ def filter_by_date(
     start_date: pd.Timestamp,
     end_date: pd.Timestamp
 ) -> pd.DataFrame:
-    """
-    Return rows where df['Date'] is between start_date and end_date inclusive.
-    """
+    """Return rows where df['Date'] is between start_date and end_date inclusive."""
     mask = (df["Date"] >= start_date) & (df["Date"] <= end_date)
     return df.loc[mask]
 
@@ -34,7 +30,7 @@ def fit_prophet(
     freq: str = "M"
 ) -> pd.DataFrame:
     """
-    Fit a Prophet model on a DataFrame with columns ['ds', 'y'], return forecast.
+    Fit a Prophet model on a DataFrame with columns ['ds','y'], return forecast.
     """
     model = Prophet(
         yearly_seasonality=True,
@@ -114,9 +110,9 @@ def rfm_scatter(
         .reset_index()
     )
 
-    rfm["R"] = pd.qcut(rfm["Recency"], 4, labels=[4, 3, 2, 1]).astype(int)
-    rfm["F"] = pd.qcut(rfm["Frequency"], 4, labels=[1, 2, 3, 4]).astype(int)
-    rfm["M"] = pd.qcut(rfm["Monetary"], 4, labels=[1, 2, 3, 4]).astype(int)
+    rfm["R"] = pd.qcut(rfm["Recency"], 4, labels=[4,3,2,1]).astype(int)
+    rfm["F"] = pd.qcut(rfm["Frequency"], 4, labels=[1,2,3,4]).astype(int)
+    rfm["M"] = pd.qcut(rfm["Monetary"], 4, labels=[1,2,3,4]).astype(int)
     rfm["Segment"] = rfm["R"].map(str) + rfm["F"].map(str) + rfm["M"].map(str)
 
     fig = px.scatter(
@@ -139,7 +135,7 @@ def compute_interpurchase(df: pd.DataFrame) -> pd.Series:
     """
     diffs = (
         df
-        .sort_values(["CustomerName", "Date"])
+        .sort_values(["CustomerName","Date"] )
         .groupby("CustomerName")["Date"]
         .diff()
         .dt.days
@@ -152,29 +148,30 @@ def compute_interpurchase(df: pd.DataFrame) -> pd.Series:
 def compute_volatility(
     df: pd.DataFrame,
     metric: str,
-    period: str = "M"
+    period: str = "M",
+    freq: str = None
 ) -> pd.DataFrame:
     """
-    Compute mean, std and coefficient of variation of `metric` by
-    calendar period for each ProductName.
+    Compute mean, std and CV of `metric` by calendar period for each ProductName.
+
+    Users may pass `period` (old name) or `freq` (new name) interchangeably.
     """
-    # 1) aggregate metric by period & product
+    freq_to_use = freq if freq is not None else period
+
     ts = (
         df
-        .groupby([pd.Grouper(key="Date", freq=period), "ProductName"])[metric]
+        .groupby([pd.Grouper(key="Date", freq=freq_to_use), "ProductName"] )[metric]
         .sum()
         .reset_index()
     )
-
-    # 2) compute stats
     stats = ts.groupby("ProductName")[metric].agg(mean="mean", std="std").reset_index()
     stats["std"] = stats["std"].fillna(0.0)
 
-    # 3) vectorized CV: std / mean, handling zeros
+    # vectorized coefficient of variation
     stats["CV"] = stats["std"] / stats["mean"].replace(0, np.nan)
     stats["CV"] = stats["CV"].fillna(0.0)
 
-    return stats.astype({"mean": "float32", "std": "float32", "CV": "float32"})
+    return stats.astype({"mean":"float32","std":"float32","CV":"float32"})
 
 
 @st.cache_data
@@ -186,24 +183,24 @@ def get_supplier_summary(df: pd.DataFrame) -> pd.DataFrame:
         df
         .groupby("SupplierName")
         .agg(
-            TotalRev  = ("Revenue", "sum"),
-            TotalCost = ("Cost",    "sum"),
-            TotalProf = ("Profit",  "sum"),
-            Orders    = ("OrderId", "nunique")
+            TotalRev  = ("Revenue","sum"),
+            TotalCost = ("Cost","sum"),
+            TotalProf = ("Profit","sum"),
+            Orders    = ("OrderId","nunique")
         )
         .reset_index()
     )
     summ["MarginPct"] = np.where(
         summ["TotalRev"] > 0,
-        summ["TotalProf"] / summ["TotalRev"] * 100,
+        summ["TotalProf"]/summ["TotalRev"]*100,
         0.0
     )
     return summ.astype({
-        "TotalRev":  "float32",
-        "TotalCost": "float32",
-        "TotalProf": "float32",
-        "Orders":    "int32",
-        "MarginPct": "float32"
+        "TotalRev":"float32",
+        "TotalCost":"float32",
+        "TotalProf":"float32",
+        "Orders":"int32",
+        "MarginPct":"float32"
     })
 
 
@@ -217,7 +214,7 @@ def get_monthly_supplier(
     """
     monthly = (
         df
-        .groupby([pd.Grouper(key="Date", freq="M"), "SupplierName"])[metric]
+        .groupby([pd.Grouper(key="Date", freq="M"), "SupplierName"] )[metric]
         .sum()
         .reset_index()
     )
