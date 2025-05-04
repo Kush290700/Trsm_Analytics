@@ -14,10 +14,8 @@ def filter_by_date(
     start_date: pd.Timestamp,
     end_date: pd.Timestamp
 ) -> pd.DataFrame:
-    """Return rows where df['Date'] is between start_date and end_date inclusive."""
-    mask = (df["Date"] >= start_date) & (df["Date"] <= end_date)
-    return df.loc[mask]
-
+    """Return rows where df.Date is between start_date and end_date inclusive."""
+    return df[(df["Date"] >= start_date) & (df["Date"] <= end_date)]
 
 # ──────────────────────────────────────────────────────────────────────────────
 # CACHED TRANSFORMS & VISUALS
@@ -30,17 +28,16 @@ def fit_prophet(
     freq: str = "M"
 ) -> pd.DataFrame:
     """
-    Fit a Prophet model on a DataFrame with columns ['ds','y'], return forecast.
+    Fit a Prophet model on a DataFrame with columns ['ds','y'], return the forecast.
     """
-    model = Prophet(
+    m = Prophet(
         yearly_seasonality=True,
         weekly_seasonality=False,
         daily_seasonality=False
     )
-    model.fit(df)
-    future = model.make_future_dataframe(periods=periods, freq=freq)
-    return model.predict(future)
-
+    m.fit(df)
+    fut = m.make_future_dataframe(periods=periods, freq=freq)
+    return m.predict(fut)
 
 @st.cache_data
 def seasonality_heatmap_data(
@@ -49,28 +46,26 @@ def seasonality_heatmap_data(
     val_col: str
 ) -> pd.DataFrame:
     """
-    Aggregate val_col by calendar month, pivot into Month×Year for a heatmap.
+    Aggregate val_col by calendar month, pivot into Month×Year for heatmap.
     """
-    monthly = (
+    tmp = (
         df
         .groupby(pd.Grouper(key=date_col, freq="M"))[val_col]
         .sum()
         .reset_index()
     )
-    monthly["Month"] = monthly[date_col].dt.month.map(lambda m: calendar.month_abbr[m])
-    monthly["Year"] = monthly[date_col].dt.year.astype(str)
+    tmp["Month"] = tmp[date_col].dt.month.map(lambda m: calendar.month_abbr[m])
+    tmp["Year"]  = tmp[date_col].dt.year.astype(str)
 
     month_order = list(calendar.month_abbr)[1:]
-    monthly["Month"] = pd.Categorical(monthly["Month"], categories=month_order, ordered=True)
+    tmp["Month"] = pd.Categorical(tmp["Month"], categories=month_order, ordered=True)
 
-    pivot = (
-        monthly
+    return (
+        tmp
         .pivot(index="Month", columns="Year", values=val_col)
         .fillna(0)
         .reindex(month_order)
     )
-    return pivot
-
 
 def display_seasonality_heatmap(
     pivot: pd.DataFrame,
@@ -89,120 +84,88 @@ def display_seasonality_heatmap(
     )
     st.plotly_chart(fig, use_container_width=True, key=key)
 
-
 @st.cache_data
-def rfm_scatter(
-    df: pd.DataFrame,
-    key: str
-) -> None:
-    """
-    Compute RFM segments and render a Plotly scatter plot.
-    """
-    now = df["Date"].max()
-    rfm = (
-        df
-        .groupby("CustomerName")
-        .agg(
-            Recency   = ("Date", lambda x: (now - x.max()).days),
-            Frequency = ("OrderId", "nunique"),
-            Monetary  = ("Revenue", "sum")
-        )
-        .reset_index()
-    )
-
-    rfm["R"] = pd.qcut(rfm["Recency"], 4, labels=[4,3,2,1]).astype(int)
-    rfm["F"] = pd.qcut(rfm["Frequency"], 4, labels=[1,2,3,4]).astype(int)
-    rfm["M"] = pd.qcut(rfm["Monetary"], 4, labels=[1,2,3,4]).astype(int)
-    rfm["Segment"] = rfm["R"].map(str) + rfm["F"].map(str) + rfm["M"].map(str)
-
-    fig = px.scatter(
-        rfm,
-        x="Recency",
-        y="Monetary",
-        size="Frequency",
-        color="Segment",
-        hover_data=["CustomerName"],
-        title="RFM Segmentation"
-    )
-    fig.update_layout(xaxis_title="Recency (days)", yaxis_title="Monetary ($)")
-    st.plotly_chart(fig, use_container_width=True, key=key)
-
-
-@st.cache_data
-def compute_interpurchase(df: pd.DataFrame) -> pd.Series:
+def compute_interpurchase(
+    df: pd.DataFrame
+) -> pd.Series:
     """
     Compute days between successive orders for each customer.
     """
-    diffs = (
+    return (
         df
-        .sort_values(["CustomerName","Date"] )
+        .sort_values(["CustomerName", "Date"])
         .groupby("CustomerName")["Date"]
         .diff()
         .dt.days
         .dropna()
     )
-    return diffs
-
 
 @st.cache_data
 def compute_volatility(
     df: pd.DataFrame,
     metric: str,
-    period: str = "M",
-    freq: str = None
+    *,
+    freq: str = None,
+    period: str = None,
+    group_col: str = "ProductName"
 ) -> pd.DataFrame:
     """
-    Compute mean, std and CV of `metric` by calendar period for each ProductName.
-
-    Users may pass `period` (old name) or `freq` (new name) interchangeably.
+    Compute mean, std and coefficient‐of‐variation of `metric` aggregated by
+    each calendar frequency (monthly by default) per `group_col`.
     """
-    freq_to_use = freq if freq is not None else period
-
+    _freq = freq or period or "M"
     ts = (
         df
-        .groupby([pd.Grouper(key="Date", freq=freq_to_use), "ProductName"] )[metric]
+        .groupby([pd.Grouper(key="Date", freq=_freq), group_col])[metric]
         .sum()
         .reset_index()
     )
-    stats = ts.groupby("ProductName")[metric].agg(mean="mean", std="std").reset_index()
+    stats = (
+        ts
+        .groupby(group_col)[metric]
+        .agg(mean="mean", std="std")
+        .reset_index()
+    )
     stats["std"] = stats["std"].fillna(0.0)
-
-    # vectorized coefficient of variation
-    stats["CV"] = stats["std"] / stats["mean"].replace(0, np.nan)
-    stats["CV"] = stats["CV"].fillna(0.0)
-
-    return stats.astype({"mean":"float32","std":"float32","CV":"float32"})
-
+    stats["CV"] = np.where(stats["mean"] > 0, stats["std"] / stats["mean"], 0.0)
+    return stats.astype({
+        group_col: "string",
+        "mean": "float32",
+        "std": "float32",
+        "CV": "float32"
+    })
 
 @st.cache_data
-def get_supplier_summary(df: pd.DataFrame) -> pd.DataFrame:
+def get_supplier_summary(
+    df: pd.DataFrame
+) -> pd.DataFrame:
     """
     Summarize revenue, cost, profit, orders and margin per supplier.
     """
-    summ = (
+    sup = (
         df
         .groupby("SupplierName")
         .agg(
-            TotalRev  = ("Revenue","sum"),
-            TotalCost = ("Cost","sum"),
-            TotalProf = ("Profit","sum"),
-            Orders    = ("OrderId","nunique")
+            TotalRev  = ("Revenue", "sum"),
+            TotalCost = ("Cost",    "sum"),
+            TotalProf = ("Profit",  "sum"),
+            Orders    = ("OrderId", "nunique")
         )
         .reset_index()
     )
-    summ["MarginPct"] = np.where(
-        summ["TotalRev"] > 0,
-        summ["TotalProf"]/summ["TotalRev"]*100,
+    sup["MarginPct"] = np.where(
+        sup["TotalRev"] > 0,
+        sup["TotalProf"] / sup["TotalRev"] * 100,
         0.0
     )
-    return summ.astype({
-        "TotalRev":"float32",
-        "TotalCost":"float32",
-        "TotalProf":"float32",
-        "Orders":"int32",
-        "MarginPct":"float32"
+    return sup.astype({
+        "SupplierName": "string",
+        "TotalRev": "float32",
+        "TotalCost": "float32",
+        "TotalProf": "float32",
+        "Orders": "int32",
+        "MarginPct": "float32"
     })
-
 
 @st.cache_data
 def get_monthly_supplier(
@@ -210,13 +173,13 @@ def get_monthly_supplier(
     metric: str = "Revenue"
 ) -> pd.DataFrame:
     """
-    Month-by-month totals of `metric` per SupplierName.
+    Month‐by‐month totals of `metric` per supplier.
     """
-    monthly = (
+    m = (
         df
-        .groupby([pd.Grouper(key="Date", freq="M"), "SupplierName"] )[metric]
+        .groupby([pd.Grouper(key="Date", freq="M"), "SupplierName"])[metric]
         .sum()
         .reset_index()
     )
-    monthly[metric] = pd.to_numeric(monthly[metric], downcast="float")
-    return monthly
+    m[metric] = pd.to_numeric(m[metric], downcast="float")
+    return m
