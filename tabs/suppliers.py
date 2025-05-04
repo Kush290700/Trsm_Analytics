@@ -157,29 +157,6 @@ def render(df: pd.DataFrame):
         st.dataframe(prod, use_container_width=True)
         st.markdown("---")
 
-    # Volatility by supplier
-    vol = (
-        compute_volatility(
-            df_f,
-            metric,
-            freq="M",
-            group_col="SupplierName"
-        )
-        .dropna(subset=["mean", "std", "CV"])
-        .query("mean > 0")
-    )
-    st.plotly_chart(
-        px.scatter(
-            vol,
-            x="mean", y="CV", size="std",
-            hover_name="SupplierName",
-            title=f"{metric} Volatility (Mean vs CV)",
-            labels={"mean": f"Avg {metric}", "CV": "Coefficient of Variation", "std": "Std Dev"}
-        ),
-        use_container_width=True
-    )
-    st.markdown("---")
-
     # K-Means clustering on Top-N
     X = StandardScaler().fit_transform(topn[[total_col, "Orders", "MarginPct"]].fillna(0))
     topn["Cluster"] = KMeans(n_clusters=4, random_state=42).fit_predict(X).astype(str)
