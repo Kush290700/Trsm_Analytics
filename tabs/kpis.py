@@ -1,4 +1,4 @@
-# File: tabs/kpis.py
+# tabs/kpis.py
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -9,22 +9,12 @@ from utils import seasonality_heatmap_data, display_seasonality_heatmap
 def compute_monthly_revenue(df: pd.DataFrame) -> pd.DataFrame:
     return df.set_index('Date').resample('M')['Revenue'].sum().reset_index()
 
-@st.cache_data
-def compute_breakdowns(df: pd.DataFrame) -> dict:
-    return {
-        'ByRegion': df.groupby('RegionName')['Revenue'].sum().reset_index(),
-        'ByShipMethod': df.groupby('ShippingMethodName')['Revenue'].sum().reset_index(),
-        'ByCustomerType': df.groupby(df['IsRetail'].map({True:'Retail',False:'Non-Retail'}))['Revenue'].sum().reset_index()
-    }
-
-
 def render(df_all: pd.DataFrame, df: pd.DataFrame):
     st.subheader("🚀 Executive Summary")
-    # Time window
+
     start, end = df.Date.min(), df.Date.max()
     days = (end - start).days + 1
 
-    # Totals & deltas
     totals = df.agg({
         'Revenue':'sum','Cost':'sum','Profit':'sum',
         'OrderId':'nunique','CustomerName':'nunique',
@@ -33,18 +23,23 @@ def render(df_all: pd.DataFrame, df: pd.DataFrame):
         'OrderId':'Orders','CustomerName':'Customers',
         'ItemCount':'Units','WeightLb':'Weight'
     })
-    prev = df_all[(df_all.Date >= start - pd.Timedelta(days=days)) & (df_all.Date < start)]
+
+    prev = df_all.loc[
+        (df_all.Date >= start - pd.Timedelta(days=days)) &
+        (df_all.Date <  start)
+    ]
     deltas = {k: totals[k] - prev[k].sum() for k in ['Revenue','Cost','Profit']}
 
-    # Year-over-year revenue label
     years = end.year - start.year - ((end.month,end.day) < (start.month,start.day))
     if years >= 1:
-        yoy_prev = df_all[(df_all.Date >= start.replace(year=start.year-1)) & (df_all.Date <= end.replace(year=end.year-1))]
-        rev_label = f"{(totals.Revenue / yoy_prev.Revenue.sum() * 100 - 100):+.1f}%"
+        yoy_prev = df_all.loc[
+            (df_all.Date >= start.replace(year=start.year-1)) &
+            (df_all.Date <= end.replace(  year=end.year-1))
+        ]
+        rev_label = f"{(totals.Revenue/yoy_prev.Revenue.sum()*100 - 100):+.1f}%"
     else:
         rev_label = f"{deltas['Revenue']:+,.0f}"
 
-    # KPI cards
     c1,c2,c3,c4,c5 = st.columns(5)
     c1.metric("Revenue",  f"${totals.Revenue:,.0f}", rev_label)
     c2.metric("Cost",     f"${totals.Cost:,.0f}",    f"{deltas['Cost']:+,.0f}")
@@ -57,7 +52,6 @@ def render(df_all: pd.DataFrame, df: pd.DataFrame):
 
     st.markdown("---")
 
-    # Monthly Revenue Trend (OG area chart)
     monthly = compute_monthly_revenue(df)
     monthly['MonthLabel'] = monthly['Date'].dt.strftime('%b %Y')
     fig = px.area(
@@ -71,10 +65,10 @@ def render(df_all: pd.DataFrame, df: pd.DataFrame):
     fig.update_layout(
         xaxis=dict(
             rangeselector=dict(buttons=[
-                dict(count=1, label='1 mo', step='month', stepmode='backward'),
-                dict(count=6, label='6 mo', step='month', stepmode='backward'),
-                dict(count=1, label='YTD', step='year', stepmode='todate'),
-                dict(count=1, label='1 yr', step='year', stepmode='backward'),
+                dict(count=1,label='1 mo',step='month',stepmode='backward'),
+                dict(count=6,label='6 mo',step='month',stepmode='backward'),
+                dict(count=1,label='YTD',step='year',stepmode='todate'),
+                dict(count=1,label='1 yr',step='year',stepmode='backward'),
                 dict(step='all')
             ]),
             rangeslider=dict(visible=True), type='date', tickformat='%b %Y'
@@ -85,7 +79,6 @@ def render(df_all: pd.DataFrame, df: pd.DataFrame):
     st.plotly_chart(fig, use_container_width=True)
     st.markdown("---")
 
-    # Top-10 lists
     for col,title in [
         ('RegionName','Top 10 Regions by Revenue'),
         ('CustomerName','Top 10 Customers by Revenue'),
