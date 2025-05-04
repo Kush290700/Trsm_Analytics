@@ -105,20 +105,28 @@ def compute_interpurchase(df: pd.DataFrame) -> pd.Series:
     return diffs
 
 @st.cache_data
-def compute_volatility(df: pd.DataFrame, metric: str, freq: str = "M") -> pd.DataFrame:
+def compute_volatility(
+    df: pd.DataFrame,
+    metric: str,
+    period: str = "M",
+    freq: str = None
+) -> pd.DataFrame:
     """
     Compute mean, std and CV of `metric` aggregated by
-    each calendar period (freq) per ProductName.
+    each calendar period per ProductName.
+    
+    Pass either `period="M"` or `freq="M"` (they behave identically).
     """
+    use_freq = freq if freq is not None else period
     ts = (
         df
-        .groupby([pd.Grouper(key="Date", freq=freq), "ProductName"])[metric]
+        .groupby([pd.Grouper(key="Date", freq=use_freq), "ProductName"])[metric]
         .sum()
         .reset_index()
     )
     stats = ts.groupby("ProductName")[metric].agg(mean="mean", std="std").reset_index()
     stats["std"].fillna(0.0, inplace=True)
-    stats["CV"] = np.where(stats["mean"]>0, stats["std"]/stats["mean"], 0.0)
+    stats["CV"] = np.where(stats["mean"] > 0, stats["std"] / stats["mean"], 0.0)
     return stats.astype({"mean":"float32","std":"float32","CV":"float32"})
 
 @st.cache_data
@@ -164,10 +172,10 @@ def summarize_regions(df: pd.DataFrame, col: str) -> pd.DataFrame:
     Aggregate a primary metric (`col`) plus Orders, Customers, Profit by RegionName.
     """
     agg = df.groupby("RegionName").agg(
-        Total     = (col,          "sum"),
-        Orders    = ("OrderId",     "nunique"),
+        Total     = (col,           "sum"),
+        Orders    = ("OrderId",      "nunique"),
         Customers = ("CustomerName","nunique"),
-        Profit    = ("Profit",      "sum") if "Profit" in df.columns else (col, "sum")
+        Profit    = ("Profit",       "sum") if "Profit" in df.columns else (col, "sum")
     ).reset_index()
     agg["AvgOrder"] = agg["Total"] / agg["Orders"].replace(0, np.nan)
     agg["MarginPct"] = np.where(
