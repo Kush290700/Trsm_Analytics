@@ -14,40 +14,39 @@ def load_csv_tables(csv_dir="data") -> dict:
     ]
     raw = {}
     for name in table_names:
-        file_path = os.path.join(csv_dir, f"{name}.csv")
-        if os.path.exists(file_path):
-            raw[name] = pd.read_csv(file_path, low_memory=False)
+        path = os.path.join(csv_dir, f"{name}.csv")
+        if os.path.exists(path):
+            raw[name] = pd.read_csv(path, low_memory=False)
         else:
             raw[name] = pd.DataFrame()
             logger.warning(f"⚠️ Missing table: {name}.csv")
     return raw
 
 def prepare_full_data(raw: dict) -> pd.DataFrame:
-    # 1) Basic checks
+    # 1) Basic existence checks
     if raw.get("orders", pd.DataFrame()).empty:
-        raise RuntimeError("Missing or empty 'orders'. Cannot continue.")
+        raise RuntimeError("Missing or empty 'orders'.")
     if raw.get("order_lines", pd.DataFrame()).empty:
-        raise RuntimeError("Missing or empty 'order_lines'. Cannot continue.")
+        raise RuntimeError("Missing or empty 'order_lines'.")
 
-    orders_df = raw["orders"].copy()
-    lines_df  = raw["order_lines"].copy()
+    orders_df   = raw["orders"].copy()
+    lines_df    = raw["order_lines"].copy()
 
-    # 2) Cast key columns to string, fill missing
+    # Helper: cast column to string (or create empty if missing)
     def cast_str(df, col):
-        if col in df.columns:
-            df[col] = df[col].astype(str)
-        else:
+        if col not in df.columns:
             df[col] = ""
-            logger.warning(f"⚠️ '{col}' not in DataFrame; filling with empty strings.")
+        df[col] = df[col].astype(str)
 
+    # 2) Ensure key columns exist and are strings
     for df_, cols in [
-        (orders_df,    ["OrderId","CustomerId","SalesRepId","ShippingMethodRequested"]),
-        (lines_df,     ["OrderLineId","OrderId","ProductId","ShipperId"])
+        (orders_df,    ["OrderId", "CustomerId", "SalesRepId", "ShippingMethodRequested"]),
+        (lines_df,     ["OrderLineId", "OrderId", "ProductId", "ShipperId"])
     ]:
         for c in cols:
             cast_str(df_, c)
 
-    # 3) Merge lines + orders
+    # 3) Merge orders + lines
     df = lines_df.merge(
         orders_df,
         on="OrderId",
@@ -58,101 +57,113 @@ def prepare_full_data(raw: dict) -> pd.DataFrame:
 
     # 4) Lookup tables
     lookups = {
-        "customers": ("CustomerId", ["CustomerId","RegionId","CustomerName"], raw.get("customers")),
-        "products":  ("ProductId",  [
-                           "ProductId","SKU","SupplierId","UnitOfBillingId",
-                           "ProductName","ProductListPrice","CostPrice"
-                       ], raw.get("products")),
-        "regions":   ("RegionId",   ["RegionId","RegionName"], raw.get("regions")),
-        "shippers":  ("ShipperId",  ["ShipperId","Carrier"], raw.get("shippers")),
-        "suppliers": ("SupplierId", ["SupplierId","SupplierName"], raw.get("suppliers")),
-        "smethods":  ("ShippingMethodRequested", ["ShippingMethodRequested","ShippingMethodName"], raw.get("shipping_methods")),
+        "customers":         ("CustomerId",    ["RegionId","CustomerName"], raw.get("customers", pd.DataFrame())),
+        "products":          ("ProductId",     ["SKU","UnitOfBillingId","SupplierId","ProductName","ProductListPrice","CostPrice","IsProduction"], raw.get("products", pd.DataFrame())),
+        "regions":           ("RegionId",      ["RegionName"], raw.get("regions", pd.DataFrame())),
+        "shippers":          ("ShipperId",     ["Carrier"], raw.get("shippers", pd.DataFrame())),
+        "suppliers":         ("SupplierId",    ["SupplierName"], raw.get("suppliers", pd.DataFrame())),
+        "shipping_methods":  ("ShippingMethodRequested", ["ShippingMethodName"], raw.get("shipping_methods", pd.DataFrame())),
     }
 
-    for name, (keycol, cols, lookup_df) in lookups.items():
-        if lookup_df is None or lookup_df.empty:
-            logger.warning(f"Skipping merge '{name}'—lookup table empty.")
+    for name, (keycol, cols, lkdf) in lookups.items():
+        if lkdf is None or lkdf.empty:
+            logger.warning(f"Skipping merge for '{name}'—table missing or empty.")
             continue
-        # rename SMId if present
-        if name == "smethods" and "SMId" in lookup_df.columns:
-            lookup_df = lookup_df.rename(columns={"SMId":"ShippingMethodRequested"})
-        # absent key? skip
-        if keycol not in df.columns or keycol not in lookup_df.columns:
-            logger.warning(f"Skipping merge '{name}'—key '{keycol}' missing.")
+
+        # special rename for shipping_methods
+        if name == "shipping_methods" and "SMId" in lkdf.columns:
+            lkdf = lkdf.rename(columns={"SMId": "ShippingMethodRequested"})
+
+        # only keep those required columns that actually exist
+        valid = [c for c in cols if c in lkdf.columns]
+        if keycol not in lkdf.columns or not valid:
+            logger.warning(f"Skipping merge for '{name}'—key '{keycol}' or required cols not found.")
             continue
-        # cast lookup cols
-        for c in cols:
-            cast_str(lookup_df, c)
-        # avoid duplicate keycol in right-hand side
-        valid = [c for c in cols if c in lookup_df.columns and c != keycol]
+
+        # cast them to string
+        cast_str(lkdf, keycol)
+        for c in valid:
+            cast_str(lkdf, c)
+
         df = df.merge(
-            lookup_df[[keycol] + valid],
+            lkdf[[keycol] + valid],
             on=keycol,
             how="left"
         )
         logger.info(f"After merging '{name}': {len(df):,} rows")
 
     # 5) Packs aggregation
-    packs = raw.get("packs")
-    if packs is not None and not packs.empty:
+    packs = raw.get("packs", pd.DataFrame())
+    if not packs.empty:
         packs = packs.copy()
         cast_str(packs, "PickedForOrderLine")
         packs["OrderLineId"] = packs["PickedForOrderLine"]
-        agg_dict = {}
-        for src, fn in [("WeightLb","sum"), ("ItemCount","sum")]:
-            if src in packs.columns:
-                agg_dict[src] = (src, fn)
+        # only aggregate if columns exist
+        agg_kwargs = {}
+        if "WeightLb" in packs.columns:
+            agg_kwargs["WeightLb"] = ("WeightLb", "sum")
+        if "ItemCount" in packs.columns:
+            agg_kwargs["ItemCount"] = ("ItemCount", "sum")
         if "DeliveryDate" in packs.columns:
-            agg_dict["DeliveryDate"] = ("DeliveryDate","max")
-        if agg_dict:
-            psum = packs.groupby("OrderLineId", as_index=False).agg(**agg_dict)
+            agg_kwargs["DeliveryDate"] = ("DeliveryDate", "max")
+
+        if agg_kwargs:
+            psum = packs.groupby("OrderLineId", as_index=False).agg(**agg_kwargs)
             cast_str(psum, "OrderLineId")
             df = df.merge(psum, on="OrderLineId", how="left")
-            for n in ["WeightLb","ItemCount"]:
-                if n in df.columns:
-                    df[n] = df[n].fillna(0.0)
+            # fill defaults
+            for col in ["WeightLb","ItemCount"]:
+                if col in df.columns:
+                    df[col] = df[col].fillna(0.0)
             logger.info(f"After merging 'packs': {len(df):,} rows")
     else:
         df["WeightLb"]    = 0.0
         df["ItemCount"]   = 0.0
         df["DeliveryDate"]= pd.NaT
 
-    # 6) Numeric conversions
-    for col in ["QuantityShipped","SalePrice","UnitCost","WeightLb","ItemCount"]:
+    # 6) Numeric conversions (fix for numpy.ndarray.fillna error)
+    num_cols = ["QuantityShipped","SalePrice","UnitCost","WeightLb","ItemCount"]
+    for col in num_cols:
         if col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0.0)
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+            df[col] = pd.Series(df[col]).fillna(0.0)
 
-    # 7) ShippedWeight & margins
-    df["UnitOfBillingId"] = df.get("UnitOfBillingId","").astype(str)
-    is_wt = (df["UnitOfBillingId"]=="3") & (df["WeightLb"]>0) & (df["ItemCount"]>0)
-    fallback = 1.0
+    # 7) Compute shipped weight & margins
+    # fallback weight per item = 1 lb
+    df["UnitOfBillingId"] = df.get("UnitOfBillingId", "").astype(str)
+    is_wt = (df["UnitOfBillingId"] == "3") & (df["WeightLb"] > 0) & (df["ItemCount"] > 0)
+    # average fallback
     if is_wt.any():
-        fallback = (df.loc[is_wt, "WeightLb"] / df.loc[is_wt, "ItemCount"]).mean()
+        avg_wt = (df.loc[is_wt, "WeightLb"] / df.loc[is_wt, "ItemCount"]).mean()
+    else:
+        avg_wt = 1.0
     df["ShippedWeightLb"] = np.where(
         is_wt,
         df["WeightLb"],
-        df["ItemCount"] * fallback
+        df["ItemCount"] * avg_wt
     ).fillna(0.0)
 
-    df["Revenue"] = df["ShippedWeightLb"] * df.get("SalePrice",0)
-    df["Cost"]    = df["ShippedWeightLb"] * df.get("UnitCost",0)
+    df["Revenue"] = df["ShippedWeightLb"] * df["SalePrice"]
+    df["Cost"]    = df["ShippedWeightLb"] * df["UnitCost"]
     df["Profit"]  = df["Revenue"] - df["Cost"]
 
+    # exclude production items
     if "IsProduction" in df.columns:
-        prod_mask = pd.to_numeric(df["IsProduction"], errors="coerce").fillna(0).astype(int)==1
-        df.loc[prod_mask, ["Revenue","Cost","Profit"]] = 0.0
+        df["IsProduction"] = pd.to_numeric(df["IsProduction"], errors="coerce").fillna(0).astype(int)
+        mask = df["IsProduction"] == 1
+        df.loc[mask, ["Revenue","Cost","Profit"]] = 0.0
+        logger.info(f"Excluded {mask.sum():,} production rows from margin")
 
-    # 8) Dates & delivery metrics
+    # 8) Final dates and transit/delivery status
     df["Date"]         = pd.to_datetime(df.get("CreatedAt_order"), errors="coerce").dt.normalize()
     df["ShipDate"]     = pd.to_datetime(df.get("ShipDate"), errors="coerce")
     df["DeliveryDate"] = pd.to_datetime(df.get("DeliveryDate"), errors="coerce")
     df["DateExpected"] = pd.to_datetime(df.get("DateExpected"), errors="coerce")
-    df["TransitDays"] = (df["DeliveryDate"] - df["ShipDate"]).dt.days.clip(lower=0)
+    df["TransitDays"]  = (df["DeliveryDate"] - df["ShipDate"]).dt.days.clip(lower=0)
     df["DeliveryStatus"] = np.where(
         df["DeliveryDate"] <= df["DateExpected"],
-        "On Time","Late"
+        "On Time", "Late"
     )
 
     logger.info(f"✅ Prepared full data: {len(df):,} rows")
     return df
-
