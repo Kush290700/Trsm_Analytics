@@ -105,14 +105,14 @@ def compute_interpurchase(df: pd.DataFrame) -> pd.Series:
     return diffs
 
 @st.cache_data
-def compute_volatility(df: pd.DataFrame, metric: str, period: str = "M") -> pd.DataFrame:
+def compute_volatility(df: pd.DataFrame, metric: str, freq: str = "M") -> pd.DataFrame:
     """
     Compute mean, std and CV of `metric` aggregated by
-    each calendar period per ProductName.
+    each calendar period (freq) per ProductName.
     """
     ts = (
         df
-        .groupby([pd.Grouper(key="Date", freq=period), "ProductName"])[metric]
+        .groupby([pd.Grouper(key="Date", freq=freq), "ProductName"])[metric]
         .sum()
         .reset_index()
     )
@@ -134,7 +134,11 @@ def get_supplier_summary(df: pd.DataFrame) -> pd.DataFrame:
           )
           .reset_index()
     )
-    sup["MarginPct"] = np.where(sup["TotalRev"] > 0, sup["TotalProf"] / sup["TotalRev"] * 100, 0.0)
+    sup["MarginPct"] = np.where(
+        sup["TotalRev"] > 0,
+        sup["TotalProf"] / sup["TotalRev"] * 100,
+        0.0
+    )
     return sup.astype({
         "TotalRev":"float32",
         "TotalCost":"float32",
@@ -154,18 +158,16 @@ def get_monthly_supplier(df: pd.DataFrame, metric: str = "Revenue") -> pd.DataFr
     m[metric] = pd.to_numeric(m[metric], downcast="float")
     return m
 
-# ──────────────────────────────────────────────────────────────────────────────
-# NEW: Regional summarization helper
 @st.cache_data
 def summarize_regions(df: pd.DataFrame, col: str) -> pd.DataFrame:
     """
     Aggregate a primary metric (`col`) plus Orders, Customers, Profit by RegionName.
     """
     agg = df.groupby("RegionName").agg(
-        Total    = (col,        "sum"),
-        Orders   = ("OrderId",   "nunique"),
-        Customers= ("CustomerName","nunique"),
-        Profit   = ("Profit",    "sum") if "Profit" in df.columns else (col, "sum")
+        Total     = (col,          "sum"),
+        Orders    = ("OrderId",     "nunique"),
+        Customers = ("CustomerName","nunique"),
+        Profit    = ("Profit",      "sum") if "Profit" in df.columns else (col, "sum")
     ).reset_index()
     agg["AvgOrder"] = agg["Total"] / agg["Orders"].replace(0, np.nan)
     agg["MarginPct"] = np.where(
