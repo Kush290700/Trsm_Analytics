@@ -118,60 +118,33 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
 
     # Lookup definitions
     lookups = {
-        "customers": {
-            "key": "CustomerId",
-            "cols": ["CustomerId", "RegionId", "CustomerName"],
-            "df": raw.get("customers", pd.DataFrame()),
-        },
-        "products": {
-            "key": "ProductId",
-            "cols": ["ProductId", "SupplierId", "UnitOfBillingId", "ProductName", "SKU", "IsProduction", "ProductListPrice", "CostPrice"],
-            "df": raw.get("products", pd.DataFrame()),
-        },
-        "regions": {
-            "key": "RegionId",
-            "cols": ["RegionId", "RegionName"],
-            "df": raw.get("regions", pd.DataFrame()),
-        },
-        "shippers": {
-            "key": "ShipperId",
-            "cols": ["ShipperId", "Carrier"],
-            "df": raw.get("shippers", pd.DataFrame()),
-        },
-        "suppliers": {
-            "key": "SupplierId",
-            "cols": ["SupplierId", "SupplierName"],
-            "df": raw.get("suppliers", pd.DataFrame()),
-        },
-        "smethods": {
-            "key": "ShippingMethodRequested",
-            "cols": ["ShippingMethodRequested", "ShippingMethodName"],
-            "df": raw.get("shipping_methods", pd.DataFrame()),
-            "rename": {"ShippingMethodId": "ShippingMethodRequested"},
-        },
+        "customers": {"key": "CustomerId", "cols": ["CustomerId","RegionId","CustomerName"], "df": raw.get("customers", pd.DataFrame())},
+        "products":  {"key": "ProductId",  "cols": ["ProductId","SupplierId","UnitOfBillingId","ProductName","SKU","IsProduction","ProductListPrice","CostPrice"], "df": raw.get("products", pd.DataFrame())},
+        "regions":   {"key": "RegionId",    "cols": ["RegionId","RegionName"],              "df": raw.get("regions", pd.DataFrame())},
+        "shippers":  {"key": "ShipperId",   "cols": ["ShipperId","Carrier"],               "df": raw.get("shippers", pd.DataFrame())},
+        "suppliers": {"key": "SupplierId",  "cols": ["SupplierId","SupplierName"],          "df": raw.get("suppliers", pd.DataFrame())},
+        "smethods":  {"key": "ShippingMethodRequested", "cols": ["ShippingMethodRequested","ShippingMethodName"], "df": raw.get("shipping_methods", pd.DataFrame()), "rename": {"ShippingMethodId": "ShippingMethodRequested"}},
     }
 
-    # Perform merges, skipping missing columns
+    # Perform merges, skipping missing keys or cols
     for name, info in lookups.items():
         lkdf = info["df"]
         if lkdf is None or lkdf.empty:
             logger.warning(f"Skipping empty lookup table: {name}")
             continue
 
-        # Rename if needed
+        # Rename for shipping methods
         for old, new in info.get("rename", {}).items():
             if old in lkdf.columns:
                 lkdf = lkdf.rename(columns={old: new})
 
         key = info["key"]
         if key not in lkdf.columns or key not in df.columns:
-            logger.warning(f"Skipping merge for '{name}'—key '{key}' not in both tables.")
+            logger.warning(f"Skipping merge for '{name}'—key '{key}' missing.")
             continue
 
-        # Only select the cols that actually exist
         valid_cols = [c for c in info["cols"] if c in lkdf.columns]
         sub = lkdf[valid_cols]
-
         df = df.merge(sub, on=key, how="left")
         logger.info(f"After merging '{name}': {len(df):,} rows")
 
@@ -179,54 +152,49 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     packs = raw.get("packs", pd.DataFrame())
     if not packs.empty and "PickedForOrderLine" in packs.columns:
         packs = packs.rename(columns={"PickedForOrderLine": "OrderLineId"})
-        psum = (
-            packs.groupby("OrderLineId", as_index=False)
-                 .agg(
-                     WeightLb=("WeightLb", "sum"),
-                     ItemCount=("ItemCount", "sum"),
-                     DeliveryDate=("ShippedAt", "max")
-                 )
-        )
-        psum["DeliveryDate"] = pd.to_datetime(psum["DeliveryDate"], errors="coerce")
+        # Always aggregate weights and counts
+        agg_dict = {"WeightLb": "sum", "ItemCount": "sum"}
+        # Only include DeliveryDate if ShippedAt exists
+        if "ShippedAt" in packs.columns:
+            agg_dict["DeliveryDate"] = ("ShippedAt", "max")
+        psum = packs.groupby("OrderLineId", as_index=False).agg(**{k: (v if isinstance(v, tuple) else (k, v)) for k, v in agg_dict.items()})
+        # Coerce DeliveryDate
+        if "DeliveryDate" in psum.columns:
+            psum["DeliveryDate"] = pd.to_datetime(psum["DeliveryDate"], errors="coerce")
+        else:
+            psum["DeliveryDate"] = pd.NaT
         df = df.merge(psum, on="OrderLineId", how="left")
     else:
         df["WeightLb"] = 0.0
         df["ItemCount"] = 0.0
         df["DeliveryDate"] = pd.NaT
 
-    # Numeric conversions & business logic
-    for col in ["QuantityShipped", "Price", "CostPrice", "WeightLb", "ItemCount"]:
+    # Numeric conversions
+    for col in ["QuantityShipped","Price","CostPrice","WeightLb","ItemCount"]:
         if col in df:
             df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0.0).astype("float32")
 
+    # Business logic
     df["ShippedWeightLb"] = np.where(
-        df.get("UnitOfBillingId") == "3",
-        df["WeightLb"],
-        df["ItemCount"]
+        df.get("UnitOfBillingId") == "3", df.WeightLb, df.ItemCount
     )
     df["Revenue"] = np.where(
         df.get("IsProduction") != "1",
-        df["ShippedWeightLb"] * df.get("Price", 0.0),
-        0.0
+        df.ShippedWeightLb * df.get("Price", 0.0), 0.0
     )
-    df["Cost"] = np.where(
+    df["Cost"]    = np.where(
         df.get("IsProduction") != "1",
-        df["ShippedWeightLb"] * df.get("CostPrice", 0.0),
-        0.0
+        df.ShippedWeightLb * df.get("CostPrice", 0.0), 0.0
     )
-    df["Profit"] = df["Revenue"] - df["Cost"]
+    df["Profit"]  = df.Revenue - df.Cost
 
-    # Final date columns
-    df["Date"] = pd.to_datetime(df["CreatedAt_order"], errors="coerce").dt.normalize()
-    df["ShipDate"] = pd.to_datetime(df.get("DateShipped"), errors="coerce")
+    # Final dates and derived fields
+    df["Date"]         = pd.to_datetime(df["CreatedAt_order"], errors="coerce").dt.normalize()
+    df["ShipDate"]     = pd.to_datetime(df.get("DateShipped"), errors="coerce")
     df["DateExpected"] = pd.to_datetime(df.get("DateExpected"), errors="coerce")
-    df["TransitDays"] = (
-        df["DeliveryDate"] - df["ShipDate"]
-    ).dt.days.clip(lower=0).fillna(0).astype("int32")
+    df["TransitDays"]  = (df.DeliveryDate - df.ShipDate).dt.days.clip(lower=0).fillna(0).astype("int32")
     df["DeliveryStatus"] = np.where(
-        df["DeliveryDate"] <= df["DateExpected"],
-        "On Time",
-        "Late"
+        df.DeliveryDate <= df.DateExpected, "On Time", "Late"
     ).astype("category")
 
     logger.info(f"✅ Prepared full data: {len(df):,} rows")
