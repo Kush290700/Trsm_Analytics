@@ -19,9 +19,7 @@ from sklearn.cluster import KMeans
 def render(df: pd.DataFrame):
     st.subheader("🏭 Supplier Analysis")
 
-    # ───────────────────────────────────────────────────────────────
-    # Sidebar filters
-    # ───────────────────────────────────────────────────────────────
+    # Sidebar
     with st.sidebar.expander("🔧 Suppliers Filters", expanded=True):
         date_range = st.date_input(
             "Date Range",
@@ -35,7 +33,7 @@ def render(df: pd.DataFrame):
         ma = st.slider("MA window (months)", 1, 12, 3, key="sup_ma")
         hor = st.slider("Forecast horizon (months)", 1, 24, 12, key="sup_hor")
 
-    # Apply date filter
+    # Date filter
     start_d, end_d = date_range if isinstance(date_range, (list, tuple)) else (date_range, date_range)
     df_f = filter_by_date(df, pd.to_datetime(start_d), pd.to_datetime(end_d))
 
@@ -47,10 +45,14 @@ def render(df: pd.DataFrame):
         st.warning("⚠️ No data for those filters.")
         return
 
+    # Map metric → summary column
+    col_map = {"Revenue": "TotalRev", "Cost": "TotalCost", "Profit": "TotalProf"}
+    total_col = col_map[metric]
+
     # KPI cards
     summ = get_supplier_summary(df_f)
     total_sup  = summ.SupplierName.nunique()
-    total_met  = summ[f"Total{metric}"].sum() if f"Total{metric}" in summ else summ.TotalRev.sum()
+    total_met  = summ[total_col].sum()
     total_prof = summ.TotalProf.sum()
     avg_margin = (total_prof / summ.TotalRev.sum() * 100) if summ.TotalRev.sum() else 0
 
@@ -63,24 +65,35 @@ def render(df: pd.DataFrame):
     st.markdown("---")
 
     # Distribution histograms
-    fig1 = px.histogram(summ, x=f"Total{metric}", nbins=30, marginal="box",
-                        title=f"{metric} Distribution",
-                        labels={f"Total{metric}": metric})
-    fig2 = px.histogram(summ, x="MarginPct", nbins=30, marginal="violin",
-                        title="Margin % Distribution",
-                        labels={"MarginPct": "Margin (%)"})
+    fig1 = px.histogram(
+        summ,
+        x=total_col,
+        nbins=30,
+        marginal="box",
+        title=f"{metric} Distribution",
+        labels={total_col: metric}
+    )
+    fig2 = px.histogram(
+        summ,
+        x="MarginPct",
+        nbins=30,
+        marginal="violin",
+        title="Margin % Distribution",
+        labels={"MarginPct": "Margin (%)"}
+    )
     st.plotly_chart(fig1, use_container_width=True)
     st.plotly_chart(fig2, use_container_width=True)
     st.markdown("---")
 
     # Top-N bar
-    topn = summ.nlargest(top_n, f"Total{metric}")
+    topn = summ.nlargest(top_n, total_col)
     fig_top = px.bar(
         topn,
-        x=f"Total{metric}", y="SupplierName",
-        orientation="h", text_auto=",.0f",
+        x=total_col, y="SupplierName",
+        orientation="h",
+        text_auto=",.0f",
         title=f"Top {top_n} Suppliers by {metric}",
-        labels={f"Total{metric}": metric, "SupplierName": "Supplier"}
+        labels={total_col: metric, "SupplierName": "Supplier"}
     )
     st.plotly_chart(fig_top, use_container_width=True)
     st.markdown("---")
@@ -88,25 +101,27 @@ def render(df: pd.DataFrame):
     # Time-series + MA + Forecast
     ts = get_monthly_supplier(df_f, metric)
     ts["MA"] = ts[metric].rolling(ma).mean()
-    fig_ts = px.line(ts, x="Date", y=[metric, "MA"], title=f"{metric} Trend (MA={ma}mo)")
-    fig_ts.update_traces(selector={"name":"MA"}, line_dash="dash")
+    fig_ts = px.line(
+        ts,
+        x="Date", y=[metric, "MA"],
+        title=f"{metric} Trend (MA={ma}mo)"
+    )
+    fig_ts.update_traces(selector={"name": "MA"}, line_dash="dash")
     st.plotly_chart(fig_ts, use_container_width=True)
 
     if len(ts) >= 2:
-        dfp = ts.rename(columns={"Date":"ds", metric:"y"})[["ds","y"]]
+        dfp = ts.rename(columns={"Date": "ds", metric: "y"})[["ds", "y"]]
         fc = fit_prophet(dfp, periods=hor, freq="M")
         fig_fc = px.line(fc, x="ds", y="yhat", title=f"{metric} Forecast (+{hor}mo)")
-        fig_fc.add_scatter(x=fc.ds, y=fc.yhat_upper, mode="lines",
-                           line_dash="dash", name="Upper")
-        fig_fc.add_scatter(x=fc.ds, y=fc.yhat_lower, mode="lines",
-                           line_dash="dash", name="Lower")
+        fig_fc.add_scatter(x=fc.ds, y=fc.yhat_upper, mode="lines", line_dash="dash", name="Upper")
+        fig_fc.add_scatter(x=fc.ds, y=fc.yhat_lower, mode="lines", line_dash="dash", name="Lower")
         st.plotly_chart(fig_fc, use_container_width=True)
     st.markdown("---")
 
     # Treemaps
     for path, title in [
-        (["RegionName","SupplierName","ProductName"],  f"{metric} by Region→Supplier→Product"),
-        (["RegionName","SupplierName","CustomerName"], f"{metric} by Region→Supplier→Customer")
+        (["RegionName", "SupplierName", "ProductName"],  f"{metric} by Region→Supplier→Product"),
+        (["RegionName", "SupplierName", "CustomerName"], f"{metric} by Region→Supplier→Customer")
     ]:
         treedf = df_f.groupby(path)[metric].sum().reset_index()
         fig_tm = px.treemap(treedf, path=path, values=metric, title=title)
@@ -115,8 +130,10 @@ def render(df: pd.DataFrame):
 
     # Scatter & drill-down
     fig_sc = px.scatter(
-        summ, x=f"Total{metric}", y="MarginPct", size="Orders",
-        hover_name="SupplierName", title=f"{metric} vs Margin %"
+        summ,
+        x=total_col, y="MarginPct", size="Orders",
+        hover_name="SupplierName",
+        title=f"{metric} vs Margin %"
     )
     clicked = plotly_events(fig_sc, click_event=True)
     st.plotly_chart(fig_sc, use_container_width=True)
@@ -126,18 +143,21 @@ def render(df: pd.DataFrame):
         st.markdown(f"#### Details for **{sup}**")
         df_sup = df_f[df_f.SupplierName == sup]
         prod = (
-            df_sup.groupby("ProductName")
-                  .agg(Revenue=("Revenue","sum"), Cost=("Cost","sum"),
-                       Profit=("Profit","sum"), Orders=("OrderId","nunique"))
-                  .reset_index()
-                  .sort_values(f"Revenue", ascending=False)
+            df_sup
+            .groupby("ProductName")
+            .agg(
+                Revenue=("Revenue", "sum"),
+                Cost=("Cost",       "sum"),
+                Profit=("Profit",   "sum"),
+                Orders=("OrderId",  "nunique")
+            )
+            .reset_index()
+            .sort_values("Revenue", ascending=False)
         )
         st.dataframe(prod, use_container_width=True)
         st.markdown("---")
 
-    # ───────────────────────────────────────────────────────────────
     # Volatility by supplier
-    # ───────────────────────────────────────────────────────────────
     vol = (
         compute_volatility(
             df_f,
@@ -145,29 +165,27 @@ def render(df: pd.DataFrame):
             freq="M",
             group_col="SupplierName"
         )
-        .dropna(subset=["mean","std","CV"])
+        .dropna(subset=["mean", "std", "CV"])
         .query("mean > 0")
     )
     st.plotly_chart(
         px.scatter(
             vol,
-            x="mean",
-            y="CV",
-            size="std",
+            x="mean", y="CV", size="std",
             hover_name="SupplierName",
             title=f"{metric} Volatility (Mean vs CV)",
-            labels={"mean":f"Avg {metric}", "CV":"Coefficient of Variation", "std":"Std Dev"},
+            labels={"mean": f"Avg {metric}", "CV": "Coefficient of Variation", "std": "Std Dev"}
         ),
-        use_container_width=True,
+        use_container_width=True
     )
     st.markdown("---")
 
     # K-Means clustering on Top-N
-    X = StandardScaler().fit_transform(topn[[f"Total{metric}", "Orders", "MarginPct"]].fillna(0))
+    X = StandardScaler().fit_transform(topn[[total_col, "Orders", "MarginPct"]].fillna(0))
     topn["Cluster"] = KMeans(n_clusters=4, random_state=42).fit_predict(X).astype(str)
     fig_cl = px.scatter(
         topn,
-        x=f"Total{metric}", y="MarginPct", size="Orders",
+        x=total_col, y="MarginPct", size="Orders",
         color="Cluster", hover_name="SupplierName",
         title="Clusters on Top Suppliers"
     )
@@ -182,10 +200,9 @@ def render(df: pd.DataFrame):
     # Drill-down table
     detail = (
         df_f
-        .groupby(["SupplierName","CustomerName","ProductName"])
-        .agg(Revenue=("Revenue","sum"), Profit=("Profit","sum"), Orders=("OrderId","nunique"))
+        .groupby(["SupplierName", "CustomerName", "ProductName"])
+        .agg(Revenue=("Revenue", "sum"), Profit=("Profit", "sum"), Orders=("OrderId", "nunique"))
         .reset_index()
     )
     st.subheader("🔍 Drill-down Table")
     st.dataframe(detail, use_container_width=True)
-
