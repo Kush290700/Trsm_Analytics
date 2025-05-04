@@ -1,4 +1,5 @@
-# File: filters.py
+# filters.py
+
 import pandas as pd
 import streamlit as st
 
@@ -12,45 +13,41 @@ def get_unique(df: pd.DataFrame, col: str) -> list:
 def apply_filters(df: pd.DataFrame) -> pd.DataFrame:
     st.sidebar.header("🔎 Filters")
 
-    # — Date range picker —
-    dmin, dmax = df['Date'].min().date(), df['Date'].max().date()
-    date_selection = st.sidebar.date_input(
-        "Date Range",
-        [dmin, dmax],
-        min_value=dmin,
-        max_value=dmax,
-        key="filt_date"
+    # Start with all rows
+    mask = pd.Series(True, index=df.index)
+
+    # — Product (SKU – ProductName) filter —
+    sku_prod = (
+        df[['SKU', 'ProductName']]
+        .dropna(subset=['SKU','ProductName'])
+        .drop_duplicates()
+        .sort_values(['SKU','ProductName'])
     )
-    if isinstance(date_selection, (list, tuple)) and len(date_selection) == 2:
-        start_date, end_date = date_selection
-    else:
-        start_date = end_date = date_selection
-
-    mask = df['Date'].dt.date.between(start_date, end_date)
-
-    # — Product filter —
     prod_options = ["All"] + [
-        f"{sku} – {name}"
-        for sku, name in sorted(
-            df[['SKU', 'ProductName']]
-              .dropna()
-              .drop_duplicates()
-              .apply(tuple, axis=1)
-        )
+        f"{row.SKU} – {row.ProductName}"
+        for _, row in sku_prod.iterrows()
     ]
-    sel_prods = st.sidebar.multiselect(
-        "Product(s)", prod_options, default=["All"], key="filt_sku_prod"
+    selected_prods = st.sidebar.multiselect(
+        "Product(s)",
+        prod_options,
+        default=["All"],
+        key="filt_sku_prod"
     )
-    if "All" not in sel_prods:
-        chosen = [item.split('–',1)[1].strip() for item in sel_prods]
-        mask &= df['ProductName'].isin(chosen)
+    if "All" not in selected_prods:
+        chosen_names = [item.split("–",1)[1].strip() for item in selected_prods]
+        mask &= df['ProductName'].isin(chosen_names)
 
     # — Region filter —
-    regions = ["All"] + get_unique(df, "RegionName")
+    regions = get_unique(df, "RegionName")
     sel_regions = st.sidebar.multiselect(
-        "Region(s)", regions, default=["All"], key="filt_region"
+        "Region(s)",
+        ["All"] + regions,
+        default=["All"],
+        key="filt_region"
     )
     if "All" not in sel_regions:
         mask &= df['RegionName'].isin(sel_regions)
+
+    # (Sales Rep filter removed)
 
     return df.loc[mask].copy()
