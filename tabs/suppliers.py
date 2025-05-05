@@ -81,8 +81,13 @@ def render(df: pd.DataFrame):
     # ─── Top-N Suppliers ──────────────────────────────────────────────────
     topn = summ.nlargest(top_n, total_col)
     fig_top = px.bar(
-        topn, x=total_col, y="SupplierName", orientation="h", text_auto=",
-        title=f"Top {top_n} Suppliers by {metric}", labels={total_col: metric, "SupplierName": "Supplier"}
+        topn,
+        x=total_col,
+        y="SupplierName",
+        orientation="h",
+        text_auto=",.0f",
+        title=f"Top {top_n} Suppliers by {metric}",
+        labels={total_col: metric, "SupplierName": "Supplier"}
     )
     st.plotly_chart(fig_top, use_container_width=True)
     st.markdown("---")
@@ -99,22 +104,20 @@ def render(df: pd.DataFrame):
             dfp = ts.rename(columns={"Date": "ds", metric: "y"})[["ds", "y"]]
             fc = fit_prophet(dfp, periods=hor, freq="M")
             fig_fc = px.line(fc, x="ds", y="yhat", title=f"{metric} Forecast (+{hor}mo)")
-            fig_fc.add_scatter(x=fc.ds, y=fc.yhat_upper, mode="lines",
-                               line_dash="dash", name="Upper")
-            fig_fc.add_scatter(x=fc.ds, y=fc.yhat_lower, mode="lines",
-                               line_dash="dash", name="Lower")
+            fig_fc.add_scatter(x=fc.ds, y=fc.yhat_upper, mode="lines", line_dash="dash", name="Upper")
+            fig_fc.add_scatter(x=fc.ds, y=fc.yhat_lower, mode="lines", line_dash="dash", name="Lower")
             st.plotly_chart(fig_fc, use_container_width=True)
     st.markdown("---")
 
     # ─── Hierarchical Treemap ─────────────────────────────────────────────
     with st.expander("🌲 Hierarchical Treemap", expanded=False):
         tree_df = (
-            df_f.groupby(["RegionName","SupplierName","CustomerName","ProductName"])[metric]
+            df_f.groupby(["RegionName", "SupplierName", "CustomerName", "ProductName"])[metric]
             .sum().reset_index()
         )
         fig_tm = px.treemap(
             tree_df,
-            path=["RegionName","SupplierName","CustomerName","ProductName"],
+            path=["RegionName", "SupplierName", "CustomerName", "ProductName"],
             values=metric,
             title=f"{metric} by Region→Supplier→Customer→Product"
         )
@@ -126,8 +129,12 @@ def render(df: pd.DataFrame):
         topn = topn.copy()
         topn["Cluster"] = cluster_topn(topn, total_col)
         fig_cl = px.scatter(
-            topn, x=total_col, y="MarginPct", size="Orders",
-            color="Cluster", hover_name="SupplierName",
+            topn,
+            x=total_col,
+            y="MarginPct",
+            size="Orders",
+            color="Cluster",
+            hover_name="SupplierName",
             title="Clusters on Top Suppliers"
         )
         st.plotly_chart(fig_cl, use_container_width=True)
@@ -142,8 +149,8 @@ def render(df: pd.DataFrame):
     # ─── Drill-down Table ──────────────────────────────────────────────────
     with st.expander("🔍 Drill-down Table", expanded=False):
         detail = (
-            df_f.groupby(["SupplierName","CustomerName","ProductName"]).
-            agg(Revenue=("Revenue","sum"), Profit=("Profit","sum"), Orders=("OrderId","nunique")).
-            reset_index()
+            df_f.groupby(["SupplierName", "CustomerName", "ProductName"])  
+            .agg(Revenue=("Revenue", "sum"), Profit=("Profit", "sum"), Orders=("OrderId", "nunique"))
+            .reset_index()
         )
         st.dataframe(detail, use_container_width=True)
