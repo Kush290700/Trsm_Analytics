@@ -160,7 +160,7 @@ def load_csv_tables(csv_dir: str='data') -> dict[str, pd.DataFrame]:
 
 @st.cache_data
 def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    """Join raw CSV tables into a single enriched DataFrame with correct revenue logic."""
+    """Join raw CSV tables into a single enriched DataFrame, using correct revenue logic."""
     orders = raw.get('orders',      pd.DataFrame())
     lines  = raw.get('order_lines', pd.DataFrame())
     if orders.empty or lines.empty:
@@ -216,15 +216,16 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     if 'UnitOfBillingId' in df.columns:
         df['UnitOfBillingId'] = pd.to_numeric(df['UnitOfBillingId'], errors='coerce').fillna(0).astype(int)
 
-    # Use line-level Price for revenue
-    if 'Price' not in df.columns:
-        df['Price'] = 0.0
+    # Determine price column for revenue
+    price_col = 'Price' if 'Price' in df.columns else ('SalePrice' if 'SalePrice' in df.columns else None)
+    if price_col is None:
+        raise RuntimeError("Missing Price or SalePrice column for revenue calculation")
 
-    # Compute Revenue
+    # Compute Revenue using pack weights or item count
     df['Revenue'] = np.where(
         df['UnitOfBillingId'] == 3,
-        df['WeightLb'] * df['Price'],
-        df['ItemCount'] * df['Price']
+        df['WeightLb'] * df[price_col],
+        df['ItemCount'] * df[price_col]
     )
 
     # Compute Cost & Profit
