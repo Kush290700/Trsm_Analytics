@@ -56,7 +56,7 @@ def display_seasonality_heatmap(pivot: pd.DataFrame, title: str, key: str) -> No
 @st.cache_data
 def compute_interpurchase(df: pd.DataFrame) -> pd.Series:
     """Compute days between successive orders for each customer."""
-    diffs = df.sort_values(['CustomerName','Date'])\
+    diffs = df.sort_values(['CustomerName','Date']) \
              .groupby('CustomerName')['Date'].diff().dt.days
     return diffs.dropna()
 
@@ -92,7 +92,7 @@ def compute_cohort_retention(df: pd.DataFrame) -> pd.DataFrame:
     df2 = df2.join(first, on='CustomerName')
     df2['Period'] = ((df2['CohortMonth'].dt.year - df2['First'].dt.year) * 12 +
                      (df2['CohortMonth'].dt.month - df2['First'].dt.month))
-    counts = df2.groupby(['First','Period'])['CustomerName']\
+    counts = df2.groupby(['First','Period'])['CustomerName'] \
                   .nunique().reset_index(name='Count')
     sizes = counts[counts['Period']==0].set_index('First')['Count']
     retention = counts.pivot(index='First', columns='Period', values='Count')
@@ -162,10 +162,12 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     lines  = raw.get('order_lines', pd.DataFrame())
     if orders.empty or lines.empty:
         raise RuntimeError('orders or order_lines missing')
-    orders[['OrderId','CustomerId']] = orders[['OrderId','CustomerId']].astype(str)
+    # Cast keys to string
+    orders['OrderId'] = orders['OrderId'].astype(str)
+    orders['CustomerId'] = orders['CustomerId'].astype(str)
     lines[['OrderLineId','OrderId','ProductId']] = lines[['OrderLineId','OrderId','ProductId']].astype(str)
     df = lines.merge(orders, on='OrderId', how='inner')
-    # lookup merges
+    # lookup merges with casting
     lookups = {
         'customers': ('CustomerId',['CustomerName','RegionId']),
         'products':  ('ProductId',['ProductName','UnitOfBillingId','SupplierId']),
@@ -175,18 +177,23 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     for name,(key,cols) in lookups.items():
         lut = raw.get(name)
         if lut is not None and not lut.empty:
+            lut[key] = lut[key].astype(str)
             df = df.merge(lut[[key]+cols].drop_duplicates(), on=key, how='left')
+    # packs aggregation
     packs = raw.get('packs', pd.DataFrame())
     if not packs.empty and 'PickedForOrderLine' in packs.columns:
         packs['OrderLineId'] = packs['PickedForOrderLine'].astype(str)
         agg = packs.groupby('OrderLineId').agg(WeightLb=('WeightLb','sum'),ItemCount=('ItemCount','sum')).reset_index()
+        agg['OrderLineId'] = agg['OrderLineId'].astype(str)
         df = df.merge(agg, on='OrderLineId', how='left').fillna({'WeightLb':0,'ItemCount':0})
     else:
         df['WeightLb'], df['ItemCount'] = 0.0, 0.0
+    # revenue/cost/profit
     df['SalePrice'] = pd.to_numeric(df.get('SalePrice',0),errors='coerce').fillna(0)
     df['UnitCost']  = pd.to_numeric(df.get('UnitCost',0),errors='coerce').fillna(0)
     df['Revenue']   = np.where(df.get('UnitOfBillingId')=='3', df.WeightLb*df.SalePrice, df.ItemCount*df.SalePrice)
     df['Cost']      = np.where(df.get('UnitOfBillingId')=='3', df.WeightLb*df.UnitCost, df.ItemCount*df.UnitCost)
     df['Profit']    = df['Revenue'] - df['Cost']
+    # normalize date
     df['Date']      = pd.to_datetime(df.get('CreatedAt_order'),errors='coerce').dt.normalize()
     return df
