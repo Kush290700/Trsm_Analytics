@@ -99,7 +99,6 @@ def render(df: pd.DataFrame):
 
     st.plotly_chart(px.bar(summary_mon, x="Month", y=["New","Active"], title="New vs Active Customers"), use_container_width=True)
     st.plotly_chart(px.line(churn_df, x="Month", y="ChurnRate", title="Monthly Churn Rate (%)"), use_container_width=True)
-    st.plotly_chart(px.area(summary_mon, x="Month", y="Cumulative", title="Cumulative New Customers"), use_container_width=True)
     st.markdown("---")
 
     # CLV & Inter-purchase
@@ -115,7 +114,6 @@ def render(df: pd.DataFrame):
     rfm = compute_rfm(dfc)
     st.plotly_chart(px.scatter(rfm, x="Recency", y="Monetary", size="Frequency", color="RFM", hover_name="CustomerName", title="RFM Segmentation"), use_container_width=True)
     seg_counts = rfm["RFM"].value_counts().rename_axis("RFM").reset_index(name="Count")
-    st.plotly_chart(px.pie(seg_counts, names="RFM", values="Count", title="RFM Segment Mix"), use_container_width=True)
     X = StandardScaler().fit_transform(rfm[["Recency","Frequency","Monetary"]])
     rfm["Cluster"] = KMeans(n_clusters=4, random_state=42).fit_predict(X).astype(str)
     st.plotly_chart(px.scatter(rfm, x="Recency", y="Frequency", size="Monetary", color="Cluster", hover_name="CustomerName", title="RFM Clusters"), use_container_width=True)
