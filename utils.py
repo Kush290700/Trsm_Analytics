@@ -173,7 +173,7 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
 
     df = lines.merge(orders, on='OrderId', how='inner')
 
-    # Lookup merges
+        # Lookup merges
     lookups = {
         'customers':         ('CustomerId',               ['CustomerName','RegionId']),
         'products':          ('ProductId',                ['SKU','ProductName','UnitOfBillingId','SupplierId']),
@@ -183,14 +183,28 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     }
     for name,(key,cols) in lookups.items():
         lut = raw.get(name)
-        if lut is not None and not lut.empty and key in lut.columns:
-            # rename SMId if present
-            if name=='shipping_methods' and 'SMId' in lut.columns:
-                lut = lut.rename(columns={'SMId':'ShippingMethodRequested'})
-            lut[key] = lut[key].astype(str)
-            if key in df.columns:
-                df[key] = df[key].astype(str)
-            df = df.merge(lut[[key]+cols].drop_duplicates(), on=key, how='left')
+        if lut is None or lut.empty:
+            continue
+        lut = lut.copy()
+        # normalize key column for shipping methods
+        if name == 'shipping_methods':
+            if 'SMId' in lut.columns:
+                lut.rename(columns={'SMId': key}, inplace=True)
+            elif 'ShippingMethodId' in lut.columns:
+                lut.rename(columns={'ShippingMethodId': key}, inplace=True)
+        if key not in lut.columns:
+            st.warning(f"⚠️ Lookup '{name}' missing key column '{key}', skipping.")
+            continue
+        # cast types for consistent merging
+        lut[key] = lut[key].astype(str)
+        if key not in df.columns:
+            continue
+        df[key] = df[key].astype(str)
+        df = df.merge(
+            lut[[key] + cols].drop_duplicates(),
+            on=key,
+            how='left'
+        )
 
     # Packs aggregation
     packs = raw.get('packs', pd.DataFrame())
