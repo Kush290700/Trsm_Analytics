@@ -16,12 +16,12 @@ def filter_by_date(df: pd.DataFrame, start: pd.Timestamp, end: pd.Timestamp) -> 
     return df[(df["Date"] >= start) & (df["Date"] <= end)]
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Forecasting with Prophet
+# Prophet forecasting
 # ──────────────────────────────────────────────────────────────────────────────
 
 @st.cache_data
 def fit_prophet(df: pd.DataFrame, periods: int = 12, freq: str = "M") -> pd.DataFrame:
-    """Fit a Prophet model on DataFrame with ['ds','y'] columns and return forecast."""
+    """Fit a Prophet model on DataFrame with ['ds','y'] and return forecast."""
     model = Prophet(yearly_seasonality=True, weekly_seasonality=False, daily_seasonality=False)
     model.fit(df)
     future = model.make_future_dataframe(periods=periods, freq=freq)
@@ -44,7 +44,7 @@ def seasonality_heatmap_data(df: pd.DataFrame, date_col: str, val_col: str) -> p
 
 @st.cache_data
 def display_seasonality_heatmap(pivot: pd.DataFrame, title: str, key: str) -> None:
-    """Render a Plotly heatmap from a pivoted Month×Year DataFrame."""
+    """Render a Plotly heatmap from pivoted Month×Year DataFrame."""
     fig = px.imshow(pivot, text_auto='.0f', aspect='auto', title=title,
                     labels={'x':'Year','y':'Month','color':title})
     st.plotly_chart(fig, use_container_width=True, key=key)
@@ -56,7 +56,7 @@ def display_seasonality_heatmap(pivot: pd.DataFrame, title: str, key: str) -> No
 @st.cache_data
 def compute_interpurchase(df: pd.DataFrame) -> pd.Series:
     """Compute days between successive orders for each customer."""
-    diffs = df.sort_values(['CustomerName','Date']) \
+    diffs = df.sort_values(['CustomerName','Date'])\
              .groupby('CustomerName')['Date'].diff().dt.days
     return diffs.dropna()
 
@@ -79,6 +79,10 @@ def compute_rfm(df: pd.DataFrame) -> pd.DataFrame:
     rfm['RFM'] = rfm['R'].astype(str) + rfm['F'].astype(str) + rfm['M'].astype(str)
     return rfm
 
+# ──────────────────────────────────────────────────────────────────────────────
+# Cohort retention
+# ──────────────────────────────────────────────────────────────────────────────
+
 @st.cache_data
 def compute_cohort_retention(df: pd.DataFrame) -> pd.DataFrame:
     """Compute cohort retention rates by month."""
@@ -88,11 +92,32 @@ def compute_cohort_retention(df: pd.DataFrame) -> pd.DataFrame:
     df2 = df2.join(first, on='CustomerName')
     df2['Period'] = ((df2['CohortMonth'].dt.year - df2['First'].dt.year) * 12 +
                      (df2['CohortMonth'].dt.month - df2['First'].dt.month))
-    counts = df2.groupby(['First','Period'])['CustomerName'] \
+    counts = df2.groupby(['First','Period'])['CustomerName']\
                   .nunique().reset_index(name='Count')
     sizes = counts[counts['Period']==0].set_index('First')['Count']
     retention = counts.pivot(index='First', columns='Period', values='Count')
     return retention.div(sizes, axis=0).fillna(0)
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Region summaries
+# ──────────────────────────────────────────────────────────────────────────────
+
+@st.cache_data
+def summarize_regions(df: pd.DataFrame, col: str) -> pd.DataFrame:
+    """Aggregate Total, Orders, Customers, Profit by RegionName."""
+    agg = df.groupby('RegionName').agg(
+        Total     = (col, 'sum'),
+        Orders    = ('OrderId', 'nunique'),
+        Customers = ('CustomerName', 'nunique'),
+        Profit    = ('Profit', 'sum') if 'Profit' in df.columns else (col, 'sum')
+    ).reset_index()
+    agg['AvgOrder'] = agg['Total'] / agg['Orders'].replace(0, np.nan)
+    agg['MarginPct'] = np.where(
+        agg['Total'] > 0,
+        agg['Profit'] / agg['Total'] * 100,
+        0
+    )
+    return agg.astype({'Total':'float32','Orders':'int32','Customers':'int32','Profit':'float32','AvgOrder':'float32','MarginPct':'float32'})
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Supplier summaries
@@ -137,34 +162,31 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     lines  = raw.get('order_lines', pd.DataFrame())
     if orders.empty or lines.empty:
         raise RuntimeError('orders or order_lines missing')
-    # Cast keys to string
     orders[['OrderId','CustomerId']] = orders[['OrderId','CustomerId']].astype(str)
     lines[['OrderLineId','OrderId','ProductId']] = lines[['OrderLineId','OrderId','ProductId']].astype(str)
     df = lines.merge(orders, on='OrderId', how='inner')
-    # Minimal lookups
-    for name, (key, cols) in {
-        'customers': ('CustomerId', ['CustomerName','RegionId']),
-        'products':  ('ProductId',  ['ProductName','UnitOfBillingId','SupplierId']),
-        'regions':   ('RegionId',   ['RegionName']),
+    # lookup merges
+    lookups = {
+        'customers': ('CustomerId',['CustomerName','RegionId']),
+        'products':  ('ProductId',['ProductName','UnitOfBillingId','SupplierId']),
+        'regions':   ('RegionId',['RegionName']),
         'suppliers': ('SupplierId',['SupplierName']),
-    }.items():
+    }
+    for name,(key,cols) in lookups.items():
         lut = raw.get(name)
         if lut is not None and not lut.empty:
             df = df.merge(lut[[key]+cols].drop_duplicates(), on=key, how='left')
-    # Packs aggregation
     packs = raw.get('packs', pd.DataFrame())
     if not packs.empty and 'PickedForOrderLine' in packs.columns:
         packs['OrderLineId'] = packs['PickedForOrderLine'].astype(str)
-        agg = packs.groupby('OrderLineId').agg(WeightLb=('WeightLb','sum'), ItemCount=('ItemCount','sum')).reset_index()
+        agg = packs.groupby('OrderLineId').agg(WeightLb=('WeightLb','sum'),ItemCount=('ItemCount','sum')).reset_index()
         df = df.merge(agg, on='OrderLineId', how='left').fillna({'WeightLb':0,'ItemCount':0})
     else:
         df['WeightLb'], df['ItemCount'] = 0.0, 0.0
-    # Compute revenue, cost, profit
-    df['SalePrice'] = pd.to_numeric(df.get('SalePrice',0), errors='coerce').fillna(0)
-    df['UnitCost']  = pd.to_numeric(df.get('UnitCost',0), errors='coerce').fillna(0)
-    df['Revenue'] = np.where(df.get('UnitOfBillingId')=='3', df.WeightLb*df.SalePrice, df.ItemCount*df.SalePrice)
-    df['Cost']    = np.where(df.get('UnitOfBillingId')=='3', df.WeightLb*df.UnitCost, df.ItemCount*df.UnitCost)
-    df['Profit']  = df['Revenue'] - df['Cost']
-    # Normalize date
-    df['Date'] = pd.to_datetime(df.get('CreatedAt_order'), errors='coerce').dt.normalize()
+    df['SalePrice'] = pd.to_numeric(df.get('SalePrice',0),errors='coerce').fillna(0)
+    df['UnitCost']  = pd.to_numeric(df.get('UnitCost',0),errors='coerce').fillna(0)
+    df['Revenue']   = np.where(df.get('UnitOfBillingId')=='3', df.WeightLb*df.SalePrice, df.ItemCount*df.SalePrice)
+    df['Cost']      = np.where(df.get('UnitOfBillingId')=='3', df.WeightLb*df.UnitCost, df.ItemCount*df.UnitCost)
+    df['Profit']    = df['Revenue'] - df['Cost']
+    df['Date']      = pd.to_datetime(df.get('CreatedAt_order'),errors='coerce').dt.normalize()
     return df
