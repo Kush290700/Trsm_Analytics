@@ -219,25 +219,29 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     else:
         df['WeightLb'], df['ItemCount'] = 0.0, 0.0
 
-    # Filter to packed orders only
+        # Filter to packed orders only
     if 'OrderStatus' in df.columns:
-        df = df[df['OrderStatus']=='packed']
+        df = df[df['OrderStatus'] == 'packed']
 
-    # Price column
-    if 'Price' not in df.columns and 'SalePrice' in df.columns:
-        df['Price'] = df['SalePrice']
+    # Determine price column from order_lines
+    if 'Price' in df.columns:
+        price_col = 'Price'
+    elif 'SalePrice' in df.columns:
+        price_col = 'SalePrice'
+    else:
+        raise RuntimeError("Missing price column for revenue calculation")
 
-    # Compute Revenue
+    # Compute Revenue using pack weights or item count and order line Price
     df['Revenue'] = np.where(
-        df.get('UnitOfBillingId')=='3',
-        df['WeightLb'] * df['Price'],
-        df['ItemCount'] * df['Price']
+        df.get('UnitOfBillingId') == '3',
+        df['WeightLb'] * df[price_col],
+        df['ItemCount'] * df[price_col]
     )
 
     # Compute Cost & Profit
     if 'UnitCost' in df.columns:
         df['Cost'] = np.where(
-            df.get('UnitOfBillingId')=='3',
+            df.get('UnitOfBillingId') == '3',
             df['WeightLb'] * df['UnitCost'],
             df['ItemCount'] * df['UnitCost']
         )
@@ -245,7 +249,14 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
         df['Cost'] = 0.0
     df['Profit'] = df['Revenue'] - df['Cost']
 
-        # Normalize Date
+    # Normalize Date
+    df['Date'] = pd.to_datetime(df.get('CreatedAt_order'), errors='coerce').dt.normalize()
+
+    # Ensure ShippingMethodName column exists
+    if 'ShippingMethodName' not in df.columns:
+        df['ShippingMethodName'] = np.nan
+
+    return df
     df['Date'] = pd.to_datetime(df.get('CreatedAt_order'), errors='coerce').dt.normalize()
 
     # Ensure ShippingMethodName exists for regional tab
