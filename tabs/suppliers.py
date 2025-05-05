@@ -128,35 +128,6 @@ def render(df: pd.DataFrame):
         st.plotly_chart(fig_tm, use_container_width=True)
         st.markdown("---")
 
-    # Scatter & drill-down
-    fig_sc = px.scatter(
-        summ,
-        x=total_col, y="MarginPct", size="Orders",
-        hover_name="SupplierName",
-        title=f"{metric} vs Margin %"
-    )
-    clicked = plotly_events(fig_sc, click_event=True)
-    st.plotly_chart(fig_sc, use_container_width=True)
-
-    if clicked:
-        sup = clicked[0].get("hovertext") or topn.iloc[clicked[0]["pointIndex"]]["SupplierName"]
-        st.markdown(f"#### Details for **{sup}**")
-        df_sup = df_f[df_f.SupplierName == sup]
-        prod = (
-            df_sup
-            .groupby("ProductName")
-            .agg(
-                Revenue=("Revenue", "sum"),
-                Cost=("Cost",       "sum"),
-                Profit=("Profit",   "sum"),
-                Orders=("OrderId",  "nunique")
-            )
-            .reset_index()
-            .sort_values("Revenue", ascending=False)
-        )
-        st.dataframe(prod, use_container_width=True)
-        st.markdown("---")
-
     # K-Means clustering on Top-N
     X = StandardScaler().fit_transform(topn[[total_col, "Orders", "MarginPct"]].fillna(0))
     topn["Cluster"] = KMeans(n_clusters=4, random_state=42).fit_predict(X).astype(str)
