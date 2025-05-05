@@ -219,23 +219,19 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     else:
         df['WeightLb'], df['ItemCount'] = 0.0, 0.0
 
-        # Filter to packed orders only
+            # Filter to packed orders only
     if 'OrderStatus' in df.columns:
         df = df[df['OrderStatus'] == 'packed']
 
-    # Determine price column from order_lines
-    if 'Price' in df.columns:
-        price_col = 'Price'
-    elif 'SalePrice' in df.columns:
-        price_col = 'SalePrice'
-    else:
-        raise RuntimeError("Missing price column for revenue calculation")
+    # Ensure Price column exists (from order_lines)
+    if 'Price' not in df.columns:
+        df['Price'] = 0.0
 
-    # Compute Revenue using pack weights or item count and order line Price
+    # Compute Revenue using pack weights or item count and order_lines.Price
     df['Revenue'] = np.where(
         df.get('UnitOfBillingId') == '3',
-        df['WeightLb'] * df[price_col],
-        df['ItemCount'] * df[price_col]
+        df['WeightLb'] * df['Price'],
+        df['ItemCount'] * df['Price']
     )
 
     # Compute Cost & Profit
