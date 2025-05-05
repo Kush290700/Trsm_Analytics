@@ -128,15 +128,6 @@ def render(df: pd.DataFrame):
     )
     st.markdown("---")
 
-    # Volatility analysis
-    vol_stats = compute_volatility(df, metric, period="M")
-    st.plotly_chart(
-        px.scatter(vol_stats, x="mean", y="CV", size="std", hover_name="ProductName", title="Volatility"),
-        use_container_width=True,
-        key="prod_volatility"
-    )
-    st.markdown("---")
-
     # KMeans clustering
     X = StandardScaler().fit_transform(topn[[metric, "Units", "Profit"]].fillna(0))
     topn["Cluster"] = KMeans(n_clusters=4, random_state=42).fit_predict(X).astype(str)
