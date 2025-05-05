@@ -245,7 +245,11 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
         df['Cost'] = 0.0
     df['Profit'] = df['Revenue'] - df['Cost']
 
-    # Normalize Date
+        # Normalize Date
     df['Date'] = pd.to_datetime(df.get('CreatedAt_order'), errors='coerce').dt.normalize()
+
+    # Ensure ShippingMethodName exists for regional tab
+    if 'ShippingMethodName' not in df.columns:
+        df['ShippingMethodName'] = np.nan
 
     return df
