@@ -127,8 +127,8 @@ def get_supplier_summary(df: pd.DataFrame) -> pd.DataFrame:
     """Summarize revenue, cost, profit, and orders per supplier."""
     sup = df.groupby('SupplierName').agg(
         TotalRev  = ('Revenue','sum'),
-        TotalCost = ('Cost','sum'),
-        TotalProf = ('Profit','sum'),
+        TotalCost = ('Cost',   'sum'),
+        TotalProf = ('Profit', 'sum'),
         Orders    = ('OrderId','nunique')
     ).reset_index()
     sup['MarginPct'] = np.where(sup.TotalRev>0, sup.TotalProf/sup.TotalRev*100, 0)
@@ -160,7 +160,7 @@ def load_csv_tables(csv_dir: str='data') -> dict[str, pd.DataFrame]:
 
 @st.cache_data
 def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    """Join raw CSV tables into a single enriched DataFrame."""
+    """Join raw CSV tables into a single enriched DataFrame with correct revenue logic."""
     orders = raw.get('orders',      pd.DataFrame())
     lines  = raw.get('order_lines', pd.DataFrame())
     if orders.empty or lines.empty:
@@ -171,9 +171,10 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     orders['CustomerId'] = orders['CustomerId'].astype(str)
     lines[['OrderLineId','OrderId','ProductId']] = lines[['OrderLineId','OrderId','ProductId']].astype(str)
 
+    # Merge orders + lines
     df = lines.merge(orders, on='OrderId', how='inner')
 
-        # Lookup merges
+    # Lookup merges
     lookups = {
         'customers':         ('CustomerId',               ['CustomerName','RegionId']),
         'products':          ('ProductId',                ['SKU','ProductName','UnitOfBillingId','SupplierId']),
@@ -186,50 +187,42 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
         if lut is None or lut.empty:
             continue
         lut = lut.copy()
-        # normalize key column for shipping methods
         if name == 'shipping_methods':
             if 'SMId' in lut.columns:
                 lut.rename(columns={'SMId': key}, inplace=True)
             elif 'ShippingMethodId' in lut.columns:
                 lut.rename(columns={'ShippingMethodId': key}, inplace=True)
-        if key not in lut.columns:
-            st.warning(f"⚠️ Lookup '{name}' missing key column '{key}', skipping.")
+        if key not in lut.columns or key not in df.columns:
             continue
-        # cast types for consistent merging
         lut[key] = lut[key].astype(str)
-        if key not in df.columns:
-            continue
         df[key] = df[key].astype(str)
-        df = df.merge(
-            lut[[key] + cols].drop_duplicates(),
-            on=key,
-            how='left'
-        )
+        df = df.merge(lut[[key] + cols].drop_duplicates(), on=key, how='left')
 
     # Packs aggregation
     packs = raw.get('packs', pd.DataFrame())
     if not packs.empty and 'PickedForOrderLine' in packs.columns:
         packs['OrderLineId'] = packs['PickedForOrderLine'].astype(str)
-        agg = packs.groupby('OrderLineId').agg(
-            WeightLb  = ('WeightLb','sum'),
-            ItemCount = ('ItemCount','sum')
-        ).reset_index()
+        agg = packs.groupby('OrderLineId').agg(WeightLb=('WeightLb','sum'), ItemCount=('ItemCount','sum')).reset_index()
         agg['OrderLineId'] = agg['OrderLineId'].astype(str)
         df = df.merge(agg, on='OrderLineId', how='left').fillna({'WeightLb':0,'ItemCount':0})
     else:
         df['WeightLb'], df['ItemCount'] = 0.0, 0.0
 
-            # Filter to packed orders only
+    # Filter to packed orders only
     if 'OrderStatus' in df.columns:
-        df = df[df['OrderStatus'] == 'packed']
+        df = df[df['OrderStatus']=='packed']
 
-    # Ensure Price column exists (from order_lines)
+    # Cast UnitOfBillingId to int
+    if 'UnitOfBillingId' in df.columns:
+        df['UnitOfBillingId'] = pd.to_numeric(df['UnitOfBillingId'], errors='coerce').fillna(0).astype(int)
+
+    # Use line-level Price for revenue
     if 'Price' not in df.columns:
         df['Price'] = 0.0
 
-    # Compute Revenue using pack weights or item count and order_lines.Price
+    # Compute Revenue
     df['Revenue'] = np.where(
-        df.get('UnitOfBillingId') == '3',
+        df['UnitOfBillingId'] == 3,
         df['WeightLb'] * df['Price'],
         df['ItemCount'] * df['Price']
     )
@@ -237,7 +230,7 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     # Compute Cost & Profit
     if 'UnitCost' in df.columns:
         df['Cost'] = np.where(
-            df.get('UnitOfBillingId') == '3',
+            df['UnitOfBillingId'] == 3,
             df['WeightLb'] * df['UnitCost'],
             df['ItemCount'] * df['UnitCost']
         )
@@ -248,14 +241,7 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     # Normalize Date
     df['Date'] = pd.to_datetime(df.get('CreatedAt_order'), errors='coerce').dt.normalize()
 
-    # Ensure ShippingMethodName column exists
-    if 'ShippingMethodName' not in df.columns:
-        df['ShippingMethodName'] = np.nan
-
-    return df
-    df['Date'] = pd.to_datetime(df.get('CreatedAt_order'), errors='coerce').dt.normalize()
-
-    # Ensure ShippingMethodName exists for regional tab
+    # Ensure ShippingMethodName exists
     if 'ShippingMethodName' not in df.columns:
         df['ShippingMethodName'] = np.nan
 
