@@ -177,8 +177,15 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
     for name,(key,cols) in lookups.items():
         lut = raw.get(name)
         if lut is not None and not lut.empty:
+            # cast both lookup key and df key to str for consistent merges
             lut[key] = lut[key].astype(str)
-            df = df.merge(lut[[key]+cols].drop_duplicates(), on=key, how='left')
+            if key in df.columns:
+                df[key] = df[key].astype(str)
+            df = df.merge(
+                lut[[key] + cols].drop_duplicates(),
+                on=key,
+                how='left'
+            )
     # packs aggregation
     packs = raw.get('packs', pd.DataFrame())
     if not packs.empty and 'PickedForOrderLine' in packs.columns:
