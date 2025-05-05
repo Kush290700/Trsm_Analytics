@@ -80,20 +80,33 @@ def compute_rfm(df: pd.DataFrame) -> pd.DataFrame:
     return rfm
 
 @st.cache_data
-def compute_cohort_retention(df: pd.DataFrame) -> pd.DataFrame:
-    """Compute cohort retention rates by month."""
-    df2 = df.copy()
-    df2["Cohort"] = df2.Date.dt.to_period("M").dt.to_timestamp()
-    first = df2.groupby("CustomerName")["Cohort"].min().rename("First")
-    df2 = df2.join(first, on="CustomerName")
-    df2["Period"] = ((df2.Cohort.dt.year - df2.First.dt.year) * 12 +
-                       (df2.Cohort.dt.month - df2.First.dt.month))
-    counts = df2.groupby(["First","Period"])["CustomerName"].nunique().reset_index("CustomerName').rename(columns={"CustomerName":"Count"})
-    sizes = counts[counts.Period==0].set_index("First")["Count"]
-    retention = counts.pivot(index="First", columns="Period", values="Count")
-    return retention.div(sizes, axis=0).fillna(0)
+"
+"def compute_cohort_retention(df: pd.DataFrame) -> pd.DataFrame:
+"
+"    """Compute cohort retention rates by month."""
+"
+"    df2 = df.copy()
+"
+"    df2["Cohort"] = df2.Date.dt.to_period("M").dt.to_timestamp()
+"
+"    first = df2.groupby("CustomerName")["Cohort"].min().rename("First")
+"
+"    df2 = df2.join(first, on="CustomerName")
+"
+"    df2["Period"] = ((df2.Cohort.dt.year - df2.First.dt.year) * 12 +
+"
+"                       (df2.Cohort.dt.month - df2.First.dt.month))
+"
+"    counts = df2.groupby(["First","Period"]) ["CustomerName"].nunique().reset_index(name="Count")
+"
+"    sizes = counts[counts.Period == 0].set_index("First")["Count"]
+"
+"    retention = counts.pivot(index="First", columns="Period", values="Count")
+"
+"    return retention.div(sizes, axis=0).fillna(0)
 
-# ──────────────────────────────────────────────────────────────────────────────
+"
+"# ──────────────────────────────────────────────────────────────────────────────
 # Supplier summaries
 # ──────────────────────────────────────────────────────────────────────────────
 
