@@ -28,7 +28,7 @@ def main():
     st.title("📊 TRSM Advanced Analytics")
 
     # — Sidebar date filters —
-    min_d = st.sidebar.date_input("Start Date",  value=datetime(2020, 1, 1))
+    min_d = st.sidebar.date_input("Start Date",  value=datetime(2021, 1, 1))
     max_d = st.sidebar.date_input("End Date",    value=datetime.today())
 
     # — Load, prepare & filter —
