@@ -56,12 +56,6 @@ def render(df: pd.DataFrame):
     fig_year = px.bar(yearly, x="Year", y=col, text_auto=",.0f", title=f"Yearly {metric}", template="plotly_white")
     st.plotly_chart(fig_year, use_container_width=True)
 
-    # Cumulative
-    ts["Cumulative"] = ts[col].cumsum()
-    fig_cum = px.area(ts, x="Date", y="Cumulative", title=f"Cumulative {metric}", template="plotly_white")
-    st.plotly_chart(fig_cum, use_container_width=True)
-    st.markdown("---")
-
     # Seasonality heatmap
     heat = seasonality_heatmap_data(df, "Date", col)
     display_seasonality_heatmap(heat, f"Seasonality ({metric})", key="t1_heat")
