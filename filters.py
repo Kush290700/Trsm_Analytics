@@ -1,5 +1,4 @@
-# filters.py
-
+# File: filters.py
 import pandas as pd
 import streamlit as st
 
@@ -13,15 +12,19 @@ def get_unique(df: pd.DataFrame, col: str) -> list:
 def apply_filters(df: pd.DataFrame) -> pd.DataFrame:
     st.sidebar.header("🔎 Filters")
 
+    # ─── Limit data to 2021 and later to reduce memory ────────────────────────
+    if 'Date' in df.columns:
+        df = df[df['Date'] >= pd.to_datetime('2021-01-01')]
+
     # Start with all rows
     mask = pd.Series(True, index=df.index)
 
     # — Product (SKU – ProductName) filter —
     sku_prod = (
         df[['SKU', 'ProductName']]
-        .dropna(subset=['SKU','ProductName'])
+        .dropna(subset=['SKU', 'ProductName'])
         .drop_duplicates()
-        .sort_values(['SKU','ProductName'])
+        .sort_values(['SKU', 'ProductName'])
     )
     prod_options = ["All"] + [
         f"{row.SKU} – {row.ProductName}"
@@ -34,7 +37,7 @@ def apply_filters(df: pd.DataFrame) -> pd.DataFrame:
         key="filt_sku_prod"
     )
     if "All" not in selected_prods:
-        chosen_names = [item.split("–",1)[1].strip() for item in selected_prods]
+        chosen_names = [item.split("–", 1)[1].strip() for item in selected_prods]
         mask &= df['ProductName'].isin(chosen_names)
 
     # — Region filter —
