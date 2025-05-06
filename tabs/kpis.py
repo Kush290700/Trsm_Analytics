@@ -7,7 +7,7 @@ from utils import seasonality_heatmap_data, display_seasonality_heatmap
 
 @st.cache_data
 def compute_monthly_revenue(df: pd.DataFrame) -> pd.DataFrame:
-    return df.set_index('Date').resample('M')['Revenue'].sum().reset_index()
+    return df.set_index('Date').resample('ME')['Revenue'].sum().reset_index()
 
 def render(df_all: pd.DataFrame, df: pd.DataFrame):
     st.subheader("🚀 Executive Summary")
