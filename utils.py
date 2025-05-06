@@ -34,7 +34,7 @@ def fit_prophet(df: pd.DataFrame, periods: int = 12, freq: str = "M") -> pd.Data
 @st.cache_data
 def seasonality_heatmap_data(df: pd.DataFrame, date_col: str, val_col: str) -> pd.DataFrame:
     """Aggregate val_col by month and pivot into Month×Year matrix."""
-    tmp = df.groupby(pd.Grouper(key=date_col, freq="M"))[val_col].sum().reset_index()
+    tmp = df.groupby(pd.Grouper(key=date_col, freq="ME"))[val_col].sum().reset_index()
     tmp['Month'] = tmp[date_col].dt.month.map(lambda m: calendar.month_abbr[m])
     tmp['Year'] = tmp[date_col].dt.year.astype(str)
     months = list(calendar.month_abbr)[1:]
