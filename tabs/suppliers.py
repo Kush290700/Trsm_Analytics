@@ -90,19 +90,21 @@ def render(df: pd.DataFrame):
     st.plotly_chart(fig_top, use_container_width=True)
     st.markdown("---")
 
-    # ─── Hierarchical Treemap ─────────────────────────────────────────────
-    with st.expander("🌲 Hierarchical Treemap", expanded=False):
+    # ─── Interactive Sunburst (lighter hierarchies) ────────────────────────
+    with st.expander("🌐 Interactive Sunburst", expanded=False):
         tree_df = (
-            df_f.groupby(["RegionName", "CustomerName", "SupplierName", "ProductName"])[metric]
+            df_f.groupby(["RegionName", "CustomerName", "SupplierName", "ProductName"] )[metric]
             .sum().reset_index()
         )
-        fig_tm = px.treemap(
+        fig_sb = px.sunburst(
             tree_df,
             path=["RegionName", "CustomerName", "SupplierName", "ProductName"],
             values=metric,
-            title=f"{metric} by Region→Customer→Supplier→Product"
+            title=f"{metric} by Region→Customer→Supplier→Product",
+            branchvalues="total",
+            maxdepth=2  # limit initial depth for performance
         )
-        st.plotly_chart(fig_tm, use_container_width=True)
+        st.plotly_chart(fig_sb, use_container_width=True)
     st.markdown("---")
 
     # ─── Clustering ───────────────────────────────────────────────────────
