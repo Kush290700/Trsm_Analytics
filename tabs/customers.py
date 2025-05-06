@@ -5,18 +5,18 @@ import plotly.express as px
 
 from utils import (
     filter_by_date,
-    compute_interpurchase,
     compute_rfm,
     compute_cohort_retention,
     seasonality_heatmap_data,
     display_seasonality_heatmap
 )
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def cluster_rfm(rfm: pd.DataFrame) -> pd.DataFrame:
     """Add KMeans cluster labels to RFM DataFrame."""
     from sklearn.preprocessing import StandardScaler
     from sklearn.cluster import KMeans
+
     X = rfm[['Recency', 'Frequency', 'Monetary']].fillna(0)
     X_scaled = StandardScaler().fit_transform(X)
     rfm['Cluster'] = KMeans(n_clusters=4, random_state=42).fit_predict(X_scaled).astype(str)
@@ -34,17 +34,11 @@ def render(df: pd.DataFrame):
     min_date = df['Date'].min().date()
     max_date = df['Date'].max().date()
     with st.sidebar.expander("🔧 Customer Filters", expanded=True):
-        date_range = st.date_input(
-            "Date Range", [min_date, max_date], key="cust_date"
-        )
+        date_range = st.date_input("Date Range", [min_date, max_date], key="cust_date")
         regions = ["All"] + sorted(df['RegionName'].dropna().unique())
         products = ["All"] + sorted(df['ProductName'].dropna().unique())
-        sel_regs = st.multiselect(
-            "Regions", regions, default=["All"], key="cust_regs"
-        )
-        sel_prods = st.multiselect(
-            "Products", products, default=["All"], key="cust_prods"
-        )
+        sel_regs = st.multiselect("Regions", regions, default=["All"], key="cust_regs")
+        sel_prods = st.multiselect("Products", products, default=["All"], key="cust_prods")
 
     # Apply filters
     start = pd.to_datetime(date_range[0])
@@ -72,105 +66,48 @@ def render(df: pd.DataFrame):
 
     # New / Active / Churn
     with st.expander("📊 New / Active / Churn", expanded=False):
-        dfc['Month'] = dfc['Date'].values.astype('datetime64[M]')
-        active = (
-            dfc.groupby('Month')['CustomerName']
-               .nunique()
-               .reset_index(name='Active')
-        )
-        first = (
-            dfc.groupby('CustomerName')['Month']
-               .min()
-               .reset_index(name='FirstMonth')
-        )
-        new = (
-            first.groupby('FirstMonth')['CustomerName']
-                 .nunique()
-                 .reset_index(name='New')
-                 .rename(columns={'FirstMonth': 'Month'})
-        )
-        summary_mon = (
-            active.merge(new, on='Month', how='left')
-                  .fillna({'New': 0})
-        )
+        dfc['Month'] = dfc['Date'].dt.to_period('M').dt.to_timestamp()
+        active = dfc.groupby('Month')['CustomerName'].nunique().reset_index(name='Active')
+        first = dfc.groupby('CustomerName')['Month'].min().reset_index(name='FirstMonth')
+        new = first.groupby('FirstMonth')['CustomerName'].nunique().reset_index(name='New').rename(columns={'FirstMonth':'Month'})
+        summary_mon = active.merge(new, on='Month', how='left').fillna({'New':0})
         summary_mon['Cumulative'] = summary_mon['New'].cumsum()
 
         cohorts = dfc.groupby('Month')['CustomerName'].agg(set)
-        months_list = list(cohorts.index)
         churn_list = []
-        for prev, curr in zip(months_list, months_list[1:]):
-            p = cohorts[prev]
-            c = cohorts[curr]
-            rate = 100 * (1 - len(p & c) / len(p)) if p else None
+        months = list(cohorts.index)
+        for prev, curr in zip(months, months[1:]):
+            p, c = cohorts[prev], cohorts[curr]
+            rate = 100 * (1 - len(p & c) / len(p)) if p else 0
             churn_list.append({'Month': curr, 'ChurnRate': rate})
         churn_df = pd.DataFrame(churn_list)
 
         col1, col2 = st.columns(2)
-        col1.plotly_chart(
-            px.bar(
-                summary_mon, x='Month', y=['New', 'Active'],
-                title='New vs Active Customers'
-            ), use_container_width=True
-        )
-        col2.plotly_chart(
-            px.line(
-                churn_df, x='Month', y='ChurnRate',
-                title='Monthly Churn Rate (%)'
-            ), use_container_width=True
-        )
+        col1.plotly_chart(px.bar(summary_mon, x='Month', y=['New','Active'], title='New vs Active Customers'), use_container_width=True)
+        col2.plotly_chart(px.line(churn_df, x='Month', y='ChurnRate', title='Monthly Churn Rate (%)'), use_container_width=True)
     st.markdown("---")
 
-    # CLV & Inter-purchase
-    with st.expander("💰 CLV & Inter-purchase", expanded=False):
-        clv = (
-            dfc.groupby('CustomerName')['Revenue']
-               .sum()
-               .reset_index(name='CLV')
-        )
-        diffs = compute_interpurchase(dfc)
-        c1, c2 = st.columns(2)
-        c1.plotly_chart(
-            px.histogram(
-                clv, x='CLV', nbins=30, marginal='box',
-                title='Customer Lifetime Value'
-            ), use_container_width=True
-        )
-        if not diffs.empty:
-            c2.plotly_chart(
-                px.histogram(
-                    diffs, x=diffs.name, nbins=30,
-                    marginal='violin',
-                    title='Inter-purchase Interval (days)'
-                ), use_container_width=True
-            )
+    # CLV only (removed Inter-purchase to lighten)
+    with st.expander("💰 Customer Lifetime Value", expanded=False):
+        clv = dfc.groupby('CustomerName')['Revenue'].sum().reset_index(name='CLV')
+        fig_clv = px.histogram(clv, x='CLV', nbins=30, marginal='box', title='Customer Lifetime Value')
+        st.plotly_chart(fig_clv, use_container_width=True)
     st.markdown("---")
 
     # RFM & Clustering
     with st.expander("👥 RFM & Clustering", expanded=False):
         rfm = compute_rfm(dfc)
-        st.plotly_chart(
-            px.scatter(
-                rfm, x='Recency', y='Monetary', size='Frequency',
-                color='RFM', hover_name='CustomerName',
-                title='RFM Segmentation'
-            ), use_container_width=True
-        )
+        fig_rfm = px.scatter(rfm, x='Recency', y='Monetary', size='Frequency', color='RFM', hover_name='CustomerName', title='RFM Segmentation')
+        st.plotly_chart(fig_rfm, use_container_width=True)
         rfm = cluster_rfm(rfm)
-        st.plotly_chart(
-            px.scatter(
-                rfm, x='Recency', y='Frequency', size='Monetary',
-                color='Cluster', hover_name='CustomerName',
-                title='RFM Clusters'
-            ), use_container_width=True
-        )
+        fig_clust = px.scatter(rfm, x='Recency', y='Frequency', size='Monetary', color='Cluster', hover_name='CustomerName', title='RFM Clusters')
+        st.plotly_chart(fig_clust, use_container_width=True)
     st.markdown("---")
 
     # Cohort Retention
     with st.expander("📈 Cohort Retention", expanded=False):
         retention = compute_cohort_retention(dfc)
-        display_seasonality_heatmap(
-            retention, title='Customer Cohort Retention', key='cust_cohort'
-        )
+        display_seasonality_heatmap(retention, title='Customer Cohort Retention', key='cust_cohort')
     st.markdown("---")
 
     # Download
