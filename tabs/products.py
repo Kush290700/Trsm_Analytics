@@ -88,7 +88,7 @@ def render(df: pd.DataFrame):
 
     # Time Series & Forecast
     with st.expander("📈 Trend & Forecast", expanded=False):
-        ts = df.set_index("Date")[metric].resample("M").sum().rename(metric)
+        ts = df.set_index("Date")[metric].resample("ME").sum().rename(metric)
         ts = ts.to_frame().reset_index()
         ts["MA"] = ts[metric].rolling(ma_window).mean()
 
