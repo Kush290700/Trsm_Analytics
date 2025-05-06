@@ -27,10 +27,6 @@ def load_data(start: str | None = None, end: str | None = None) -> pd.DataFrame:
 def main():
     st.title("📊 TRSM Advanced Analytics")
 
-    # — Sidebar date filters —
-    min_d = st.sidebar.date_input("Start Date",  value=datetime(2021, 1, 1))
-    max_d = st.sidebar.date_input("End Date",    value=datetime.today())
-
     # — Load, prepare & filter —
     df_all = load_data(
         start=min_d.strftime("%Y-%m-%d"),
