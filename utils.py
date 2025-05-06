@@ -247,3 +247,11 @@ def prepare_full_data(raw: dict[str, pd.DataFrame]) -> pd.DataFrame:
         df['ShippingMethodName'] = np.nan
 
     return df
+    
+@st.cache_data(show_spinner=False)
+def get_unique(df: pd.DataFrame, col: str) -> list:
+    """Return sorted unique non-null values for a given column."""
+    if col in df.columns:
+        return sorted(df[col].dropna().unique().tolist())
+    return []
+
