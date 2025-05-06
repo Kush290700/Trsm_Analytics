@@ -41,10 +41,8 @@ def render(df: pd.DataFrame):
     st.markdown("---")
 
     # ─── Apply Filters ────────────────────────────────────────────────────
-    # Date filter
     start_d, end_d = date_range if isinstance(date_range, (list, tuple)) else (date_range, date_range)
     df_f = filter_by_date(df, pd.to_datetime(start_d), pd.to_datetime(end_d))
-    # Supplier filter
     if "All" not in sel_sup:
         df_f = df_f[df_f.SupplierName.isin(sel_sup)]
     if df_f.empty:
@@ -92,34 +90,17 @@ def render(df: pd.DataFrame):
     st.plotly_chart(fig_top, use_container_width=True)
     st.markdown("---")
 
-    # ─── Trend & Forecast (in expander) ──────────────────────────────────
-    with st.expander("📈 Trend & Forecast", expanded=False):
-        ts = get_monthly_supplier(df_f, metric)
-        ts["MA"] = ts[metric].rolling(ma).mean()
-        fig_ts = px.line(ts, x="Date", y=[metric, "MA"], title=f"{metric} Trend (MA={ma}mo)")
-        fig_ts.update_traces(selector={"name": "MA"}, line_dash="dash")
-        st.plotly_chart(fig_ts, use_container_width=True)
-
-        if len(ts) >= 2:
-            dfp = ts.rename(columns={"Date": "ds", metric: "y"})[["ds", "y"]]
-            fc = fit_prophet(dfp, periods=hor, freq="M")
-            fig_fc = px.line(fc, x="ds", y="yhat", title=f"{metric} Forecast (+{hor}mo)")
-            fig_fc.add_scatter(x=fc.ds, y=fc.yhat_upper, mode="lines", line_dash="dash", name="Upper")
-            fig_fc.add_scatter(x=fc.ds, y=fc.yhat_lower, mode="lines", line_dash="dash", name="Lower")
-            st.plotly_chart(fig_fc, use_container_width=True)
-    st.markdown("---")
-
     # ─── Hierarchical Treemap ─────────────────────────────────────────────
     with st.expander("🌲 Hierarchical Treemap", expanded=False):
         tree_df = (
-            df_f.groupby(["RegionName", "SupplierName", "CustomerName", "ProductName"])[metric]
+            df_f.groupby(["RegionName", "CustomerName", "SupplierName", "ProductName"])[metric]
             .sum().reset_index()
         )
         fig_tm = px.treemap(
             tree_df,
-            path=["RegionName", "SupplierName", "CustomerName", "ProductName"],
+            path=["RegionName", "CustomerName", "SupplierName", "ProductName"],
             values=metric,
-            title=f"{metric} by Region→Supplier→Customer→Product"
+            title=f"{metric} by Region→Customer→Supplier→Product"
         )
         st.plotly_chart(fig_tm, use_container_width=True)
     st.markdown("---")
