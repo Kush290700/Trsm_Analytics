@@ -1,19 +1,24 @@
 # File: app.py
 import streamlit as st
 import pandas as pd
+import gc
+from datetime import datetime
+
 from utils import load_csv_tables, prepare_full_data
 from filters import apply_filters
 from dashboard_ui import dashboard
-from datetime import datetime
 
 st.set_page_config(page_title="TRSM Intelligence", layout="wide")
 
 @st.cache_data(show_spinner=False)
 def load_full_data() -> pd.DataFrame:
-    """Load & enrich the raw CSVs into one DataFrame (no date filtering)."""
+    """
+    Load and enrich all CSV tables exactly once per session.
+    Returns a single DataFrame with a proper Date column.
+    """
     raw = load_csv_tables(csv_dir="data")
     df = prepare_full_data(raw)
-    # ensure Date is datetime once
+    # Normalize and parse Date once
     df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
     return df
 
@@ -24,13 +29,15 @@ def main():
     min_d = st.sidebar.date_input("Start Date", value=datetime(2021, 1, 1))
     max_d = st.sidebar.date_input("End Date",   value=datetime.today())
 
-    # — Load full data once, then slice in‐memory —
+    # — Load the full data once, then slice cheaply in memory —
     df_full = load_full_data()
-    # slice cheaply in‐memory
     mask = (df_full["Date"] >= pd.to_datetime(min_d)) & (df_full["Date"] <= pd.to_datetime(max_d))
     df_all = df_full.loc[mask]
 
-    # — Apply your SKU/Region filters —
+    # Force a garbage‐collection pass after slicing to free any dropped objects
+    gc.collect()
+
+    # — Apply your product/region filters (also cached cheaply) —
     df = apply_filters(df_all)
 
     # — Build lookup maps for the dashboard —
@@ -41,7 +48,7 @@ def main():
         st.warning("⚠️ No data for the selected date range.")
         return
 
-    # — Render the dashboard —
+    # — Render all of your tabs/charts —
     dashboard(df_all, df, cmap, pmap)
 
 if __name__ == "__main__":
